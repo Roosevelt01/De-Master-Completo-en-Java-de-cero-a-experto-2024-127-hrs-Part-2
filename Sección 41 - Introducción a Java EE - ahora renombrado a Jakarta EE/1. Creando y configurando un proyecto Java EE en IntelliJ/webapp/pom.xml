@@ -33,15 +33,18 @@
                 <artifactId>tomcat7-maven-plugin</artifactId>
                 <version>2.2</version> 
                 <configuration>
+                    <!-- Configuración de conexión al manager de Tomcat -->
                     <url>http://localhost:8080/manager/text</url>
-                    <username>admin</username>
+                    <username>admin</username><!-- Credenciales para autenticación -->
                     <password>12345</password>
                 </configuration>
             </plugin>
-
             <plugin>
+                <!-- Plugin para empaquetar el proyecto como archivo WAR -->
                 <artifactId>maven-war-plugin</artifactId>
-                <version>3.4.0</version> <configuration>
+                <version>3.4.0</version>
+                <configuration>
+                    <!-- Permite omitir el archivo web.xml (usando anotaciones) -->
                     <failOnMissingWebXml>false</failOnMissingWebXml>
                 </configuration>
             </plugin>
