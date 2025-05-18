@@ -26,11 +26,17 @@
                 <artifactId>maven-compiler-plugin</artifactId>
                 <version>3.13.0</version>
                 <!-- Configura versión de Java (definida en properties) -->
+            </plugin>                
             <plugin>
+                <!-- Plugin para despliegue en Tomcat (versión 7) -->
                 <groupId>org.apache.tomcat.maven</groupId>
                 <artifactId>tomcat7-maven-plugin</artifactId>
-                <version>2.2</version> <configuration>
-                    <url>http://localhost:8080/manager/text</url> <username>admin</username> <password>12345</password> </configuration>
+                <version>2.2</version> 
+                <configuration>
+                    <url>http://localhost:8080/manager/text</url>
+                    <username>admin</username>
+                    <password>12345</password>
+                </configuration>
             </plugin>
 
             <plugin>
