@@ -13,6 +13,9 @@ public class ParametrosGetServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) 
         throws ServletException, IOException {
-        // Implementación del método doGet irá aquí
+        
+        // Paso 2: Obtiene el valor del parámetro "saludo" de la Query String
+        String saludo = req.getParameter("saludo");
+
     }
 }
