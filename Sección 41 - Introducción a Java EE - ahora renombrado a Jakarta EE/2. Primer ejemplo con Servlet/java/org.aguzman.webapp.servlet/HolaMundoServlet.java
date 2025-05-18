@@ -1,6 +1,3 @@
-
-
-
 package org.aguzman.webapp.servlet;
 
 import jakarta.servlet.annotation.WebServlet; // Importa la anotación @WebServlet
