@@ -16,19 +16,31 @@ public class ParametrosGetServlet extends HttpServlet {
         String saludo = req.getParameter("saludo");
         String nombre = req.getParameter("nombre"); // Paso 1: Obtiene el parámetro 'nombre'
 
-         // ... resto del código ...
-
-        out.println("<!DOCTYPE html>");
-        out.println("<html>");
-        out.println("     <head>");
-        out.println("         <meta charset=\"UTF-8\">");
-        out.println("         <title>Parámetros Get de la url</title>"); 
-        out.println("     </head>");
-        out.println("     <body>");
-        out.println("         <h1>Parámetros Get de la url</h1>");
-        out.println("         <h2>El saludo enviado es: " + saludo + "</h2>"); 
-        out.println("     </body>");
-        out.println("</html>");
+        out.print("<!DOCTYPE html>");
+        out.print("<html>");
+        out.print("     <head>");
+        out.print("         <meta charset=\"UTF-8\">");
+        out.print("         <title>Parámetros Get de la url</title>");
+        out.print("     </head>");
+        out.print("     <body>");
+        out.print("         <h1>Parámetros Get de la url</h1>");
+        
+        // Paso 2: Lógica condicional basada en la presencia de parámetros
+        if(saludo!=null && nombre !=null){
+             // Si ambos parámetros están presentes
+            out.print("         <h2>El saludo enviado es: "+saludo+" "+nombre+"</h2>");
+        }else if(saludo!=null){
+            // Si solo el parámetro 'saludo' está presente
+            out.print("         <h2>El saludo enviado es: "+saludo+"</h2>");
+        } else if (nombre != null) {
+            // Si solo el parámetro 'nombre' está presente
+            out.print("         <h2>Hola mi nombre es "+nombre+"</h2>");
+        } else {
+            // Si ninguno de los parámetros esperados está presente
+            out.print("<h2>No se han pasado los parámetros saludos ni nombre</h2>");
+        }
+        out.print("     </body>");
+        out.print("</html>");
         out.close();
 
     }
