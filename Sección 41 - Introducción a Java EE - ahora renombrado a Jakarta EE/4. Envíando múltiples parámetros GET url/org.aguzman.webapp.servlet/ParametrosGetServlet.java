@@ -56,7 +56,6 @@ public class ParametrosGetServlet extends HttpServlet {
              // La excepción ocurre porque es null O no es un número.
         }
 
-
         out.print("     </body>");
         out.print("</html>");
         out.close();
