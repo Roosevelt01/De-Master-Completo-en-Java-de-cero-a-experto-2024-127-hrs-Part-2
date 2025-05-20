@@ -7,9 +7,9 @@ import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 
 import java.io.IOException;
-import java.io.PrintWriter;
+import java.io.PrintWriter; // Necesario para escribir la respuesta
 
-@WebServlet("/registro")
+@WebServlet("/registro")// Anotación para mapear el Servlet a una URL
 public class FormServlet extends HttpServlet {
 
     @Override
