@@ -16,6 +16,7 @@ public class FormServlet extends HttpServlet {
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         resp.setContentType("text/html");
 
+        // Recupera los parámetros del formulario utilizando el atributo 'name' de los inputs
         String username = req.getParameter("username");
         String password = req.getParameter("password");
         String email = req.getParameter("email");
