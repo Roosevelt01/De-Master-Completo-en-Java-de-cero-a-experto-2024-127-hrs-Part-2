@@ -21,6 +21,7 @@ public class FormServlet extends HttpServlet {
         String password = req.getParameter("password");
         String email = req.getParameter("email");
 
+        // try-with-resources asegura que el PrintWriter se cierre automáticamente
         try (PrintWriter out = resp.getWriter()) {
 
             out.println("<!DOCTYPE html>");
@@ -32,6 +33,7 @@ public class FormServlet extends HttpServlet {
             out.println("     <body>");
             out.println("         <h1>Resultado form!</h1>");
 
+            // Mostrar los parámetros recibidos en una lista desordenada (<ul>)
             out.println("          <ul>");
             out.println("              <li>Username: "+username+"</li>");
             out.println("              <li>Password: "+password+"</li>");
@@ -40,7 +42,7 @@ public class FormServlet extends HttpServlet {
 
             out.println("     </body>");
             out.println("</html>");
-        }
+        }// El 'out' se cierra automáticamente aquí gracias al try-with-resources
 
     }
 }
