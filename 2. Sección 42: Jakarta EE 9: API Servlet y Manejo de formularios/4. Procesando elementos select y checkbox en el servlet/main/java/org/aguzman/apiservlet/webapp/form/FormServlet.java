@@ -20,11 +20,11 @@ public class FormServlet extends HttpServlet {
         String username = req.getParameter("username");
         String password = req.getParameter("password");
         String email = req.getParameter("email");
-        String pais = req.getParameter("pais");//Paso 1: // Nuevo: Recupera el valor seleccionado del campo 'País'
-        // Nuevos: Recupera los valores seleccionados de los campos 'Lenguajes' y 'Roles'
+        String pais = req.getParameter("pais");//Paso 1: Recupera el valor seleccionado del campo 'País'
+        // Paso 2: Recupera los valores seleccionados de los campos 'Lenguajes' y 'Roles'
         // Ambos son arreglos porque permiten múltiples selecciones.
-        String[] lenguajes = req.getParameterValues("lenguajes");//Paso 2
-        String[] roles = req.getParameterValues("roles");//Paso 3
+        String[] lenguajes = req.getParameterValues("lenguajes");
+        String[] roles = req.getParameterValues("roles");
 
         try (PrintWriter out = resp.getWriter()) {
 
