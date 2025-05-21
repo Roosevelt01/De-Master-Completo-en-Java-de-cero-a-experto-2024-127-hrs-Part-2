@@ -41,23 +41,23 @@ public class FormServlet extends HttpServlet {
             out.println("              <li>Username: "+username+"</li>");
             out.println("              <li>Password: "+password+"</li>");
             out.println("              <li>Email: "+email+"</li>");
-            out.println("              <li>País: "+pais+"</li>");//Paso 4
-            out.println("              <li>Lenguajes: <ul>");//Paso 5
+            //Paso 3: Muestra el país seleccionado
+            out.println("              <li>País: "+pais+"</li>");
+            //Paso 4: Muestra los lenguajes seleccionados en una lista anidada
+            out.println("              <li>Lenguajes: <ul>");
             Arrays.asList(lenguajes).forEach(lenguaje -> {
                 out.println("                       <li>"+lenguaje+"</li>");
             });
             out.println("              </lu></li>");
 
-            out.println("              <li>Roles: <ul>");//Paso 6
+            //Paso 5: Muestra los roles seleccionados en una lista anidada
+            out.println("              <li>Roles: <ul>");
             Arrays.asList(roles).forEach(role -> {
                 out.println("                       <li>"+role+"</li>");
             });
             out.println("              </lu></li>");
 
-
-
             out.println("          </ul>");
-
             out.println("     </body>");
             out.println("</html>");
         }
