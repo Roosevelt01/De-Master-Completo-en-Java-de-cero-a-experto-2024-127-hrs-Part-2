@@ -65,9 +65,14 @@ public class FormServlet extends HttpServlet {
             });
             out.println("              </lu></li>");
 
-            out.println("              <li>Idioma: "+idioma+"</li>");//Paso 7
-            out.println("              <li>Habilitado: "+habilitar+"</li>");//Paso 8
-            out.println("              <li>Secreto: "+secreto+"</li>");//Paso 9
+            // Paso 7: Muestra el idioma seleccionado
+            out.println("              <li>Idioma: "+idioma+"</li>");
+
+            // Paso 8: Muestra si la opción "habilitar" fue marcada
+            out.println("              <li>Habilitado: "+habilitar+"</li>");
+
+            // Paso 9: Muestra el valor del campo oculto (solo para demostración)   
+            out.println("              <li>Secreto: "+secreto+"</li>");
 
             out.println("          </ul>");
             out.println("     </body>");
