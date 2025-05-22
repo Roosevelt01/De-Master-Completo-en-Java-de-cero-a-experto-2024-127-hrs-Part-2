@@ -23,9 +23,19 @@ public class FormServlet extends HttpServlet {
         String pais = req.getParameter("pais");
         String[] lenguajes = req.getParameterValues("lenguajes");
         String[] roles = req.getParameterValues("roles");
-        String idioma = req.getParameter("idioma");//Paso 4
-        String habilitar = req.getParameter("habilitar");//Paso 5
-        String secreto = req.getParameter("secreto");//Paso 6
+        
+        //Paso 4: Obtiene el 'value' del radio button de idioma seleccionado.
+        // Si no hay 'checked' por defecto y no se selecciona nada, podría ser null.
+        String idioma = req.getParameter("idioma");
+        
+        // Paso 5: Obtiene el 'value' del checkbox "Habilitar".
+        // **Importante:** Será "on" (o el valor que le des) si está marcado,
+        // y **null** si el checkbox está desmarcado.
+        String habilitar = req.getParameter("habilitar");
+
+        // Paso 6: Obtiene el 'value' del campo oculto "secreto".
+        // Siempre se envía, por lo que nunca será null.
+        String secreto = req.getParameter("secreto");
 
         try (PrintWriter out = resp.getWriter()) {
 
