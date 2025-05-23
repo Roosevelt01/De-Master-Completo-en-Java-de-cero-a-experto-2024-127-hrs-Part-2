@@ -95,8 +95,7 @@ public class FormServlet extends HttpServlet {
                 out.println("     </body>");
                 out.println("</html>");
             }
-        } else {
-            //Paso 1: Si hay errores, los agregamos como atributo al request usando setAttribute
+        } else {//Paso 1: Si hay errores, los agregamos como atributo al request usando setAttribute
             // Si SÍ hay errores (validación fallida)
             // Se adjunta la lista de errores al request scope
             req.setAttribute("errores", errores);
