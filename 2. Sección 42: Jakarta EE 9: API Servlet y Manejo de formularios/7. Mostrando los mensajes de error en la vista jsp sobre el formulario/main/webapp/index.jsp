@@ -7,6 +7,7 @@
     List<String> errores = (List<String>)request.getAttribute("errores");
 
 %>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
