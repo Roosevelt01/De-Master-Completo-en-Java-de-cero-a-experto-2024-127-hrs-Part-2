@@ -32,7 +32,7 @@ public class FormServlet extends HttpServlet {
 
         List<String> errores = new ArrayList<>();
 
-        // 2. Validaciones de Campos
+        // Paso 2: Validaciones de Campos
         if (username == null || username.isBlank()) {
             errores.add("el usarname es requerido!");
         }
@@ -96,6 +96,7 @@ public class FormServlet extends HttpServlet {
                 out.println("</html>");
             }
         } else {
+            //Paso 1: Si hay errores, los agregamos como atributo al request usando setAttribute
             // Si SÍ hay errores (validación fallida)
             // Se adjunta la lista de errores al request scope
             req.setAttribute("errores", errores);
