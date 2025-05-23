@@ -1,6 +1,6 @@
 <%-- Paso 3: Configuración Básica de JSP --%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%> 
-<%@page import="java.util.List"%> <%-- Paso 5 --%>
+<%@page import="java.util.List"%> 
 
 <%-- Paso 4: Obtención de Errores en JSP --%>
 <%
