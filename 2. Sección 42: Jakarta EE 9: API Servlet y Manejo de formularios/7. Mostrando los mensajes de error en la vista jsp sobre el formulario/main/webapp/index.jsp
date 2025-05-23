@@ -1,7 +1,8 @@
-<%@page contentType="text/html" pageEncoding="UTF-8"%> <%-- Paso 4 --%>
+<%-- Paso 3: Configuración Básica de JSP --%>
+<%@page contentType="text/html" pageEncoding="UTF-8"%> 
 <%@page import="java.util.List"%> <%-- Paso 5 --%>
 
-<%-- Paso 6 --%>
+<%-- Paso 4: Obtención de Errores en JSP --%>
 <%
     List<String> errores = (List<String>)request.getAttribute("errores");
 
@@ -15,7 +16,7 @@
 <body>
     <h3>Formulario de usuarios</h3>
 
-        <%-- Paso 7 --%>
+        <%-- Paso 5: Presentación de Errores --%>
         <%
             if(errores != null && errores.size() > 0){
         %>
