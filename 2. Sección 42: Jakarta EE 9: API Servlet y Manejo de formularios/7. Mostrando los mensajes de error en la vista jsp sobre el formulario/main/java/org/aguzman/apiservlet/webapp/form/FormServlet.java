@@ -32,6 +32,7 @@ public class FormServlet extends HttpServlet {
 
         List<String> errores = new ArrayList<>();
 
+        // 2. Validaciones de Campos
         if (username == null || username.isBlank()) {
             errores.add("el usarname es requerido!");
         }
@@ -56,7 +57,7 @@ public class FormServlet extends HttpServlet {
             errores.add("debe seleccionar un idioma!");
         }
 
-        if (errores.isEmpty()) {//Paso 1
+        if (errores.isEmpty()) {
             try (PrintWriter out = resp.getWriter()) {
 
                 out.println("<!DOCTYPE html>");
@@ -94,15 +95,12 @@ public class FormServlet extends HttpServlet {
                 out.println("     </body>");
                 out.println("</html>");
             }
-        } else {//Paso 2
-                /*errores.forEach(error -> {
-                    out.println("<li>" + error + "</li>");
-                });
-                out.println("<p><a href=\"/webapp-form/index.jsp\">volver</a><p>");*/
-            //Paso 3
+        } else {
+            // Si SÍ hay errores (validación fallida)
+            // Se adjunta la lista de errores al request scope
             req.setAttribute("errores", errores);
+            // Se reenvía la solicitud de vuelta a index.jsp para mostrar el formulario con los errores
             getServletContext().getRequestDispatcher("/index.jsp").forward(req, resp);
-
         }
     }
 }
