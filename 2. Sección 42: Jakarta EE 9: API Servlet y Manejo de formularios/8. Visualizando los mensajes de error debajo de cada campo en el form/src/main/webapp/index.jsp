@@ -19,15 +19,15 @@
         <%
             if(errores != null && errores.size() > 0){
         %>
-        <ul style="color: red;"> <%-- Recomendado: añadir estilo para resaltar errores --%>
-            <%
-                for(String error : errores.values()){ Muestra todos los mensajes de error en la parte superior
+        <ul style="color: red;"> 
+            <%  
+                <%-- Paso 5: Agregamos errores.values() devuelve una Collection de los valores (mensajes) del mapa --%>
+                for(String error : errores.values()){ 
             %>
                     <li><%= error %></li>
             <%
-                } // Cierre del for
+                } 
             %>
-
 
         </ul>
         <%
@@ -39,7 +39,7 @@
         <div>
             <label for="username">Usuario</label>
             <div><input type="text" name="username" id="username"></div>
-            <%-- Paso 5 --%>
+            <%-- Paso 6: Mostrar error específico para 'username' --%>
             <%
                 if(errores != null && errores.containsKey("username")){
                     out.println("<small style='color:red';>"+ errores.get("username") + "</small>");
@@ -50,7 +50,7 @@
         <div>
             <label for="password">Password</label>
             <div><input type="password" name="password" id="password"></div>
-            <%-- Paso 6 --%>
+            <%-- Paso 7: Mostrar error específico para 'password' --%>
             <%
                 if(errores != null && errores.containsKey("passrord")){
                     out.println("<small style='color:red';>"+ errores.get("password") + "</small>");
@@ -61,7 +61,7 @@
         <div>
             <label for="email">Email</label>
             <div><input type="text" name="email" id="email"></div>
-            <%-- Paso 7 --%>
+            <%-- Paso 8: Mostrar error específico para 'email' --%>
             <%
                 if(errores != null && errores.containsKey("email")){
                     out.println("<small style='color:red';>"+ errores.get("email") + "</small>");
@@ -83,7 +83,7 @@
                     <option value="VE">Venezuela</option>
                 </select>
             </div>
-            <%-- Paso 8 --%>
+            <%-- Paso 9: Mostrar error específico para 'pais' --%>
             <%
                 if(errores != null && errores.containsKey("pais")){
                     out.println("<small style='color:red';>"+ errores.get("pais") + "</small>");
@@ -103,7 +103,7 @@
                     <option value="react">React</option>
                 </select>
             </div>
-            <%-- Paso 9 --%>
+            <%-- Paso 9: Mostrar error específico para 'lenguajes' --%>
             <%
                 if(errores != null && errores.containsKey("lenguajes")){
                     out.println("<small style='color:red';>"+ errores.get("lenguajes") + "</small>");
@@ -127,7 +127,7 @@
                 <input type="checkbox" name="roles" value="ROLE_MODERATOR">
                 <label>Moderador</label>
             </div>
-            <%-- Paso 10 --%>
+            <%-- Paso 10: Mostrar error específico para 'roles' --%>
             <%
                 if(errores != null && errores.containsKey("roles")){
                     out.println("<small style='color:red';>"+ errores.get("roles") + "</small>");
@@ -152,7 +152,7 @@
                 <input type="radio" name="idioma" value="fr">
                 <label>Francés</label>
             </div>
-            <%-- Paso 11 --%>
+            <%-- Paso 6: Mostrar error específico para 'idioma' --%>
             <%
                 if(errores != null && errores.containsKey("idioma")){
                     out.println("<small style='color:red';>"+ errores.get("idioma") + "</small>");
