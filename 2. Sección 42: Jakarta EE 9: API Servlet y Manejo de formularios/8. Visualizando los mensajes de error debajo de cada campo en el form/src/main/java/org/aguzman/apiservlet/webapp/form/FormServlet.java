@@ -28,9 +28,10 @@ public class FormServlet extends HttpServlet {
                 req.getParameter("habilitar").equals("on");
         String secreto = req.getParameter("secreto");
 
-        //Paso 1
+        // Paso 1: Cambia la declaración de una lista a un mapa para errores
         Map<String, String> errores = new HashMap<>();
 
+        // 2. Validaciones de Campos y Adición de Errores al Mapa dentro cada if
         if (username == null || username.isBlank()) {
             errores.put("username","el usarname es requerido!");
         }
@@ -52,7 +53,7 @@ public class FormServlet extends HttpServlet {
         }
 
         if (roles == null  || roles.length == 0) {
-            errores.put("roler","debe seleccionar un rol!");
+            errores.put("roles","debe seleccionar un rol!");
         }
 
         if (idioma == null) {

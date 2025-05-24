@@ -1,7 +1,8 @@
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
-<%@page import="java.util.Map"%> <%-- Paso 2 --%>
+<%-- Paso 2: Importación del Mapa --%>
+<%@page import="java.util.Map"%> 
 
-<%-- Paso 3 --%>
+<%-- Paso 3: Recuperamos el mapa de errores del request, haciendo casting a Map<String, String> --%>
 <%
     Map<String, String> errores = (Map<String, String>)request.getAttribute("errores");
 %>
@@ -20,7 +21,7 @@
         %>
         <ul style="color: red;"> <%-- Recomendado: añadir estilo para resaltar errores --%>
             <%
-                for(String error : errores.values()){ // Paso 4
+                for(String error : errores.values()){ Muestra todos los mensajes de error en la parte superior
             %>
                     <li><%= error %></li>
             <%

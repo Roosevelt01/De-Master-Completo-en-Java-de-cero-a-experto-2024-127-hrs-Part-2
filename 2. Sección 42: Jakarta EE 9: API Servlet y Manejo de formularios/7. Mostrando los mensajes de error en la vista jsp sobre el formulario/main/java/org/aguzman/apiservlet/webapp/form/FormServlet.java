@@ -53,6 +53,10 @@ public class FormServlet extends HttpServlet {
             errores.add("debe seleccionar al menos un rol!");
         }
 
+        if (roles == null  || roles.length == 0) {
+            errores.add("debe seleccionar un rol!");
+        }
+
         if (idioma == null) {
             errores.add("debe seleccionar un idioma!");
         }
