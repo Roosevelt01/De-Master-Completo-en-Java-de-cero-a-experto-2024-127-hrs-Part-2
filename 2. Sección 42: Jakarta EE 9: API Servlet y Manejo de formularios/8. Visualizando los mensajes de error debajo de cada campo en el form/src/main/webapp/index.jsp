@@ -52,7 +52,7 @@
             <div><input type="password" name="password" id="password"></div>
             <%-- Paso 7: Mostrar error específico para 'password' --%>
             <%
-                if(errores != null && errores.containsKey("passrord")){
+                if(errores != null && errores.containsKey("password")){
                     out.println("<small style='color:red';>"+ errores.get("password") + "</small>");
                 }
             %>
