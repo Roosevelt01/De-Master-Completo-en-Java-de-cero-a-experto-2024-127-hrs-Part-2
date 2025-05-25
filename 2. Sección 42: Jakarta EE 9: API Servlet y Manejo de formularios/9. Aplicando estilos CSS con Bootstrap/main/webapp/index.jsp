@@ -117,6 +117,7 @@
 
             <div class="row mb-3">
                 <label class="col-form-label col-sm-2">Roles</label>
+                
                 <div class="form-check">
                     <input type="checkbox" name="roles" value="ROLE_ADMIN" class="form-check-input">
                     <label class="form-check-label">Administrador</label>
