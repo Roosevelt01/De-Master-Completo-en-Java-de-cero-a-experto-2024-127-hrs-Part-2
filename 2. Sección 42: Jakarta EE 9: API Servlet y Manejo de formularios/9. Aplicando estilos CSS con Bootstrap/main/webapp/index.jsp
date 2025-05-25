@@ -43,7 +43,7 @@
             <div class="row mb-3">
                 <label for="username" class="col-form-label col-sm-2">Usuario</label>
                 <div class="col-sm-4"><input type="text" name="username" id="username" class="form-control"></div>
-
+                  
                 <%
                     if(errores != null && errores.containsKey("username")){
                         out.println("<small class='alert alert-danger col-sm-4' style='color:red';>"+ errores.get("username") + "</small>");
