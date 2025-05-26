@@ -37,6 +37,7 @@
         <%
             }// Cierre del if
         %>
+        
     <div class="px-5">
         <form action="/webapp-form/registro" method="post">
 
