@@ -102,7 +102,7 @@
                 <div class="col-sm-4">
                     <select name="lenguajes" id="lenguajes" multiple class="form-select">
                         <%-- Paso 5: Lógica para mantener la selección múltiple de lenguajes usando Arrays.asList().contains() y paramValues --%>
-                        <option value="Javase" ${ (paramValues.lenguajes != null && java.util.Arrays.asList(paramValues.lenguajes).contains("Javase")) ? "selected" : "" }>Java SE</option>
+                        <option value="Javase" ${paramValues.lenguajes.stream().anyMatch(v->v.equals("javase")).get()?"selected":""}>Java SE</option>
                         <option value="javaee" ${paramValues.lenguajes.stream().anyMatch(v->v.equals("javaee")).get()?"selected":""}>Jakarta EE9</option>
                         <option value="spring" ${paramValues.lenguajes.stream().anyMatch(v->v.equals("spring")).get()?"selected":""}>Spring Boot</option>
                         <option value="js"${paramValues.lenguajes.stream().anyMatch(v->v.equals("js")).get()?"selected":""}>JavaScript</option>
