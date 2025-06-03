@@ -17,20 +17,25 @@ import java.util.List;
 public class ProductoXLsServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+        // 1. Obtener la lista de productos
         ProductoService service = new ProductoServiceImpl();
         List<Producto> productos = service.listar();
 
-        resp.setContentType("text/html;charset=UTF-8");
+        // 2. Determinar si la petición es para Excel o HTML
         String servletPatch = req.getServletPath();
         boolean esXls = servletPatch.endsWith(".xls");
 
+        // 3. Configurar cabeceras de respuesta según el formato
         if(esXls){
             resp.setContentType("application/vnd.ms-excel");
             resp.setHeader("Content-Disposition", "attachment;filename=productos.xls");
+        }else{          
+            resp.setContentType("text/html;charset=UTF-8");
         }
 
+        // 4. Escribir la respuesta HTML o Excel (tabla HTML)
         try (PrintWriter out = resp.getWriter()) {
-
+            // Generar cabecera HTML solo si no es Excel                
             if(!esXls) {
                 out.println("<!DOCTYPE html>");
                 out.println("<html>");
@@ -43,6 +48,7 @@ public class ProductoXLsServlet extends HttpServlet {
                 out.println("<p><a href=\"" + req.getContextPath() + "/productos.xls" + "\">Exportar a xls</a></p>");
             }
 
+            // Generar la tabla HTML (común para ambos formatos)
             out.println("<table>");
             out.println("<tr>");
             out.println("<th>id</th>");
@@ -59,6 +65,8 @@ public class ProductoXLsServlet extends HttpServlet {
                 out.println("</tr>");
             });
             out.println("</table>");
+            
+            // Cerrar etiquetas HTML solo si no es Excel
             if(!esXls){
                 out.println("</body>");
                 out.println("</html>");
@@ -66,3 +74,4 @@ public class ProductoXLsServlet extends HttpServlet {
         }
     }
 }
+
