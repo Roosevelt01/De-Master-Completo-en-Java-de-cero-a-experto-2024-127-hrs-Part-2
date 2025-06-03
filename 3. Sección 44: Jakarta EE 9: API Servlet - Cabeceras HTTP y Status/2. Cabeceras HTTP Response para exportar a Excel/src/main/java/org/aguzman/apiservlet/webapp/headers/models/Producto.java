@@ -7,8 +7,7 @@ public class Producto {
     private int precio;
 
     // Constructor vacío
-    public Producto() {
-    }
+    public Producto() { }
 
     // Constructor con todos los campos
     public Producto(Long id, String nombre, String tipo, int precio) {
@@ -19,35 +18,19 @@ public class Producto {
     }
 
     // Getters y setters
-    public Long getId() {
-        return id;
-    }
+    public Long getId() { return id; }
 
-    public void setId(Long id) {
-        this.id = id;
-    }
+    public void setId(Long id) {this.id = id;}
 
-    public String getNombre() {
-        return nombre;
-    }
+    public String getNombre() { return nombre; }
 
-    public void setNombre(String nombre) {
-        this.nombre = nombre;
-    }
+    public void setNombre(String nombre) { this.nombre = nombre; }
 
-    public String getTipo() {
-        return tipo;
-    }
+    public String getTipo() { return tipo; }
 
-    public void setTipo(String tipo) {
-        this.tipo = tipo;
-    }
+    public void setTipo(String tipo) { this.tipo = tipo; }
 
-    public int getPrecio() {
-        return precio;
-    }
+    public int getPrecio() { return precio; }
 
-    public void setPrecio(int precio) {
-        this.precio = precio;
-    }
+    public void setPrecio(int precio) { this.precio = precio; }
 }
