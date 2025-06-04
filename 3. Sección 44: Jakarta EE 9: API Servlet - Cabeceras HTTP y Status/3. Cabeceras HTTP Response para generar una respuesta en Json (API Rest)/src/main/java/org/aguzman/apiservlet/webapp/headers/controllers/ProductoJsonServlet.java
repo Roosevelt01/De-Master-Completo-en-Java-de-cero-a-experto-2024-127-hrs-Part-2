@@ -18,11 +18,22 @@ import java.util.List;
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+
+        // 1. Obtener la lista de productos
         ProductoService service = new ProductoServiceImpl();
         List<Producto> productos = service.listar();
+
+        // 2. Inicializar el serializador de JSON
         ObjectMapper mapper = new ObjectMapper();
+
+        // 3. Serializar los productos a una cadena JSON
         String json = mapper.writeValueAsString(productos);
+
+        // 4. Configurar la respuesta HTTP
         resp.setContentType("application/json");
+        resp.setCharacterEncoding("UTF-8"); // Asegura la codificación correcta para caracteres especiales
+
+        // 5. Enviar la respuesta JSON al cliente
         resp.getWriter().write(json);
 
     }
