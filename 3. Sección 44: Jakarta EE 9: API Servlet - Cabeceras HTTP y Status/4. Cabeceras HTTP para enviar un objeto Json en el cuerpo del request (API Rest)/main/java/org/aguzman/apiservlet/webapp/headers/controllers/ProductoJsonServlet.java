@@ -66,6 +66,7 @@ import java.util.List;
         }
     }
 
+
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         ProductoService service = new ProductoServiceImpl();
