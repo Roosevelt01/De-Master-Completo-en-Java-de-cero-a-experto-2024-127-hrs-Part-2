@@ -8,4 +8,5 @@
 ![chrome_oMeyLXmqF8](https://github.com/user-attachments/assets/510b24b5-a638-4c10-932b-fb0591a76a88)
 
 #4. Login exitoso
-![chrome_9aNS2Pu5MJ](https://github.com/user-attachments/assets/badd2143-ea3a-4e53-a001-2a0e381dbe75)
+![chrome_9aNS2Pu5MJ](https://github.com/user-attachments/assets/b24080c7-489b-4e54-b410-2d6a8cc2be44)
+
