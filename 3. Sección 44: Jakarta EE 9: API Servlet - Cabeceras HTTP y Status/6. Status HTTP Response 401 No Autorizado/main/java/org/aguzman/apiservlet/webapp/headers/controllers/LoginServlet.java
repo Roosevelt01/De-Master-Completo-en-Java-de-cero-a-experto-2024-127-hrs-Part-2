@@ -19,6 +19,10 @@ public class LoginServlet extends HttpServlet {
         String username = req.getParameter("username");
         String password = req.getParameter("password");
 
+        // 2. Validar las credenciales.
+        // Se utiliza el método `equals()` para comparar el contenido de las cadenas de texto.
+        // Es crucial usar `equals()` en lugar de `==` para comparar objetos String en Java,
+        // ya que `==` solo compara si las referencias a los objetos son las mismas, no su contenido.
         if(USERNAME.equals(username) && PASSWORD.equals(password)){
             resp.setContentType("text/html;charset=UTF-8");
             try (PrintWriter out = resp.getWriter()) {
