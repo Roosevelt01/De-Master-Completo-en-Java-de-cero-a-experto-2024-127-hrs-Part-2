@@ -31,12 +31,17 @@ public class BuscarProductosServlet extends HttpServlet {
         // `.filter(p -> { ... })`: Filtra los productos basados en el nombre buscado.
         Optional<Producto> encontrado = service.listar().stream().filter(p -> {
             // Validación dentro del filtro:
-            // Si el nombre buscado es nulo o está en blanco, significa que el usuario no ingresó nada válido.
-            // En este caso, no hay coincidencia, por lo que devolvemos `false` para que el producto no sea incluido en el resultado.
+            // Si el nombre buscado es nulo o está en blanco, significa 
+            // que el usuario no ingresó nada válido.
+            
+            // En este caso, no hay coincidencia, por lo que devolvemos `false`
+            //  para que el producto no sea incluido en el resultado.
             if(nombre == null || nombre.isBlank()){
                 return false;
             }
-            // Compara si el nombre del producto (convertido a minúsculas para una búsqueda insensible a mayúsculas/minúsculas)
+            // Compara si el nombre del producto (convertido a minúsculas para una
+            // búsqueda insensible a mayúsculas/minúsculas)
+            
             // contiene el texto buscado por el usuario (también en minúsculas).
             return p.getNombre().contains(nombre);
         }).findFirst();
