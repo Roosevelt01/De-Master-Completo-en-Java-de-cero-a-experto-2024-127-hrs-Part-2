@@ -57,7 +57,19 @@ public class LoginServlet extends HttpServlet {
 
         if(USERNAME.equals(username) && PASSWORD.equals(password)){
 
+            // Si las credenciales son correctas:
+            // Paso 1: Crear una nueva cookie
+            // Se instancia un objeto Cookie con el nombre "username" 
+            // y el valor del nombre de usuario que inició sesión.
             Cookie usernameCookie = new Cookie("username", username);
+
+            // Paso 2: Añadir la cookie a la respuesta HTTP
+            // resp.addCookie(usernameCookie): Agrega la cookie al encabezado 'Set-Cookie'
+            //  de la respuesta HTTP.
+            
+            // Cuando el navegador reciba esta respuesta, almacenará esta cookie.
+            // En solicitudes futuras al mismo dominio,
+            // el navegador enviará esta cookie automáticamente.
             resp.addCookie(usernameCookie);
 
             resp.setContentType("text/html;charset=UTF-8");
