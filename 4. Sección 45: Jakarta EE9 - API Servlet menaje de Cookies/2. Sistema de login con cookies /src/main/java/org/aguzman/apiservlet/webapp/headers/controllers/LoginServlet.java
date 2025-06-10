@@ -2,15 +2,15 @@ package org.aguzman.apiservlet.webapp.headers.controllers;
 
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
-import jakarta.servlet.http.Cookie;
+import jakarta.servlet.http.Cookie;// Importa la clase Cookie para crear y manipular cookies.
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 
 import java.io.IOException;
 import java.io.PrintWriter;
-import java.util.Arrays;
-import java.util.Optional;
+import java.util.Arrays;// Para trabajar con el Stream API de Java 8+ sobre arrays.
+import java.util.Optional;// Para manejar de forma segura la posible ausencia de una cookie.
 
 @WebServlet({"/login", "/login.html"})
 public class LoginServlet extends HttpServlet {
@@ -19,7 +19,10 @@ public class LoginServlet extends HttpServlet {
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+        // Obtener las cookies de la solicitud del cliente
         Cookie[] cookies = req.getCookies() != null? req.getCookies():new Cookie[0];
+
+        //Buscar la cookie de "username" usando Java Streams
         Optional<String> cookieOptional = Arrays.stream(cookies)
                 .filter(c -> "username".equals(c.getName()))
                 .map(Cookie::getValue)
@@ -33,9 +36,11 @@ public class LoginServlet extends HttpServlet {
                 out.println("<html>");
                 out.println("     <head>");
                 out.println("         <meta charset=\"UTF-8\">");
+                // Muestra el nombre de usuario obtenido de la cookie en el título de la página.
                 out.println("         <title>Hola " + cookieOptional.get() + "</title>");
                 out.println("     </head>");
                 out.println("     <body>");
+                // Muestra un mensaje de bienvenida en el cuerpo de la página, indicando que ya ha iniciado sesión.
                 out.println("         <h1>Hola " + cookieOptional.get() + " y has inciado sesiónanteriormente! </h1>");
                 out.println("     </body>");
                 out.println("</html>");
