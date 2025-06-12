@@ -21,10 +21,9 @@ public class LoginServlet extends HttpServlet {
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        //Paso 3
-        LoginServiceImpl auth = new LoginServiceImpl();
-        Optional<String> cookieOptional = auth.getUsername(req);
-
+        // Paso 1: Instanciar y usar LoginServiceImpl para obtener el nombre de usuario de la cookie.
+        LoginService auth = new LoginServiceImpl(); // Crea una instancia de LoginServiceImpl.
+        Optional<String> cookieOptional = auth.getUsername(req); // Llama al método getUsername para buscar la cookie.
 
         if(cookieOptional.isPresent()){
             resp.setContentType("text/html;charset=UTF-8");
@@ -38,7 +37,7 @@ public class LoginServlet extends HttpServlet {
                 out.println("     </head>");
                 out.println("     <body>");
                 out.println("         <h1>Hola " + cookieOptional.get() + " y has inciado sesión anteriormente! </h1>");
-                //Paso 8
+                // Paso 2: Añadir un enlace "Volver"
                 out.println("<p><a href='"+req.getContextPath() +"/index.html'>Volver</a></p>");
                 out.println("     </body>");
                 out.println("</html>");
@@ -70,7 +69,7 @@ public class LoginServlet extends HttpServlet {
                 out.println("     <body>");
                 out.println("         <h1>Login correcto!</h1>");
                 out.println("         <h3>¡Hola " +username+ " has ingresado sesión con éxito!</h3>");
-                //Paso 9
+                // Paso 3: Añadir un enlace "Volver" si no se usa redirección
                 out.println("<p><a href='"+req.getContextPath() +"/index.html'>Volver</a></p>");
                 out.println("     </body>");
                 out.println("</html>");

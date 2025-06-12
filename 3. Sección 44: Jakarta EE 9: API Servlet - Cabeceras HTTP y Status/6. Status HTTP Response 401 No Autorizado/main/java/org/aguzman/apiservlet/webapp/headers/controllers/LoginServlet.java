@@ -11,6 +11,12 @@ import java.io.PrintWriter;
 
 @WebServlet("/login")
 public class LoginServlet extends HttpServlet {
+    // Definimos credenciales fijas para fines de demostración.
+    // IMPORTANTE: En una aplicación de producción, las credenciales nunca deben estar
+    // "hardcodeadas" (escritas directamente en el código) y siempre deben ser gestionadas
+    // de forma segura (ej., almacenadas con hashing en una base de datos y verificadas
+    // mediante un sistema de autenticación robusto).
+    
     final static String USERNAME = "admin";
     final static String PASSWORD = "12345";
 
