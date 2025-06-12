@@ -24,8 +24,9 @@ public class ProductoServlet extends HttpServlet {
         ProductoService service = new ProductoServiceImpl();
         List<Producto> productos = service.listar();
 
-        //Paso 4
-        LoginServiceImpl auth = new LoginServiceImpl();
+        // Paso 1: Instanciar el servicio de login para comprobar si hay una cookie de usuario.
+        LoginServiceImpl auth = new LoginServiceImpl();// Crea una instancia de LoginServiceImpl.
+        // Llama al método getUsername para verificar si el usuario ha iniciado sesión y obtener su nombre.
         Optional<String> cookieOptional = auth.getUsername(req);
 
         resp.setContentType("text/html;charset=UTF-8");
@@ -40,8 +41,11 @@ public class ProductoServlet extends HttpServlet {
                 out.println("     </head>");
                 out.println("     <body>");
                 out.println("         <h1>Listado de Productos</h1>");
-                //Paso 5
+                
+                // Paso 2: Mostrar mensaje de bienvenida si el usuario está autenticado.
+                // Verifica si el Optional contiene un nombre de usuario (es decir, si la cookie existe).
                 if(cookieOptional.isPresent()){
+                    // Imprime un mensaje de bienvenida con el nombre de usuario.
                     out.println("<div style='color:blue;'>Hola " +cookieOptional.get()+ " Bienvenido!</div>");
                 }
 
@@ -50,8 +54,10 @@ public class ProductoServlet extends HttpServlet {
             out.println("<th>id</th>");
             out.println("<th>nombre</th>");
             out.println("<th>tipo</th>");
-            //Paso 6
+            // Paso 3: Mostrar la columna "precio" solo si el usuario está autenticado.
             if(cookieOptional.isPresent()){
+                // Si la cookie de usuario está presente...
+                // Imprime el encabezado de columna "precio".
                 out.println("<th>precio</th>");
             }
             out.println("</tr>");
@@ -60,8 +66,10 @@ public class ProductoServlet extends HttpServlet {
                     out.println("<td>" + p.getId() + "</td>");
                     out.println("<td>" + p.getNombre() + "</td>");
                     out.println("<td>" + p.getTipo() + "</td>");
-                    //Paso 7
+                    // Paso 4: Mostrar el precio del producto solo si el usuario está autenticado.
                     if(cookieOptional.isPresent()){
+                        // Si la cookie de usuario está presente...
+                        // Imprime el precio del producto.
                         out.println("<td>" + p.getPrecio() + "</td>");
                     }
                 out.println("</tr>");
