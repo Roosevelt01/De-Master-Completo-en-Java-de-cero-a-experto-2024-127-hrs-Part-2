@@ -38,7 +38,8 @@ public class LoginServlet extends HttpServlet {
                 out.println("     <body>");
                 out.println("         <h1>Hola " + cookieOptional.get() + " y has inciado sesión con éxito! </h1>");
                 out.println("<p><a href='"+req.getContextPath() +"/index.html'>Volver</a></p>");
-                out.println("<p><a href='"+req.getContextPath() +"/logout'>Cerrar sesión</a></p>");//Paso 1
+                // Paso 1: Añadir enlace "Cerrar sesión" en la página de bienvenida del LoginServlet
+                out.println("<p><a href='"+req.getContextPath() +"/logout'>Cerrar sesión</a></p>");
                 out.println("     </body>");
                 out.println("</html>");
             }
@@ -56,7 +57,8 @@ public class LoginServlet extends HttpServlet {
 
             Cookie usernameCookie = new Cookie("username", username);
             resp.addCookie(usernameCookie);
-
+            
+            // Paso 2: Redirección después de un login exitoso
             resp.sendRedirect(req.getContextPath() + "/login.html");
 
         }else{
