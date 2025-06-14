@@ -12,8 +12,10 @@ import org.aguzman.apiservlet.webapp.headers.services.LoginServiceImpl;
 import java.io.IOException;
 import java.util.Optional;
 
-//Paso 1
+//Anotación de Clase
 @WebServlet("/logout")
+
+//Declaración de Clase
 public class LogoutServlet extends HttpServlet {
 
     @Override
@@ -26,6 +28,7 @@ public class LogoutServlet extends HttpServlet {
             usernameCookie.setMaxAge(0);
             resp.addCookie(usernameCookie);
         }
+        
         resp.sendRedirect(req.getContextPath() + "/login.html");
     }
 }
