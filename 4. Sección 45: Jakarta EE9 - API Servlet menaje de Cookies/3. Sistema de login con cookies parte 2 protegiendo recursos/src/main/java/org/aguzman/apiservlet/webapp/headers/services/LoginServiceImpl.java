@@ -14,10 +14,14 @@ public class LoginServiceImpl implements LoginService {
     // método coincida con la de la interfaz.
     @Override
     public Optional<String> getUsername(HttpServletRequest req) {
+        // Esto previene un `NullPointerException` en la siguiente línea cuando se intenta crear un stream a partir de `cookies`.
         Cookie[] cookies = req.getCookies() != null? req.getCookies():new Cookie[0];
+        
+        // Usa la API de Streams de Java 8 para buscar la cookie "username" de forma concisa y funcional.
         return Arrays.stream(cookies)
                 .filter(c -> "username".equals(c.getName()))
                 .map(Cookie::getValue)
                 .findAny();
     }
 }
+

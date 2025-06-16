@@ -21,9 +21,16 @@ public class LoginServlet extends HttpServlet {
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+<<<<<<< HEAD
+        
+        // Paso 1: Instanciar y usar LoginServiceImpl para obtener el nombre de usuario de la cookie.
+        LoginServiceImpl auth = new LoginServiceImpl(); // Crea una instancia de LoginServiceImpl.
+        Optional<String> cookieOptional = auth.getUsername(req); // Llama al método getUsername para buscar la cookie.
+=======
         // Paso 1: Instanciar y usar LoginServiceImpl para obtener el nombre de usuario de la cookie.
         LoginService auth = new LoginServiceImpl(); // Crea una instancia de LoginServiceImpl.
         Optional<String> cookieOptional = auth.getUsername(req); // Llama al método getUsername para buscar la cookie.
+>>>>>>> 110196b44e869a6019ab7bcf524010eb0c85150d
 
         if(cookieOptional.isPresent()){
             resp.setContentType("text/html;charset=UTF-8");
@@ -37,7 +44,11 @@ public class LoginServlet extends HttpServlet {
                 out.println("     </head>");
                 out.println("     <body>");
                 out.println("         <h1>Hola " + cookieOptional.get() + " y has inciado sesión anteriormente! </h1>");
+<<<<<<< HEAD
+                //Paso 3: Añadir un enlace "Volver"
+=======
                 // Paso 2: Añadir un enlace "Volver"
+>>>>>>> 110196b44e869a6019ab7bcf524010eb0c85150d
                 out.println("<p><a href='"+req.getContextPath() +"/index.html'>Volver</a></p>");
                 out.println("     </body>");
                 out.println("</html>");
