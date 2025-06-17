@@ -19,11 +19,16 @@ public class LogoutServlet extends HttpServlet {
 
         Optional<String> username = auth.getUsername(req);
         if(username.isPresent()){
+<<<<<<< HEAD
+            HttpSession session = req.getSession();/    
+            session.invalidate(); 
+=======
             // Paso 2: Obtener la sesión HTTP actual           
             HttpSession session = req.getSession();
 
             // Paso 3: Invalidar (eliminar) la sesión completa
             session.invalidate();
+>>>>>>> 581d318f264a0bf058e41489f783fc8f2817b114
         }
         resp.sendRedirect(req.getContextPath() + "/login.html");
     }
