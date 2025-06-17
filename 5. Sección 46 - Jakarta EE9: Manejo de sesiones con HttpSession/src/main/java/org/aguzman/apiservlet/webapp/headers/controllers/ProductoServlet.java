@@ -20,8 +20,11 @@ public class ProductoServlet extends HttpServlet {
         ProductoService service = new ProductoServiceImpl();
         List<Producto> productos = service.listar();
 
-        LoginService auth = new LoginServiceSessionImpl();//Paso 1
-        Optional<String> sessionOptional = auth.getUsername(req); //Aqui también caplicamos sessioOptional
+        // Paso 1: Usar LoginServiceSessionImpl para la autenticación
+        LoginService auth = new LoginServiceSessionImpl();
+         
+        // Paso 2: Obtener el nombre de usuario de la sesión
+        Optional<String> sessionOptional = auth.getUsername(req); 
 
         resp.setContentType("text/html;charset=UTF-8");
 
@@ -55,7 +58,6 @@ public class ProductoServlet extends HttpServlet {
                     out.println("<td>" + p.getId() + "</td>");
                     out.println("<td>" + p.getNombre() + "</td>");
                     out.println("<td>" + p.getTipo() + "</td>");
-                    //Paso 7
                     if(sessionOptional.isPresent()){
                         out.println("<td>" + p.getPrecio() + "</td>");
                     }
