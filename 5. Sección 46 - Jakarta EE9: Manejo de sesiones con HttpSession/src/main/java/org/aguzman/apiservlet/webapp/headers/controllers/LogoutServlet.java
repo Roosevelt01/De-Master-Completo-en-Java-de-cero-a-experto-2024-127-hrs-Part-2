@@ -9,18 +9,21 @@ import org.aguzman.apiservlet.webapp.headers.services.LoginServiceSessionImpl;
 import java.io.IOException;
 import java.util.Optional;
 
-//Paso 1
 @WebServlet("/logout")
 public class LogoutServlet extends HttpServlet {
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        LoginService auth = new LoginServiceSessionImpl();//Paso 1
+        //Paso 1: Usar la implementación de servicio de login basada en sesiones
+        LoginService auth = new LoginServiceSessionImpl();
 
         Optional<String> username = auth.getUsername(req);
         if(username.isPresent()){
-            HttpSession session = req.getSession();//Paso 2
-            session.invalidate();//Paso 3
+            // Paso 2: Obtener la sesión HTTP actual           
+            HttpSession session = req.getSession();
+
+            // Paso 3: Invalidar (eliminar) la sesión completa
+            session.invalidate();
         }
         resp.sendRedirect(req.getContextPath() + "/login.html");
     }
