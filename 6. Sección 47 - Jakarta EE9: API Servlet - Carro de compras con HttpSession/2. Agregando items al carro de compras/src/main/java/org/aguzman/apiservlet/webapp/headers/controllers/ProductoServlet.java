@@ -48,8 +48,10 @@ public class ProductoServlet extends HttpServlet {
 
             if(sessionOptional.isPresent()){
                 out.println("<th>precio</th>");
+                // Condicionalmente añadimos la celda con el enlace "Agregar al carro"
                 out.println("<th>agregar</th>");
             }
+            
             out.println("</tr>");
             productos.forEach(p -> {
                 out.println("<tr>");
@@ -58,6 +60,7 @@ public class ProductoServlet extends HttpServlet {
                     out.println("<td>" + p.getTipo() + "</td>");
                     if(sessionOptional.isPresent()){
                         out.println("<td>" + p.getPrecio() + "</td>");
+                        // Condicionalmente añadimos la celda con el enlace "Agregar al carro"
                         out.println("<td><a href=\"" + req.getContextPath() + "/agregar-carro?id=" + p.getId() + "\">Agregar al carro</td>");
                     }
                 out.println("</tr>");
