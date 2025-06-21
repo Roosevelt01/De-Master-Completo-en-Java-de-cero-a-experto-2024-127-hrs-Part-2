@@ -16,7 +16,7 @@ public class ProductoServiceImpl implements ProductoService {
 
     }
 
-    //Paso 1
+    //Paso 1: Implementación del método porId()
     @Override
     public Optional<Producto> porId(Long id) {
         return listar().stream().filter(p -> p.getId().equals(id)).findAny();
