@@ -10,8 +10,8 @@ import jakarta.servlet.http.HttpSessionListener;
 public class AplicacionListener implements ServletContextListener,
         ServletRequestListener, HttpSessionListener {
 
+    // Declaramos un atributo para guardar el contexto de la aplicación
     private ServletContext servletContext;
-
 
     @Override
     public void contextInitialized(ServletContextEvent sce) {
