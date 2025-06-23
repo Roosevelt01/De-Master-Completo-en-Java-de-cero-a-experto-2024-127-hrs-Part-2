@@ -8,8 +8,8 @@ public class Carro {
     // Una lista de ItemCarro
     private List<ItemCarro> items;
 
-    public Carro(List<ItemCarro> items) {
-        this.items = items;
+    public Carro() {
+        this.items = new ArrayList<>();
     }
 
     public void addItemCarro(ItemCarro itemCarro){
