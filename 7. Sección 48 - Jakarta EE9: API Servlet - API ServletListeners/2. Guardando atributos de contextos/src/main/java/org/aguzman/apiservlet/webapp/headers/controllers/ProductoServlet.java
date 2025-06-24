@@ -20,7 +20,7 @@ public class ProductoServlet extends HttpServlet {
         ProductoService service = new ProductoServiceImpl();
         List<Producto> productos = service.listar();
 
-        //Paso 4
+        // PASO 4: Se leen los atributos del contexto de la petición y de la aplicación.
         String mensajeRequest = (String) req.getAttribute("mensaje");
         String mensajeApp = (String) getServletContext().getAttribute("mensaje");
 
@@ -67,7 +67,7 @@ public class ProductoServlet extends HttpServlet {
                 out.println("</tr>");
             });
             out.println("</table>");
-                //Paso 5
+                // PASO 5: Se imprimen los mensajes recuperados en el HTML.
                 out.println("<p>"+mensajeApp+"<p>");
                 out.println("<p>"+mensajeRequest+"<p>");
                 out.println("</body>");
