@@ -29,7 +29,7 @@ public class AgregarCarroServlet extends HttpServlet {
         if(producto.isPresent()){
             ItemCarro item = new ItemCarro(1, producto.get());
             HttpSession session = req.getSession();
-            // Se borró el if(Paso 3): La verificación "if (session.getAttribute("carro") == null)"
+            // Se borró el if(Paso 4): La verificación "if (session.getAttribute("carro") == null)"
             // que existía aquí ya no es necesaria.
             Carro carro = (Carro) session.getAttribute("carro");
             carro.addItemCarro(item);
