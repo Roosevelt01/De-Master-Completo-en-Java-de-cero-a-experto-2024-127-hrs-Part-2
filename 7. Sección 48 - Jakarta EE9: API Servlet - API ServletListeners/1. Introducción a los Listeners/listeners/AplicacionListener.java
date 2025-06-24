@@ -44,12 +44,12 @@ public class AplicacionListener implements ServletContextListener,
     @Override
     public void sessionCreated(HttpSessionEvent se) {
         // Se invoca cuando se crea una nueva sesión para un usuario.
-        servletContext.log("inicializando la aplicación!");
+        servletContext.log("inicializando la session http!");
     }
 
     @Override
     public void sessionDestroyed(HttpSessionEvent se) {
         // Se invoca cuando una sesión es invalidada (logout) o expira.
-        servletContext.log("destruyendo la aplicación!");
+        servletContext.log("destruyendo la session http!");
     }
 }
