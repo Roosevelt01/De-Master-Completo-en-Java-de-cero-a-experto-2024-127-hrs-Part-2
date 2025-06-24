@@ -19,7 +19,9 @@ import java.util.Optional;
 public class AgregarCarroServlet extends HttpServlet {
 
     @Override
-    protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+    protected void doGet(HttpServletRequest req, HttpServletResponse resp)
+     throws ServletException, IOException {
+    
         Long id = Long.parseLong(req.getParameter("id"));
         ProductoService service = new ProductoServiceImpl();
         Optional<Producto> producto = service.porId(id);
@@ -27,7 +29,8 @@ public class AgregarCarroServlet extends HttpServlet {
         if(producto.isPresent()){
             ItemCarro item = new ItemCarro(1, producto.get());
             HttpSession session = req.getSession();
-            //Se borró el if(Paso 3)
+            // Se borró el if(Paso 3): La verificación "if (session.getAttribute("carro") == null)"
+            // que existía aquí ya no es necesaria.
             Carro carro = (Carro) session.getAttribute("carro");
             carro.addItemCarro(item);
         }
