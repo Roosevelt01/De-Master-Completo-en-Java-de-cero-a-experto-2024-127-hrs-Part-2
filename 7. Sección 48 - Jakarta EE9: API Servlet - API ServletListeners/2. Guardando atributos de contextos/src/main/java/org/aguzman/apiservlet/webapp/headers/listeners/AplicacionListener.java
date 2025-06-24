@@ -5,60 +5,49 @@ import jakarta.servlet.annotation.WebListener;
 import jakarta.servlet.http.HttpSession;
 import jakarta.servlet.http.HttpSessionEvent;
 import jakarta.servlet.http.HttpSessionListener;
+import org.aguzman.apiservlet.webapp.headers.models.Carro;
 
 @WebListener
 public class AplicacionListener implements ServletContextListener,
         ServletRequestListener, HttpSessionListener {
 
-    // Declaramos un atributo para guardar el contexto de la aplicación
     private ServletContext servletContext;
 
-    // --- Métodos de ServletContextListener (Ámbito de Aplicación) ---
     @Override
     public void contextInitialized(ServletContextEvent sce) {
-        // Se invoca UNA SOLA VEZ, cuando la aplicación arranca.
         sce.getServletContext().log("inicializando la aplicación!");
         servletContext = sce.getServletContext();
+        servletContext.setAttribute("mensaje","algún valor globl de la app!");//Paso 1
     }
 
     @Override
     public void contextDestroyed(ServletContextEvent sce) {
-        // Se invoca UNA SOLA VEZ, cuando la aplicación se detiene.
         servletContext.log("destruyendo la aplicación!");
     }
 
-    // --- Métodos de ServletRequestListener (Ámbito de Petición) ---
     @Override
     public void requestInitialized(ServletRequestEvent sre) {
-        // Se invoca por CADA petición HTTP que llega.
         servletContext.log("inicializando la aplicación!");
+        sre.getServletRequest().setAttribute("mensaje","guardando algún valor para el request");//Paso 2
     }
 
     @Override
     public void requestDestroyed(ServletRequestEvent sre) {
-        // Se invoca por CADA petición HTTP, después de ser procesada.
         servletContext.log("destruyendo la aplicación!");
     }
 
-    // --- Métodos de HttpSessionListener (Ámbito de Sesión) ---
     @Override
     public void sessionCreated(HttpSessionEvent se) {
-        // Se invoca cuando se crea una nueva sesión para un usuario.
         servletContext.log("inicializando la session http!");
+        Carro carro = new Carro();
+        HttpSession session = se.getSession();
+        session.setAttribute("carro",carro);
     }
 
     @Override
     public void sessionDestroyed(HttpSessionEvent se) {
-        // Se invoca cuando una sesión es invalidada (logout) o expira.
         servletContext.log("destruyendo la session http!");
     }
+
+
 }
-
-
-
-
-
-
-
-
-
