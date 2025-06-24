@@ -17,7 +17,8 @@ public class AplicacionListener implements ServletContextListener,
     public void contextInitialized(ServletContextEvent sce) {
         sce.getServletContext().log("inicializando la aplicación!");
         servletContext = sce.getServletContext();
-        servletContext.setAttribute("mensaje","algún valor globl de la app!");//Paso 1
+        // PASO 1: Se establece un atributo en el contexto de la aplicación.
+        servletContext.setAttribute("mensaje","algún valor globl de la app!");
     }
 
     @Override
@@ -28,7 +29,8 @@ public class AplicacionListener implements ServletContextListener,
     @Override
     public void requestInitialized(ServletRequestEvent sre) {
         servletContext.log("inicializando la aplicación!");
-        sre.getServletRequest().setAttribute("mensaje","guardando algún valor para el request");//Paso 2
+        // PASO 2: Se establece un atributo en el contexto de la petición.
+        sre.getServletRequest().setAttribute("mensaje","guardando algún valor para el request");
     }
 
     @Override
@@ -39,6 +41,8 @@ public class AplicacionListener implements ServletContextListener,
     @Override
     public void sessionCreated(HttpSessionEvent se) {
         servletContext.log("inicializando la session http!");
+        // Paso 3: Crear el objeto Carro y guardarlo en la sesión
+        // Esto asegura que cada nueva sesión de usuario tenga un carrito inicializado
         Carro carro = new Carro();
         HttpSession session = se.getSession();
         session.setAttribute("carro",carro);
