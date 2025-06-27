@@ -20,6 +20,8 @@ public class ProductoServiceJdbcImpl implements ProductoService{
         try {
             return repositoryJdbc.listar();
         } catch (SQLException throwables) {
+            // Atrapa la excepción de JDBC y la relanza como nuestra excepción personalizada.
+            // Se preserva el mensaje y la causa original para un diagnóstico completo.
             throw new ServiceJdbcException(throwables.getMessage(), throwables.getCause());
         }
     }
@@ -29,6 +31,8 @@ public class ProductoServiceJdbcImpl implements ProductoService{
         try {
             return Optional.ofNullable(repositoryJdbc.porId(id));
         } catch (SQLException throwables) {
+            // Atrapa la excepción de JDBC y la relanza como nuestra excepción personalizada.
+            // Se preserva el mensaje y la causa original para un diagnóstico completo.
             throw new ServiceJdbcException(throwables.getMessage(), throwables.getCause());
         }
     }
