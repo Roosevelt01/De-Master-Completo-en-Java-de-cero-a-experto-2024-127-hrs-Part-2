@@ -20,13 +20,15 @@ public class ProductoRepositoryJdbcImpl implements  Repository<Producto> {
     public List<Producto> listar() throws SQLException {
         List<Producto> productos = new ArrayList<>();
 
+        // Usamos try-with-resources para asegurar el cierre automático de Statement y ResultSet
         try (Statement stmt = conn.createStatement();
              ResultSet rs = stmt.executeQuery("SELECT p.*, c.nombre as categoria FROM productos as p " +
                      " inner join categorias as c ON (p.categoria_id = c.id)")){
 
+            // Iteramos sobre cada fila del resultado de la consulta
             while (rs.next()){
+                // Usamos un método auxiliar para mapear la fila a un objeto Producto
                 Producto p = getProducto(rs);
-
                 productos.add(p);
             }
         }
