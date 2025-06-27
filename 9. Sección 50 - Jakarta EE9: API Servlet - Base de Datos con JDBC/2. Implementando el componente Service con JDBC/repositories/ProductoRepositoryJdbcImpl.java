@@ -46,21 +46,19 @@ public class ProductoRepositoryJdbcImpl implements  Repository<Producto> {
         return p;
     }
 
+    //Métodos porId, guardar y eliminar (implementación pendiente)
     @Override
     public Producto porId(Long id) throws SQLException {
-        return null;
+        //implementación pendiente
     }
 
     @Override
     public void guardar(Producto producto) throws SQLException {
-
+        //implementación pendiente
     }
 
     @Override
     public void eliminar(Long id) throws SQLException {
-
+        //implementación pendiente
     }
 }
-
-SELECT p.*, c.nombre as categoria FROM productos as p 
-    INNER JOIN categorias as c ON (p.categoria_id = c.id)
