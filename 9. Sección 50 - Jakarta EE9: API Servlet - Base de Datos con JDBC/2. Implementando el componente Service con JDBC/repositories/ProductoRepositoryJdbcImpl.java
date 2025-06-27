@@ -38,7 +38,7 @@ public class ProductoRepositoryJdbcImpl implements  Repository<Producto> {
 
     private static Producto getProducto(ResultSet rs) throws SQLException {
         Producto p = new Producto();
-
+        //Asignar valores a los atributos del objeto Producto
         p.setId(rs.getLong("id"));
         p.setNombre(rs.getString("nombre"));
         p.setPrecio(rs.getInt("precio"));
@@ -61,3 +61,6 @@ public class ProductoRepositoryJdbcImpl implements  Repository<Producto> {
 
     }
 }
+
+SELECT p.*, c.nombre as categoria FROM productos as p 
+    INNER JOIN categorias as c ON (p.categoria_id = c.id)
