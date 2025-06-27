@@ -34,11 +34,16 @@ public class ProductoRepositoryJdbcImpl implements  Repository<Producto> {
     @Override
     public Producto porId(Long id) throws SQLException {
         Producto producto = null;
+
+        // La consulta SQL usa '?' como marcador de posición para el parámetro.
         try(PreparedStatement stmt = conn.prepareStatement("SELECT p.*, c.nombre as categoria FROM producto as p" +
                 " innser join categorias as c ON(p.categoria_id = c.id) WHERE p.id = ?")){
+            
+            // Asignamos el valor del ID al primer marcador de posición ('?').
             stmt.setLong(1, id);
 
             try (ResultSet rs = stmt.executeQuery()){
+                // Usamos if en lugar de while, porque esperamos como máximo un resultado.
                 if(rs.next()){
                     producto = getProducto(rs);
                 }
