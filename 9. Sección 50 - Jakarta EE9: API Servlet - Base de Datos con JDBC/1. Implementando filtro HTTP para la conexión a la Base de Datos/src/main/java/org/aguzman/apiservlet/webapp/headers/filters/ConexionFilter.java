@@ -12,7 +12,8 @@ import java.sql.SQLException;
 @WebFilter("/*")
 public class ConexionFilter implements Filter {
     @Override
-    public void doFilter(ServletRequest request, ServletResponse response, FilterChain chain) throws IOException, ServletException {
+    public void doFilter(ServletRequest request, ServletResponse response, FilterChain chain)
+     throws IOException, ServletException {
 
         try(Connection conn = ConexionBaseDatos.getConnection()){
             if(conn.getAutoCommit()){
