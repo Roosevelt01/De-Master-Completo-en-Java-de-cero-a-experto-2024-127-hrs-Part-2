@@ -20,7 +20,6 @@ public class ProductoServlet extends HttpServlet {
         ProductoService service = new ProductoServiceImpl();
         List<Producto> productos = service.listar();
 
-        //Paso 4
         String mensajeRequest = (String) req.getAttribute("mensaje");
         String mensajeApp = (String) getServletContext().getAttribute("mensaje");
 
