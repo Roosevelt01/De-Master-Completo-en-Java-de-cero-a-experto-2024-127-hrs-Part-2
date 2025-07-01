@@ -27,8 +27,14 @@ public class ProductoServlet extends HttpServlet {
         LoginService auth = new LoginServiceSessionImpl();
         Optional<String> usernameOptional = auth.getUsername(req);
 
-        req.setAttribute("productos", productos);//Paso 1
-        req.setAttribute("username", usernameOptional);//Paso 2
-        getServletContext().getRequestDispatcher("/listar.jsp").forward(req, resp);//Paso 3
+        // --- Prepara los datos para la Vista ---
+        // Paso 1: Guarda la lista de productos en el request
+        req.setAttribute("productos", productos);
+        // Paso 2: Guarda la información del usuario en el request
+        req.setAttribute("username", usernameOptional);
+
+        // --- Despacha a la Vista ---
+        // Paso 3: Transfiere el control (junto con los datos del request) a listar.jsp
+        getServletContext().getRequestDispatcher("/listar.jsp").forward(req, resp);
     }
 }
