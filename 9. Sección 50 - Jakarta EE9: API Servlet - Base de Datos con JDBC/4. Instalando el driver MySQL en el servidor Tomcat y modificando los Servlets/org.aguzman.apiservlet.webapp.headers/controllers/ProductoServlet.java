@@ -18,8 +18,10 @@ import java.util.Optional;
 public class ProductoServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        Connection conn = (Connection) req.getAttribute("conn");//Paso 1
-        ProductoService service = new ProductoServiceJdbcImpl(conn);//Paso 2
+        // Paso 1: Obtener la Conexión que nos pasó el ConexionFilter
+        Connection conn = (Connection) req.getAttribute("conn");
+        // Paso 2: Instanciar el Servicio, inyectándole la conexión
+        ProductoService service = new ProductoServiceJdbcImpl(conn);
         List<Producto> productos = service.listar();
 
         String mensajeRequest = (String) req.getAttribute("mensaje");

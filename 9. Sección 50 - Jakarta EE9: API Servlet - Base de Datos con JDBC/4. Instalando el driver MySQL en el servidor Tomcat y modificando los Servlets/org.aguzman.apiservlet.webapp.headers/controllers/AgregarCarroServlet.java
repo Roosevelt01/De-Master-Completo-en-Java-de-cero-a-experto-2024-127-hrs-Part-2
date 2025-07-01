@@ -23,10 +23,10 @@ public class AgregarCarroServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         Long id = Long.parseLong(req.getParameter("id"));
-        // Paso 1: Obtener la Conexión que nos pasó el ConexionFilter
+        // 2. Obtener la conexión e instanciar el servicio (igual que en ProductoServlet)
         Connection conn = (Connection) req.getAttribute("conn");
-        // Paso 2: Instanciar el Servicio, inyectándole la conexión
         ProductoService service = new ProductoServiceJdbcImpl(conn);
+        
         Optional<Producto> producto = service.porId(id);
 
         if(producto.isPresent()){
