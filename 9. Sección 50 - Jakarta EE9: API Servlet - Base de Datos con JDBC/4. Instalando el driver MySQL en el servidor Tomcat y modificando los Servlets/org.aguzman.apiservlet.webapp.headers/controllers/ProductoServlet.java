@@ -22,6 +22,7 @@ public class ProductoServlet extends HttpServlet {
         Connection conn = (Connection) req.getAttribute("conn");
         // Paso 2: Instanciar el Servicio, inyectándole la conexión
         ProductoService service = new ProductoServiceJdbcImpl(conn);
+        
         List<Producto> productos = service.listar();
 
         String mensajeRequest = (String) req.getAttribute("mensaje");
