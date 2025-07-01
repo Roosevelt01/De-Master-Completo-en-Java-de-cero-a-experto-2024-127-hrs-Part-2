@@ -1,11 +1,11 @@
 <%@page contentType="text/html;charset=UTF-8" import="java.util.*, org.aguzman.apiservlet.webapp.headers.models.*"%>
 
 <%
-List<Producto> productos = (List<Producto>) request.getAttribute("productos");
-Optional<String> usernameOptional = (Optional<String>) request.getAttribute("username");
+    // Recuperamos el atributo "productos" y lo convertimos a una List<Producto>
+    List<Producto> productos = (List<Producto>) request.getAttribute("productos");
 
-String mensajeRequest = (String) request.getAttribute("mensajeRequest");
-String mensajeApp = (String) getServletContext().getAttribute("mensajeApp");
+    // Hacemos lo mismo para la información del usuario
+    Optional<String> usernameOptional = (Optional<String>) request.getAttribute("username");
 %>
 
 <!DOCTYPE html>
@@ -17,6 +17,7 @@ String mensajeApp = (String) getServletContext().getAttribute("mensajeApp");
 <body>
     <h1>Listado de productos</h1>
 
+    <%-- Si el Optional<String> contiene un nombre, el usuario ha iniciado sesión --%>
     <%if(usernameOptional.isPresent()){%>
         <div style='color:blue;'>¡Hola <%=usernameOptional.get()%>, bienvenido!</div>
     <% } %>
@@ -26,6 +27,7 @@ String mensajeApp = (String) getServletContext().getAttribute("mensajeApp");
             <th>id</th>
             <th>nombre</th>
             <th>tipo</th>
+            <%-- Solo mostramos estas cabeceras si el usuario está logueado --%>
             <%if(usernameOptional.isPresent()){%>
                 <th>precio</th>
                 <th>agregar</th>
@@ -37,6 +39,7 @@ String mensajeApp = (String) getServletContext().getAttribute("mensajeApp");
                 <td><%=p.getId()%></td>
                 <td><%=p.getNombre()%></td>
                 <td><%=p.getTipo()%></td>
+                <%-- Solo mostramos estas cabeceras si el usuario está logueado --%>
                 <%if(usernameOptional.isPresent()){%>
                     <td><%=p.getPrecio()%></td>
                     <td><a href="<%=request.getContextPath()%>/carro/agregar?id=<%=p.getId()%>">agregar al carro</a></td>
