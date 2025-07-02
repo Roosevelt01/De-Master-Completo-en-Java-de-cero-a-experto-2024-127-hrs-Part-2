@@ -6,6 +6,10 @@
 
     // Hacemos lo mismo para la información del usuario
     Optional<String> usernameOptional = (Optional<String>) request.getAttribute("username");
+
+    // Obtener mensaje de diferentes ámbitos.        
+    String mensajeRequest = (String) request.getAttribute("mensaje");
+    String mensajeApp = (String) getServletContext().getAttribute("mensaje");
 %>
 
 <!DOCTYPE html>
