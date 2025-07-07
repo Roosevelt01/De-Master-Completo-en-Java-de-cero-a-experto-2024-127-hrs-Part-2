@@ -50,12 +50,39 @@ public class ProductoRepositoryJdbcImpl implements  Repository<Producto> {
 
     @Override
     public void guardar(Producto producto) throws SQLException {
+        //Paso 1
+        String sql;
 
+        if(producto.getId() != null && producto.getId() > 0){
+            sql = "update productos set nombre=?, precio=?, sku=?, categoria_id=? where id=?";
+        }else{
+            sql = "insert into productos (nombre, precio, sku, categoria_id, fecha_registro) values (?,?,?,?,?)";
+        }
+
+        try(PreparedStatement stmt = conn.prepareStatement(sql)){
+            stmt.setString(1, producto.getNombre());
+            stmt.setInt(2, producto.getPrecio());
+            stmt.setString(3, producto.getSku());
+            stmt.setLong(4, producto.getCategoria().getId());
+
+            if(producto.getId() != null && producto.getId() > 0){
+                stmt.setLong(5, producto.getId());
+            }else{
+                stmt.setDate(5, Date.valueOf(producto.getFechaRegistro()));
+            }
+            stmt.executeUpdate();
+        }
     }
 
     @Override
     public void eliminar(Long id) throws SQLException {
+        //Paso 2
+        String sql = "delete from productos where id=?";
 
+        try(PreparedStatement stmt = conn.prepareStatement(sql)){
+            stmt.setLong(1, id);
+            stmt.executeUpdate();
+        }
     }
 
     private static Producto getProducto(ResultSet rs) throws SQLException {
@@ -64,12 +91,12 @@ public class ProductoRepositoryJdbcImpl implements  Repository<Producto> {
         p.setId(rs.getLong("id"));
         p.setNombre(rs.getString("nombre"));
         p.setPrecio(rs.getInt("precio"));
-        p.setSku(rs.getString("sku")); //Paso 1
-        p.setFechaRegistro(rs.getDate("fecha_registro").toLocalDate());//Paso 2
-        Categoria c = new Categoria();//Paso 3
-        c.setId(rs.getLong("categoria_id")); //Paso 4
-        c.setNombre(rs.getString("categoria")); //Paso 5
-        p.setCategoria(c);//PAso 6
+        p.setSku(rs.getString("sku"));
+        p.setFechaRegistro(rs.getDate("fecha_registro").toLocalDate());
+        Categoria c = new Categoria();
+        c.setId(rs.getLong("categoria_id"));
+        c.setNombre(rs.getString("categoria"));
+        p.setCategoria(c);
         return p;
     }
 }
