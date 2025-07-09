@@ -6,20 +6,28 @@ import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
 
+// Se declara la clase pública 'CategoriaRepositoryImpl'
+// y se especifica que implementa la interfaz genérica 'Repository' para el tipo 'Categoria'
 public class CategoriaRepositoryImpl implements  Repository<Categoria>{
+    // 1. Atributo privado para guardar la conexión
     private Connection conn;
 
+    // 2. Constructor para recibir la conexión (Inyección de Dependencias)
     public CategoriaRepositoryImpl(Connection conn) {
         this.conn = conn;
     }
 
     @Override
     public List<Categoria> listar() throws SQLException {
+        
         List<Categoria> categorias = new ArrayList<>();
+        // 1. Se usa try-with-resources para asegurar que Statement y ResultSet se cierren solos
         try (Statement stmt =  conn.createStatement();
              ResultSet rs = stmt.executeQuery("select * from categorias")){
 
+            // 2. Se itera sobre cada fila del resultado
             while(rs.next()){
+                // 3. Se delega la creación del objeto a un método auxiliar
                 Categoria categoria = getCategoria(rs);
                 categorias.add(categoria);
             }
