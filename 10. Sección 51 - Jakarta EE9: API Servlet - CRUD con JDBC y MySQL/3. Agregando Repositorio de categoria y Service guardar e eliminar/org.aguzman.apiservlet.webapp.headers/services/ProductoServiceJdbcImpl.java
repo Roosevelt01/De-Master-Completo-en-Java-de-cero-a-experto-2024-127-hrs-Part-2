@@ -41,14 +41,12 @@ public class ProductoServiceJdbcImpl implements ProductoService{
     @Override
     public void eliminar(Long id) {
         try {
-            // Paso 3: Delegar la llamada al repositorio de productos
             repositoryJdbc.eliminar(id);
         } catch (SQLException throwables) {
             throw new ServiceJdbcException(throwables.getMessage(), throwables.getCause());
         }
     }
 
-    //Paso 2
     @Override
     public void guardar(Producto producto) {
         try {
@@ -58,7 +56,6 @@ public class ProductoServiceJdbcImpl implements ProductoService{
         }
     }
 
-    //Paso 3
     @Override
     public List<Categoria> listarCategoria() {
         try {
@@ -68,7 +65,6 @@ public class ProductoServiceJdbcImpl implements ProductoService{
         }
     }
 
-    //Paso 4
     @Override
     public Optional<Categoria> porIdCategoria(Long id) {
         try {
