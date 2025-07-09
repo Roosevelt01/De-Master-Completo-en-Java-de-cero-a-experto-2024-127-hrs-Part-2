@@ -11,11 +11,15 @@ public interface ProductoService {
 
     Optional<Producto> porId(Long id);
 
-    void guardar(Producto producto);//Paso 1
+    // Paso 1: Método para guardar (crear/actualizar) un producto
+    void guardar(Producto producto);
 
-    void eliminar(Long id);//Paso 2
+    // Paso 2: Método para eliminar un producto
+    void eliminar(Long id);
 
-    List<Categoria> listarCategoria();//Paso 3
+    // Paso 3: Método para listar todas las categorías
+    List<Categoria> listarCategoria();
 
-    Optional<Categoria> porIdCategoria(Long id);//Paso 4
+    // Paso 4: Método para buscar una categoría por su ID
+    Optional<Categoria> porIdCategoria(Long id);
 }
