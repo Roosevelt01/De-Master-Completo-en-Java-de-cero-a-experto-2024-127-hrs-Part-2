@@ -40,11 +40,14 @@ public class ProductoServiceJdbcImpl implements ProductoService{
     }
 
     //Métodos nuevos
+
     @Override
     public void eliminar(Long id) {
         try {
             repositoryJdbc.eliminar(id);
         } catch (SQLException throwables) {
+            // Atrapa la excepción de bajo nivel (JDBC)
+            // y la relanza como una excepción de la capa de servicio (negocio)
             throw new ServiceJdbcException(throwables.getMessage(), throwables.getCause());
         }
     }
@@ -54,6 +57,8 @@ public class ProductoServiceJdbcImpl implements ProductoService{
         try {
             repositoryJdbc.guardar(producto);
         } catch (SQLException throwables) {
+            // Atrapa la excepción de bajo nivel (JDBC)
+            // y la relanza como una excepción de la capa de servicio (negocio)
             throw new ServiceJdbcException(throwables.getMessage(), throwables.getCause());
         }
     }
@@ -63,6 +68,8 @@ public class ProductoServiceJdbcImpl implements ProductoService{
         try {
             return repositoryCategoriaJdbc.listar();
         } catch (SQLException throwables) {
+            // Atrapa la excepción de bajo nivel (JDBC)
+            // y la relanza como una excepción de la capa de servicio (negocio)
             throw new ServiceJdbcException(throwables.getMessage(), throwables.getCause());
         }
     }
@@ -72,6 +79,8 @@ public class ProductoServiceJdbcImpl implements ProductoService{
         try {
             return Optional.ofNullable(repositoryCategoriaJdbc.porId(id));
         } catch (SQLException throwables) {
+            // Atrapa la excepción de bajo nivel (JDBC)
+            // y la relanza como una excepción de la capa de servicio (negocio)
             throw new ServiceJdbcException(throwables.getMessage(), throwables.getCause());
         }
     }
