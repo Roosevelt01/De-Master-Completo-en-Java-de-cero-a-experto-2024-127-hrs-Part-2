@@ -1,4 +1,7 @@
+
+
 <%@page contentType="text/html" pageEncoding="UTF-8" import="java.util.*, org.aguzman.apiservlet.webapp.headers.models.*"%>
+
 <%
 List<Categoria> categorias = (List<Categoria>) request.getAttribute("categorias");
 %>
