@@ -15,7 +15,7 @@ import java.sql.Connection;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 
-@WebServlet("/productos/form")
+@WebServlet("/productos/form")// Mapea este Servlet a la URL /productos/form
 public class ProductoFormServlet extends HttpServlet {
 
     @Override
@@ -28,11 +28,15 @@ public class ProductoFormServlet extends HttpServlet {
 
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+        
         Connection conn = (Connection) req.getAttribute("conn");
+        
         ProductoService service = new ProductoServiceJdbcImpl(conn);
+        
         String nombre = req.getParameter("nombre");
 
         Integer precio;
+        
         try{
             precio = Integer.valueOf(req.getParameter("precio"));
         }catch (NumberFormatException e){
