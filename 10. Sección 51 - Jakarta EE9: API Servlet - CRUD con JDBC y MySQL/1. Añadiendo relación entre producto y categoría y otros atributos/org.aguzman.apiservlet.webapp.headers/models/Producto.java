@@ -5,10 +5,10 @@ import java.time.LocalDate;
 public class Producto {
     private Long id;
     private String nombre;
-    private Categoria categoria;//Paso 1
+    private Categoria categoria; //Paso 1: Reemplazo del "tipo"
     private int precio;
-    private String sku;//Paso 2
-    private LocalDate fechaRegistro;//Paso 3
+    private String sku; //Paso 2: Nuevo atributo
+    private LocalDate fechaRegistro;//Paso 3: Nuevo atributo
 
     public Producto() {
     }
@@ -16,9 +16,12 @@ public class Producto {
     public Producto(Long id, String nombre, String tipo, int precio) {
         this.id = id;
         this.nombre = nombre;
-        Categoria categoria = new Categoria();//Paso 4
-        categoria.setNombre(tipo);//Paso 5
-        this.categoria = categoria;//Paso 6
+        //Paso 4: Se crea un objeto Categoria Internamente
+        Categoria categoria = new Categoria(); 
+        //Paso 5: Se le asigna el nombre
+        categoria.setNombre(tipo);
+        //Paso 6: Se asigna el objeto completo
+        this.categoria = categoria;
         this.precio = precio;
     }
 
