@@ -36,7 +36,8 @@ String mensajeApp = (String) getServletContext().getAttribute("mensaje");
             <tr>
                 <td><%=p.getId()%></td>
                 <td><%=p.getNombre()%></td>
-                <td><%=p.getCategoria().getNombre()%></td><%-- Paso 1 --%>
+                <%-- Paso 1: Acceder al nombre a través del objeto anidado --%>
+                <td><%=p.getCategoria().getNombre()%></td>
                 <%if(usernameOptional.isPresent()){%>
                     <td><%=p.getPrecio()%></td>
                     <td><a href="<%=request.getContextPath()%>/carro/agregar?id=<%=p.getId()%>">agregar al carro</a></td>
