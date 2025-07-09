@@ -49,7 +49,7 @@ public class Producto {
         this.precio = precio;
     }
 
-    //Paso 7
+    //Paso 7: Nuevos Getters y Setters para categoria, sku y fechaRegistro...
     public Categoria getCategoria() {
         return categoria;
     }
