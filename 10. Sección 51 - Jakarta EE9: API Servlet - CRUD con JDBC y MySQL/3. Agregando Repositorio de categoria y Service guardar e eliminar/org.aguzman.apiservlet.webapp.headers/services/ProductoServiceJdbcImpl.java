@@ -11,6 +11,7 @@ import java.util.List;
 import java.util.Optional;
 
 public class ProductoServiceJdbcImpl implements ProductoService{
+    // Paso 1: Programar contra la interfaz genérica, no la clase concreta
     private Repository<Producto> repositoryJdbc;
     private Repository<Categoria> repositoryCategoriaJdbc;
 
@@ -36,10 +37,11 @@ public class ProductoServiceJdbcImpl implements ProductoService{
         }
     }
 
-    //Paso 1
+    //Métodos nuevos
     @Override
     public void eliminar(Long id) {
         try {
+            // Paso 3: Delegar la llamada al repositorio de productos
             repositoryJdbc.eliminar(id);
         } catch (SQLException throwables) {
             throw new ServiceJdbcException(throwables.getMessage(), throwables.getCause());
