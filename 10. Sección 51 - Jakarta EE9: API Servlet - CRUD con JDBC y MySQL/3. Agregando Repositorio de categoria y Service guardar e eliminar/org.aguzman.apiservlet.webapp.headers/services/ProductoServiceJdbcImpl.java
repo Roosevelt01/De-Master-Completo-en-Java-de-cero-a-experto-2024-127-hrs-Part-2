@@ -11,11 +11,13 @@ import java.util.List;
 import java.util.Optional;
 
 public class ProductoServiceJdbcImpl implements ProductoService{
-    // Paso 1: Programar contra la interfaz genérica, no la clase concreta
+    // Se declaran los atributos usando la Interfaz, no la clase concreta
     private Repository<Producto> repositoryJdbc;
     private Repository<Categoria> repositoryCategoriaJdbc;
 
     public ProductoServiceJdbcImpl(Connection connection) {
+        // Se crean las instancias de las clases concretas y se asignan
+        // a los atributos de tipo Interfaz.
         this.repositoryJdbc = new ProductoRepositoryJdbcImpl(connection);
     }
 
