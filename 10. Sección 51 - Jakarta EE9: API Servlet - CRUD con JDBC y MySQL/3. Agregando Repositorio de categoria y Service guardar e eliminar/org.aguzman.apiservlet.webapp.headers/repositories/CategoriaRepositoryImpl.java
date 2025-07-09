@@ -39,11 +39,15 @@ public class CategoriaRepositoryImpl implements  Repository<Categoria>{
     @Override
     public Categoria porId(Long id) throws SQLException {
         Categoria categoria = null;
+        // 1. Se usa PreparedStatement porque la consulta tiene un parámetro (?)
         try (PreparedStatement stmt = conn.prepareStatement("select * from categorias as c where c.id=?")){
+            // 2. Se asigna el valor del ID al primer parámetro (?)
             stmt.setLong(1, id);
 
             try(ResultSet rs = stmt.executeQuery()){
+                // 3. Se usa if (no while) porque esperamos un solo resultado
                 if(rs.next()){
+                    // 4. Se reutiliza el mismo método auxiliar de mapeo
                     categoria = getCategoria(rs);
                 }
             }
