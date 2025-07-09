@@ -66,6 +66,7 @@ public class CategoriaRepositoryImpl implements  Repository<Categoria>{
     }
 
     private static Categoria getCategoria(ResultSet rs) throws SQLException {
+        // 1. Se leen los datos de las columnas por su nombre
         Categoria categoria = new Categoria();
         categoria.setNombre(rs.getString("nombre"));
         categoria.setId(rs.getLong("id"));
