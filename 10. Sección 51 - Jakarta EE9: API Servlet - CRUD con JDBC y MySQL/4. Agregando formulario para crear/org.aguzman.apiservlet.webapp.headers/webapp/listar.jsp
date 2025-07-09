@@ -19,6 +19,8 @@ String mensajeApp = (String) getServletContext().getAttribute("mensaje");
 
     <%if(usernameOptional.isPresent()){%>
         <div style='color:blue;'>¡Hola <%=usernameOptional.get()%>, bienvenido!</div>
+        <%-- Enlace para ir al formulario de creación de productos. --%>
+        <%-- Este enlace genera una petición GET a /productos/form, que es manejada por ProductoFormServlet.doGet(). --%>
         <p><a href="<%=request.getContextPath()%>/productos/form">Crear [+]</a></p>
     <% } %>
 
