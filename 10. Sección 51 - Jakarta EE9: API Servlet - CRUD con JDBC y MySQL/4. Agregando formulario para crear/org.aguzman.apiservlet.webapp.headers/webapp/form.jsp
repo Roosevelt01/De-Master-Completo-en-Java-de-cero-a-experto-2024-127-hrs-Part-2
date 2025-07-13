@@ -37,9 +37,9 @@ List<Categoria> categorias = (List<Categoria>) request.getAttribute("categorias"
     </div>
 
     <div>
-        <label for="fecha_registros">Fecha Registros</label>
+        <label for="fecha_registro">Fecha Registros</label>
         <div>
-            <input type="date" name="fecha_registros" id="fecha_registros" >
+            <input type="date" name="fecha_registro" id="fecha_registro">
         </div>
     </div>
 
