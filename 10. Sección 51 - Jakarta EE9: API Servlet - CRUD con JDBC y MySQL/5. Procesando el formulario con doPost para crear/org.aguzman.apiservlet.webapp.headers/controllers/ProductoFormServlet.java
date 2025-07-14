@@ -28,9 +28,7 @@ public class ProductoFormServlet extends HttpServlet {
 
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        
         Connection conn = (Connection) req.getAttribute("conn");
-        
         ProductoService service = new ProductoServiceJdbcImpl(conn);
         
         String nombre = req.getParameter("nombre");
@@ -40,7 +38,7 @@ public class ProductoFormServlet extends HttpServlet {
         try{
             precio = Integer.valueOf(req.getParameter("precio"));
         }catch (NumberFormatException e){
-            precio = 0;
+            precio = 0;// Asigna un valor por defecto si la conversión falla
         }
 
         String sku = req.getParameter("sku");
@@ -54,6 +52,7 @@ public class ProductoFormServlet extends HttpServlet {
         }
 
         LocalDate fecha = LocalDate.parse(fechaSte, DateTimeFormatter.ofPattern("yyyy-MM-dd"));
+       
         Producto producto = new Producto();
         producto.setNombre(nombre);
         producto.setSku(sku);
@@ -64,9 +63,9 @@ public class ProductoFormServlet extends HttpServlet {
         categoria.setId(categoriaId);
 
         service.guardar(producto);
+
         resp.sendRedirect(req.getContextPath() + "/productos");
-
-
     }
 
 }
+
