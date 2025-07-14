@@ -51,34 +51,40 @@ public class ProductoFormServlet extends HttpServlet {
             categoriaId = 0L;
         }
 
-        Map<String, String> errores = new HashMap<>();//Paso 1
+        // Paso 1: Crear un Mapa para almacenar los errores
+        Map<String, String> errores = new HashMap<>();
 
-        //Paso 2
+        // Paso 2: Validar cada campo
         if(nombre == null || nombre.isBlank()){
             errores.put("nombre", "El nombre es requerido!");
         }
 
-        //Paso 3
+        // Paso 3: Decidir el flujo basado en si hay errores
         if(sku == null || sku.isBlank()){
             errores.put("sku", "El sku es requerido!");
         }
 
-        //Paso 4
+
         if(fechaSte == null || fechaSte.isBlank()){
             errores.put("fecha_registro", "La fecha es requerida!");
         }
 
-        //Paso 5
+
         if(precio.equals(0)){
             errores.put("precio", "El precio es requerida!");
         }
 
-        //Paso 7
+
         if(categoriaId.equals(0L)){
             errores.put("categoria", "La categoría es requerida!");
         }
 
-        if(errores.isEmpty()) {//Paso 8
+        // ... (Validaciones para fecha, precio y categoría) ...
+
+        // Paso 3: Decidir el flujo basado en si hay errores
+        if(errores.isEmpty()) {
+            // --- RUTA DE ÉXITO: No hay errores ---
+            // ... (Crear el Producto, guardarlo y redirigir) ...
             LocalDate fecha = LocalDate.parse(fechaSte, DateTimeFormatter.ofPattern("yyyy-MM-dd"));
             Producto producto = new Producto();
             producto.setNombre(nombre);
@@ -92,7 +98,9 @@ public class ProductoFormServlet extends HttpServlet {
             service.guardar(producto);
             resp.sendRedirect(req.getContextPath() + "/productos");
         }else{
+            // Paso 4: Pasar los errores a la vista
             req.setAttribute("errores", errores);
+            // Paso 5: Reutilizar el doGet para volver a mostrar el formulario
             doGet(req, resp);
         }
     }
