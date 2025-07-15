@@ -99,8 +99,8 @@ public class ProductoFormServlet extends HttpServlet {
 
         //Paso 2: Capturar y Asignar el ID y fecha del Producto
         LocalDate fecha;
-
         long id;
+
         try{
             id= Long.parseLong(req.getParameter("id"));
         }catch (NumberFormatException e){
@@ -115,15 +115,21 @@ public class ProductoFormServlet extends HttpServlet {
 
         // Paso 1: Se crea el objeto Producto y se puebla con los datos del formulario        
         Producto producto = new Producto();
-        producto.setId(id);//Paso 7
+        producto.setId(id);//Paso 3: Se asigna el ID que se obtuvo del campo oculto del formulario.
         producto.setNombre(nombre);
         producto.setSku(sku);
         producto.setPrecio(precio);
         producto.setFechaRegistro(fecha);
 
-        // Paso 7(Docmentalo gemini)
+        //Paso 2 Se obtiene el 'categoriaId' del formulario previamente.
+
+        // Se crea una instancia vacía de Categoria.
         Categoria categoria = new Categoria();
+
+        // Se establece únicamente el ID en el objeto Categoria.
         categoria.setId(categoriaId);
+
+        // Se asigna el objeto Categoria (con su ID) al producto.
         producto.setCategoria(categoria);
 
         if(errores.isEmpty()) {
@@ -132,9 +138,6 @@ public class ProductoFormServlet extends HttpServlet {
             resp.sendRedirect(req.getContextPath() + "/productos");
         }else{
             req.setAttribute("errores", errores);
-            //Paso 3 Se eeliminar el doget(Gemini documentalo)
-
-            //Paso 5 Pegamos esa línea de código(Gemini documentalo)
             req.setAttribute("categorias", service.listarCategoria());
             req.setAttribute("producto", producto);
 
