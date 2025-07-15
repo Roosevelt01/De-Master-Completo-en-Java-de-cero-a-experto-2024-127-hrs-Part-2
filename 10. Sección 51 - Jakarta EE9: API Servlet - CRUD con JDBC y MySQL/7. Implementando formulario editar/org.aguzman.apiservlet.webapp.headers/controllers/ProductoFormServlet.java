@@ -10,12 +10,14 @@ import org.aguzman.apiservlet.webapp.headers.models.Producto;
 import org.aguzman.apiservlet.webapp.headers.services.ProductoService;
 import org.aguzman.apiservlet.webapp.headers.services.ProductoServiceJdbcImpl;
 
+import javax.sound.sampled.Port;
 import java.io.IOException;
 import java.sql.Connection;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.util.HashMap;
 import java.util.Map;
+import java.util.Optional;
 
 @WebServlet("/productos/form")
 public class ProductoFormServlet extends HttpServlet {
@@ -25,6 +27,32 @@ public class ProductoFormServlet extends HttpServlet {
         Connection conn = (Connection) req.getAttribute("conn");
         ProductoService service = new ProductoServiceJdbcImpl(conn);
         req.setAttribute("categorias", service.listarCategoria());
+        Long id;//Paso 1
+
+        //Paso 2
+        try{
+            id = Long.valueOf(req.getParameter("id"));
+        }catch(NumberFormatException e){
+            id = 0L;
+        }
+
+        //Paso 3
+        Producto producto = new Producto();
+
+        //Paso 4
+        producto.setCategoria(new Categoria());
+
+        //Paso 5
+        if(id > 0){
+            Optional<Producto> o = service.porId(id);
+            if(o.isPresent()){
+                producto = o.get();
+            }
+        }
+
+        //Paso 6
+        req.setAttribute("producto", producto);
+
         getServletContext().getRequestDispatcher("/form.jsp").forward(req, resp);
     }
 
@@ -51,40 +79,29 @@ public class ProductoFormServlet extends HttpServlet {
             categoriaId = 0L;
         }
 
-        // Paso 1: Crear un Mapa para almacenar los errores
         Map<String, String> errores = new HashMap<>();
 
-        // Paso 2: Validar cada campo
         if(nombre == null || nombre.isBlank()){
             errores.put("nombre", "El nombre es requerido!");
         }
 
-        // Paso 3: Decidir el flujo basado en si hay errores
         if(sku == null || sku.isBlank()){
             errores.put("sku", "El sku es requerido!");
         }
-
 
         if(fechaSte == null || fechaSte.isBlank()){
             errores.put("fecha_registro", "La fecha es requerida!");
         }
 
-
         if(precio.equals(0)){
             errores.put("precio", "El precio es requerida!");
         }
-
 
         if(categoriaId.equals(0L)){
             errores.put("categoria", "La categoría es requerida!");
         }
 
-        // ... (Validaciones para fecha, precio y categoría) ...
-
-        // Paso 3: Decidir el flujo basado en si hay errores
         if(errores.isEmpty()) {
-            // --- RUTA DE ÉXITO: No hay errores ---
-            // ... (Crear el Producto, guardarlo y redirigir) ...
             LocalDate fecha = LocalDate.parse(fechaSte, DateTimeFormatter.ofPattern("yyyy-MM-dd"));
             Producto producto = new Producto();
             producto.setNombre(nombre);
@@ -98,9 +115,7 @@ public class ProductoFormServlet extends HttpServlet {
             service.guardar(producto);
             resp.sendRedirect(req.getContextPath() + "/productos");
         }else{
-            // Paso 4: Pasar los errores a la vista
             req.setAttribute("errores", errores);
-            // Paso 5: Reutilizar el doGet para volver a mostrar el formulario
             doGet(req, resp);
         }
     }
