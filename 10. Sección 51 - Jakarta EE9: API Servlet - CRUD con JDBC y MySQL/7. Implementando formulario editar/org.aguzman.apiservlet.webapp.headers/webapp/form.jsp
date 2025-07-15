@@ -4,10 +4,9 @@ import="java.util.*,java.time.format.*,org.aguzman.apiservlet.webapp.headers.mod
 List<Categoria> categorias = (List<Categoria>) request.getAttribute("categorias");
 Map<String, String> errores = (Map<String, String>) request.getAttribute("errores");
 
-Producto producto = (Producto) request.getAttribute("producto");
-
 // 1. `producto`: El objeto Producto a mostrar. Puede ser nuevo/vacío o prellenado para edición,
 //                o con datos ingresados por el usuario si hubo errores de validación.
+Producto producto = (Producto) request.getAttribute("producto");
 
 // 2. Formatear la fecha de registro del producto para el input HTML de tipo 'date'.
 //    Si la fecha del producto no es nula, se formatea a "yyyy-MM-dd".
@@ -25,6 +24,7 @@ producto.getFechaRegistro().format(DateTimeFormatter.ofPattern("yyyy-MM-dd")): "
 <body>
 <h1>Formulario productos</h1>
 <form action="<%=request.getContextPath()%>/productos/form" method="post">
+
     <div>
         <label for="nombre">Nombre</label>
         <div>
@@ -39,7 +39,7 @@ producto.getFechaRegistro().format(DateTimeFormatter.ofPattern("yyyy-MM-dd")): "
     <div>
         <label for="precio">Precio</label>
         <div>
-            <input type="number"  name="precio" id="precio" value="<%=producto.getPrecio() != 0? producto.getPrecio():""%>">
+            <input type="number"  name="precio" id="precio" value="<%=producto.getPrecio() != 0? producto.getPrecio(): "" %>">
         </div>
 
         <% if(errores != null && errores.containsKey("precio")){%>
@@ -75,7 +75,7 @@ producto.getFechaRegistro().format(DateTimeFormatter.ofPattern("yyyy-MM-dd")): "
             <select name="categoria" id="categoria">
                 <option>---  Seleccionar ---</option>
                 <%for(Categoria c: categorias){%>
-                    <option value="<%=c.getId()%>" <%=c.getId().equals(producto.getCategoria().getId())? "selected": ""%>><%=c.getNombre()%></option>
+                    <option value="<%=c.getId()%>" <%=c.getId().equals(producto.getCategoria().getId()) ? "selected" : ""%>><%=c.getNombre()%></option>
                 <%}%>
             </select>
         </div>
