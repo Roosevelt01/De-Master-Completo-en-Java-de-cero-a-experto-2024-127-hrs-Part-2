@@ -114,8 +114,8 @@ public class ProductoFormServlet extends HttpServlet {
             fecha = null;
         }
 
+        // Paso 1: Se crea el objeto Producto y se puebla con los datos del formulario        
         Producto producto = new Producto();
-        producto.setId(id);//Paso 7
         producto.setNombre(nombre);
         producto.setSku(sku);
         producto.setPrecio(precio);
