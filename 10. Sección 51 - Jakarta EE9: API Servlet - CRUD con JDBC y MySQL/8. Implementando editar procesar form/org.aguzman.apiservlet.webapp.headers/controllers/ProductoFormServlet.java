@@ -97,10 +97,9 @@ public class ProductoFormServlet extends HttpServlet {
             errores.put("categoria", "La categoría es requerida!");
         }
 
-        //Paso 1
+        //Paso 2: Capturar y Asignar el ID y fecha del Producto
         LocalDate fecha;
 
-        //Paso 6
         long id;
         try{
             id= Long.parseLong(req.getParameter("id"));
