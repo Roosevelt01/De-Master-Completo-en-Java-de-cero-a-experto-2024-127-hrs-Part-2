@@ -27,30 +27,30 @@ public class ProductoFormServlet extends HttpServlet {
         Connection conn = (Connection) req.getAttribute("conn");
         ProductoService service = new ProductoServiceJdbcImpl(conn);
         req.setAttribute("categorias", service.listarCategoria());
-        Long id;//Paso 1
+        Long id;// Paso 1: Declarar la variable para el ID
 
-        //Paso 2
+        // Paso 2: Capturar el ID del producto de la URL de forma segura
         try{
             id = Long.valueOf(req.getParameter("id"));
         }catch(NumberFormatException e){
-            id = 0L;
+            id = 0L;// Si no hay ID o no es un número, se asume 0 (modo Crear)
         }
 
-        //Paso 3
+        // Paso 3: Inicializar un objeto Producto
         Producto producto = new Producto();
 
-        //Paso 4
+        // Paso 4: Inicializar la categoría para evitar NullPointerException en la vista
         producto.setCategoria(new Categoria());
 
-        //Paso 5
+        // Paso 5: Si hay un ID válido, estamos en modo "Editar"
         if(id > 0){
             Optional<Producto> o = service.porId(id);
             if(o.isPresent()){
-                producto = o.get();
+                producto = o.get();// Reemplazamos el producto vacío por el encontrado
             }
         }
 
-        //Paso 6
+        // Paso 6: Pasar el producto (vacío o poblado) a la vista
         req.setAttribute("producto", producto);
 
         getServletContext().getRequestDispatcher("/form.jsp").forward(req, resp);

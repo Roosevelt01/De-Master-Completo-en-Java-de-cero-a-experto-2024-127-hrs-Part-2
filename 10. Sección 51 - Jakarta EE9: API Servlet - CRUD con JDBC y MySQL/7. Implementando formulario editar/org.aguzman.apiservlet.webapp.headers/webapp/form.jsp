@@ -3,7 +3,15 @@ import="java.util.*,java.time.format.*,org.aguzman.apiservlet.webapp.headers.mod
 <%
 List<Categoria> categorias = (List<Categoria>) request.getAttribute("categorias");
 Map<String, String> errores = (Map<String, String>) request.getAttribute("errores");
+
 Producto producto = (Producto) request.getAttribute("producto");
+
+// 1. `producto`: El objeto Producto a mostrar. Puede ser nuevo/vacío o prellenado para edición,
+//                o con datos ingresados por el usuario si hubo errores de validación.
+
+// 2. Formatear la fecha de registro del producto para el input HTML de tipo 'date'.
+//    Si la fecha del producto no es nula, se formatea a "yyyy-MM-dd".
+//    Si es nula (para un nuevo producto o si el usuario no la ingresó), se usa una cadena vacía.
 String fecha = producto.getFechaRegistro() != null?
 producto.getFechaRegistro().format(DateTimeFormatter.ofPattern("yyyy-MM-dd")): "";
 %>
