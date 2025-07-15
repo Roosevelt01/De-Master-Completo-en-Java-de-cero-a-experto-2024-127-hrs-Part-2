@@ -141,5 +141,4 @@ public class ProductoFormServlet extends HttpServlet {
             getServletContext().getRequestDispatcher("/form.jsp").forward(req, resp);
         }
     }
-
 }

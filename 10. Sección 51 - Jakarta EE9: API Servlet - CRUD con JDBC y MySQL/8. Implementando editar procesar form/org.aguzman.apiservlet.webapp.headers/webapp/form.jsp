@@ -80,10 +80,10 @@ producto.getFechaRegistro().format(DateTimeFormatter.ofPattern("yyyy-MM-dd")): "
         <% } %>
     </div>
 
-    <%-- Paso 1 --%>
+    <%-- Paso 1: El Botón de Envío Dinámico --%>
     <div><input type="submit" value="<%=(producto.getId() !=null && producto.getId()>0)? "Editar":"Crear"%>"></div>
 
-    <%-- Paso 2 --%>
+    <%-- Paso 2: El Campo Oculto con el ID --%>
     <input type="hidden" name="id" value="<%=producto.getId()%>">
 
 </form>
