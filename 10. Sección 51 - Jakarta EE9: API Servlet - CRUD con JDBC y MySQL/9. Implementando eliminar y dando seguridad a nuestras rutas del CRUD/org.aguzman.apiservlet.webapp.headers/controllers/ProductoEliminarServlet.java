@@ -18,6 +18,7 @@ public class ProductoEliminarServlet extends HttpServlet {
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+        // --- Paso 1: Obtener la Conexión y el ID ---
         Connection conn = (Connection) req.getAttribute("conn");
         ProductoService service = new ProductoServiceJdbcImpl(conn);
         Long id;
@@ -28,9 +29,12 @@ public class ProductoEliminarServlet extends HttpServlet {
             id = 0L;
         }
 
+        // --- Paso 2: Validar el ID ---
         if(id > 0){
+            // --- Paso 3: Validar la Existencia del Producto ---
             Optional<Producto> o = service.porId(id);
             if(o.isPresent()){
+                // --- Paso 4: Ejecutar la Eliminación y Redirigir ---
                 service.eliminar(id);
                 resp.sendRedirect(req.getContextPath() + "/productos");
             }else{

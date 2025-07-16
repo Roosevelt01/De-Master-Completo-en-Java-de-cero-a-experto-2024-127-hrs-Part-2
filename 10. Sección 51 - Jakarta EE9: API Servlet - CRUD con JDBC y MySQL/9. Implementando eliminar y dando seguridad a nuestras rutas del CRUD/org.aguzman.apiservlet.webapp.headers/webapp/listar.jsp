@@ -45,8 +45,11 @@ String mensajeApp = (String) getServletContext().getAttribute("mensaje");
                     <td><a href="<%=request.getContextPath()%>/carro/agregar?id=<%=p.getId()%>">agregar al carro</a></td>
                     <td><a href="<%=request.getContextPath()%>/productos/form?id=<%=p.getId()%>">editar</a></td>
                     <%-- Paso 1: Enlace para la acción de eliminar --%>
-                    <td><a onclick="return confirm('¿Estás seguro que desea eliminar?');"<%-- Paso 2: Se agrega el onclick --%>
-                     href="<%=request.getContextPath()%>/productos/eliminar?id=<%=p.getId()%>">eliminar</a></td>
+                    <td>
+                        <%-- Paso 2: Se agrega el onclick --%>
+                        <a onclick="return confirm('¿Estás seguro que desea eliminar?');" 
+                           href="<%=request.getContextPath()%>/productos/eliminar?id=<%=p.getId()%>">eliminar</a>
+                    </td>
                 <%}%>
             </tr>
         <%}%>
