@@ -18,9 +18,11 @@ public class ProductoEliminarServlet extends HttpServlet {
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        // --- Paso 1: Obtener la Conexión y el ID ---
+        //Paso 1: Obtener la Conexión y el Servicio
         Connection conn = (Connection) req.getAttribute("conn");
         ProductoService service = new ProductoServiceJdbcImpl(conn);
+        
+        //Paso 2: Capturar y Validar el Parámetro id.
         Long id;
 
         try{
@@ -29,14 +31,15 @@ public class ProductoEliminarServlet extends HttpServlet {
             id = 0L;
         }
 
-        // --- Paso 2: Validar el ID ---
+        //Paso 3: Validar que el ID sea Válido.
         if(id > 0){
-            // --- Paso 3: Validar la Existencia del Producto ---
+            //Paso 4: Validar que el Producto Exista en la Base de Datos
             Optional<Producto> o = service.porId(id);
             if(o.isPresent()){
-                // --- Paso 4: Ejecutar la Eliminación y Redirigir ---
+                //Paso 5: Ejecutar la Eliminación y Redirigir
                 service.eliminar(id);
                 resp.sendRedirect(req.getContextPath() + "/productos");
+            
             }else{
                 resp.sendError(HttpServletResponse.SC_NOT_FOUND, "¡No existe el producto en la base de datos!");
             }

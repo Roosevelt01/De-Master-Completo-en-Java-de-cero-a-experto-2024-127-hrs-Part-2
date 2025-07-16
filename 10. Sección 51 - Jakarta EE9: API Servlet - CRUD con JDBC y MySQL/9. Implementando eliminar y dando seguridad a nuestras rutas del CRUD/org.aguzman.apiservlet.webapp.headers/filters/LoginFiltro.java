@@ -10,7 +10,8 @@ import org.aguzman.apiservlet.webapp.headers.services.LoginServiceSessionImpl;
 import java.io.IOException;
 import java.util.Optional;
 
-@WebFilter({"/carro/*", "/productos/form/*","/productos/eliminar*"})//Paso 1
+// Paso 1: Añadir las nuevas rutas a proteger en la anotación @WebFilter
+@WebFilter({"/carro/*", "/productos/form/*","/productos/eliminar*"})
 public class LoginFiltro implements Filter {
 
     @Override
