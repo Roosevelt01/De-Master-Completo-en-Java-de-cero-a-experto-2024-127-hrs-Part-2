@@ -51,3 +51,9 @@
     <p>${requestScope.mensaje}</p>
 </body>
 </html>
+
+└── pom.xml   <-- MODIFICADO
+└── src
+    └── main
+        └── webapp/
+            └── listar.jsp  <-- MODIFICADO
