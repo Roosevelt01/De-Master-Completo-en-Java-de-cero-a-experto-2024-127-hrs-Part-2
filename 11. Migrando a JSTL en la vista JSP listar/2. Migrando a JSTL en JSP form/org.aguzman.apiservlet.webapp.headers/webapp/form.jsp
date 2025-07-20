@@ -4,7 +4,6 @@
 <%-- Paso 2: Se añade la directiva para usar las etiquetas JSTL con el prefijo "c" --%>
 <%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -14,32 +13,31 @@
 <body>
 <h1>Formulario productos</h1>
 <form action="${pageContext.request.contextPath}/productos/form" method="post">
+        
     <div>
         <label for="nombre">Nombre</label>
         <div>
-            <%-- Paso 2 --%>
+            <%-- Paso 2: Poblar Campos de Texto y Mostrar Errores --%>
             <input type="text"  name="nombre" id="nombre" value="${producto.nombre}">
         </div>
-        <%-- Paso 3 --%>
         <c:if test="${errores!= null && errores.containsKey('nombre')}">
-              <%-- Paso 4 --%>
               <div style="color:red;">${errores.nombre}</div>
         </c:if>
     </div>
-
+    
+    <%-- Paso 2: Poblar Campos Numéricos y Mostrar Errores --%>
     <div>
         <label for="precio">Precio</label>
         <div>
-            <%-- Paso 5 --%>
-            <input type="number"  name="precio" id="precio" value="${producto.precio > 0? producto.precio: ""}">
+            <input type="number"  name="precio" id="precio" 
+            value="${producto.precio > 0? producto.precio : "" }">
         </div>
-        <%-- Paso 6 --%>
         <c:if test="${errores!= null && not empty errores.precio}">
-              <%-- Paso 7 --%>
-              <div style="color:red;">${errores.precio}</div>
+            <div style="color:red;">${errores.precio}</div>
         </c:if>
     </div>
 
+    <%-- Paso 3: Patrón para SKU y Fecha --%>
     <div>
         <label for="sku">sku</label>
         <div>
