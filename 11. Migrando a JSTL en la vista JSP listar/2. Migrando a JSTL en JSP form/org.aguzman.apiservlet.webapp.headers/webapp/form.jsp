@@ -1,7 +1,9 @@
+<%-- Se elimina la importación de java.util.* y models.* --%>
 <%@page contentType="text/html" pageEncoding="UTF-8" import="java.time.format.*"%>
 
-<%-- Paso 1 --%>
+<%-- Se añade la directiva para usar las etiquetas JSTL con el prefijo "c" --%>
 <%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+
 
 <!DOCTYPE html>
 <html lang="en">
