@@ -1,5 +1,8 @@
 <%@page contentType="text/html;charset=UTF-8"%>
-<%-- Paso 1 --%>
+
+<%-- Eliminado: <%@page import="java.util.*, org.aguzman.apiservlet.webapp.headers.models.*"%> --%>
+
+<%-- Paso 1: Importar la librería JSTL Core con el prefijo "c" --%>
 <%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 
 <!DOCTYPE html>
@@ -11,7 +14,8 @@
 <body>
     <h1>Listado de productos</h1>
 
-    <%-- Paso 2 --%>
+    <%-- Paso 2: Reemplazar Scriptlet IF con <c:if> y Expression Language (EL) --%>
+    <%-- Original: <%if(usernameOptional.isPresent()){%> --%>
     <c:if test="${username.isPresent()}">
         <div>Hola <c:out value="${username.get()}" />, bienvenido!</div>
         <p><a href="<c:out value="${pageContext.request.contextPath}" />/productos/form">Crear [+]</a></p>
@@ -22,7 +26,8 @@
             <th>id</th>
             <th>nombre</th>
             <th>tipo</th>
-            <%-- Paso 3 --%>
+            <%-- Paso 3: Reemplazar Scriptlet IF con <c:if> (para columnas condicionales) --%>
+            <%-- Original: <%if(usernameOptional.isPresent()){%> --%>
             <c:if test="${username.present}">
                 <th>precio</th>
                 <th>agregar</th>
@@ -31,12 +36,16 @@
             </c:if>
         </tr>
 
-        <%-- Paso 4 --%>
+        <%-- Paso 4: Reemplazar Scriptlet FOR con <c:forEach> --%>
+        <%-- Original: <%for(Producto p: productos){%> --%>
         <c:forEach items="${productos}" var="p">
             <tr>
                 <td><c:out value="${p.id}" /></td>
                 <td><c:out value="${p.nombre}" /></td>
                 <td><c:out value="${p.categoria.nombre}" /></td>
+
+                <%-- Paso 5: Reemplazar Scriptlet IF con <c:if> (para datos condicionales de cada fila) --%>
+                <%-- Original: <%if(usernameOptional.isPresent()){%> --%>
                 <c:if test="${username.present}">
                     <td><c:out value="${p.precio}" /></td>
                     <td><a href="${pageContext.request.contextPath}/carro/agregar?id=<c:out value="${p.id}" />">agregar al carro</a></td>
@@ -46,14 +55,10 @@
             </tr>
         </c:forEach>
     </table>
-    <%-- Paso 4 --%>
+    
+    <%-- Paso 6: Acceder a atributos de ámbito con EL --%>
+    <%-- Original: <p><%=mensajeApp%></p> --%>
     <p>${applicationScope.mensaje}</p>
     <p>${requestScope.mensaje}</p>
 </body>
 </html>
-
-└── pom.xml   <-- MODIFICADO
-└── src
-    └── main
-        └── webapp/
-            └── listar.jsp  <-- MODIFICADO
