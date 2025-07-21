@@ -41,13 +41,10 @@
     <div>
         <label for="sku">sku</label>
         <div>
-            <%-- Paso 7 --%>
             <input type="text"  name="sku" id="sku" value="${producto.sku}">
         </div>
 
-        <%-- Paso 8 --%>
         <c:if test="${errores != null && not empty errores.sku}">
-              <%-- Paso 9 --%>
               <div style="color:red;">${errores.sku}</div>
         </c:if>
     </div>
@@ -55,41 +52,39 @@
     <div>
         <label for="fecha_registro">Fecha Registros</label>
         <div>
-            <%-- Paso 10 --%>
             <input type="date" name="fecha_registro" id="fecha_registro" value="${producto.fechaRegistro != null? producto.fechaRegistro.format(DateTimeFormatter.ofPattern("yyyy-MM-dd")): ""}">
         </div>
-        <%-- Paso 11 --%>
         <c:if test="${errores != null && not empty errores.fecha_registro}">
-               <%-- Paso 12 --%>
                <div style="color:red;">${errores.fecha_registro}</div>
         </c:if>
     </div>
 
+    <%-- Paso 4:  Poblar el Menú Desplegable <select> --%>    
     <div>
         <label for="categoria">Categoría</label>
         <div>
             <select name="categoria" id="categoria">
                 <option>---  Seleccionar ---</option>
-                <%-- Paso 14 --%>
+                Poblar el Menú Desplegable <select>
                 <c:forEach items="${categorias}" var="c">
-                    <%-- Paso 15 --%>
-                    <option value="${c.id}" ${producto.categoria != null && c.id.equals(producto.categoria.id) ? 'selected' : ''}>${c.nombre}</option>
+                    <option value="${c.id}" ${producto.categoria != null && c.id.equals(producto.categoria.id) ? 'selected' : ''}>
+                        ${c.nombre}
+                    </option>
                 </c:forEach>
             </select>
         </div>
-        <%-- Paso 16 --%>
+
         <c:if test="${errores != null && not empty errores.categoria}">
-               <%-- Paso 17 --%>
                <div style="color:red;">${errores.categoria}</div>
         </c:if>
     </div>
 
-    <%-- Paso 18 --%>
+    <%-- Paso 6: Actualizar el Botón y el Campo Oculto --%>
     <div><input type="submit" value="${producto.id!=null && producto.id>0? "Editar":"Crear"}"></div>
-
-    <%-- Paso 19 --%>
     <input type="hidden" name="id" value="${producto.id}">
 
 </form>
 </body>
 </html>
+
+
