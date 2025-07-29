@@ -17,7 +17,7 @@ public class AplicacionListener implements ServletContextListener,
     public void contextInitialized(ServletContextEvent sce) {
         sce.getServletContext().log("inicializando la aplicación!");
         servletContext = sce.getServletContext();
-        servletContext.setAttribute("mensaje","algún valor globl de la app!");//Paso 1
+        servletContext.setAttribute("mensaje","algún valor globlal de la app!");
     }
 
     @Override
@@ -29,8 +29,8 @@ public class AplicacionListener implements ServletContextListener,
     public void requestInitialized(ServletRequestEvent sre) {
         servletContext.log("inicializando la aplicación!");
         sre.getServletRequest().setAttribute("mensaje","guardando algún valor para el request");
-        sre.getServletRequest().setAttribute("title","Catalogo Servlet");//Paso 1
-
+        // Paso 1: Establecer un título por defecto para cada request
+        sre.getServletRequest().setAttribute("title","Catalogo Servlet");
     }
 
     @Override
@@ -50,6 +50,4 @@ public class AplicacionListener implements ServletContextListener,
     public void sessionDestroyed(HttpSessionEvent se) {
         servletContext.log("destruyendo la session http!");
     }
-
-
 }
