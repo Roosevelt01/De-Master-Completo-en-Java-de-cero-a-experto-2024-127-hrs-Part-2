@@ -4,6 +4,8 @@
 <jsp:include page="layout/header.jsp" />
 
 <h3>${title}</h3>
+
+
 <c:if test="${username.present}">
    <div class="alert alert-info">Hola ${username.get()}, bienvenido!</div>
    <a class="btn btn-primary my-2" href="${pageContext.request.contextPath}/productos/form">crear [+]</a>
