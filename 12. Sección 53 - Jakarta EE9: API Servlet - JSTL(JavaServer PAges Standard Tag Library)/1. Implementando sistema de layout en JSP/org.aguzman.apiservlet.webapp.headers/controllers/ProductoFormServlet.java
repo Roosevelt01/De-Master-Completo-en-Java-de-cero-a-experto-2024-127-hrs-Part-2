@@ -51,7 +51,8 @@ public class ProductoFormServlet extends HttpServlet {
 
         getServletContext().getRequestDispatcher("/form.jsp").forward(req, resp);
 
-        req.setAttribute("title", req.getAttribute("title") + ": Formulario de productos");//Paso 2
+        // Ejemplo para GET
+        req.setAttribute("title", req.getAttribute("title") + ": Formulario de productos");
     }
 
     @Override
@@ -133,7 +134,8 @@ public class ProductoFormServlet extends HttpServlet {
             req.setAttribute("errores", errores);
             req.setAttribute("categorias", service.listarCategoria());
             req.setAttribute("producto", producto);
-            req.setAttribute("title", req.getAttribute("title") + ": Formulario de productos");//Paso 2
+            // Ejemplo para POST si hay errores
+            req.setAttribute("title", req.getAttribute("title") + ": Formulario de productos");
 
             getServletContext().getRequestDispatcher("/form.jsp").forward(req, resp);
         }
