@@ -38,7 +38,8 @@ public class LoginServlet extends HttpServlet {
                 out.println("</html>");
             }
         }else{
-            req.setAttribute("title", req.getAttribute("title") + ": Login");//Paso 1
+            // Paso 1: Concatena el título por defecto con el título específico de la vista de login
+            req.setAttribute("title", req.getAttribute("title") + ": Login");
             getServletContext().getRequestDispatcher("/login.jsp").forward(req, resp);
         }
     }
