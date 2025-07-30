@@ -8,7 +8,9 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.List;
 
+// Importa la clase SQLException
 public class UsuarioRepositoryImpl implements UsuarioRepository{
+    // Inicializa el objeto Usuario como nulo
     private Connection conn;
 
     public UsuarioRepositoryImpl(Connection conn) {
