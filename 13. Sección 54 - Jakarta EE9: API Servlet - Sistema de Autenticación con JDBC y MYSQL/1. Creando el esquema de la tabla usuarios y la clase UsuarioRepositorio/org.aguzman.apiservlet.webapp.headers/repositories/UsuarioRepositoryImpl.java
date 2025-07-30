@@ -19,13 +19,20 @@ public class UsuarioRepositoryImpl implements UsuarioRepository{
 
     @Override
     public Usuario porUsername(String username) throws SQLException {
+        // Inicializa el objeto Usuario como nulo
         Usuario usuario = null;
 
+        // Define la sentencia SQL para buscar un usuario por su nombre de usuario
         try(PreparedStatement stmt = conn.prepareStatement("select * from usuarios where username=?")){
+            // Establece el primer parámetro de la consulta (el 'username')
             stmt.setString(1, username);
-            try (ResultSet rs = stmt.executeQuery()){
-                    if(rs.next()){
-                        usuario = new Usuario();
+
+            // Usa otro try-with-resources para asegurar que ResultSet se cierre automáticamente
+            try (ResultSet rs = stmt.executeQuery()){// Ejecuta la consulta y obtiene el ResultSet
+                    if(rs.next()){// Si hay un resultado (es decir, se encontró un usuario)
+
+                        usuario = new Usuario();// Crea una nueva instancia de Usuario
+                        // Asigna los valores de las columnas del ResultSet a las propiedades del objeto Usuario
                         usuario.setId(rs.getLong("id"));
                         usuario.setUsername(rs.getString("username"));
                         usuario.setPassword(rs.getString("password"));
@@ -33,6 +40,7 @@ public class UsuarioRepositoryImpl implements UsuarioRepository{
                     }
             }
         }
+        // Devuelve el objeto Usuario (será nulo si no se encontró ningún usuario)
         return usuario;
     }
 
