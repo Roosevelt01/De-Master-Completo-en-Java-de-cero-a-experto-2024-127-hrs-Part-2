@@ -50,20 +50,23 @@ public class LoginServlet extends HttpServlet {
         String username = req.getParameter("username");
         String password = req.getParameter("password");
 
-        //Paso 1
+        // Paso 1: Obtener la conexión a la base de datos del request y crear una instancia de UsuarioService.
+        // La conexión se inyecta al request a través de un filtro o listener anterior (por ejemplo, en un filtro de conexión).
         UsuarioService service = new UsuarioServiceImpl((Connection) req.getAttribute("conn"));
 
-        //Paso 2
+        // Paso 2: Llamar al método login del servicio con las credenciales del usuario.
+        // El servicio devuelve un Optional<Usuario> que indica si el login fue exitoso.
         Optional<Usuario> usuarioOptional = service.login(username, password);
 
-        if (usuarioOptional.isPresent()) {//Paso 3
+        // Paso 3: Verificar si el Optional contiene un usuario (login exitoso).
+        if (usuarioOptional.isPresent()) {
 
             HttpSession session = req.getSession();
             session.setAttribute("username", username);
 
             resp.sendRedirect(req.getContextPath() + "/login.html");
         } else {
-            resp.sendError(HttpServletResponse.SC_UNAUTHORIZED, "Loco sentimos no esta autorizado para ingresar a esta página!");
+            resp.sendError(HttpServletResponse.SC_UNAUTHORIZED, "Lo sentimos no esta autorizado para ingresar a esta página!");
         }
     }
 }
