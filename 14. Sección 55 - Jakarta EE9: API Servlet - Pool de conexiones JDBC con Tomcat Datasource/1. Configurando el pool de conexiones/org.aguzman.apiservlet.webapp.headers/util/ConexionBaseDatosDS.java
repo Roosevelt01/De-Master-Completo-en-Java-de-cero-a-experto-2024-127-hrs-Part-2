@@ -21,7 +21,5 @@ public class ConexionBaseDatosDS {
         DataSource ds = (DataSource)envContext.lookup("jdbc/mysqlDB");
         // 4. Pedir una conexión al pool
         return ds.getConnection();
-
     }
-
 }
