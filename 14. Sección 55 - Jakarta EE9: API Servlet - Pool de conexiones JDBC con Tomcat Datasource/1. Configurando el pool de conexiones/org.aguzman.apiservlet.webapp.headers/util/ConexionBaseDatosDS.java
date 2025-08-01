@@ -10,13 +10,16 @@ import java.sql.SQLException;
 
 public class ConexionBaseDatosDS {
 
-
     public static Connection getConnection() throws SQLException, NamingException {
         Context initContext = null;
-
+        
+        // 1. Obtener el contexto inicial de JNDI
         initContext = new InitialContext();
+        // 2. Buscar el contexto del entorno de la aplicación
         Context envContext  = (Context)initContext.lookup("java:/comp/env");
+        // 3. Buscar el DataSource por su nombre JNDI
         DataSource ds = (DataSource)envContext.lookup("jdbc/mysqlDB");
+        // 4. Pedir una conexión al pool
         return ds.getConnection();
 
     }
