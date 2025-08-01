@@ -14,8 +14,10 @@ import java.sql.SQLException;
 @WebFilter("/*")
 public class ConexionFilter implements Filter {
     @Override
-    public void doFilter(ServletRequest request, ServletResponse response, FilterChain chain) throws IOException, ServletException {
+    public void doFilter(ServletRequest request, ServletResponse response, FilterChain chain)
+     throws IOException, ServletException {
 
+        // 1. Se usa la nueva clase para obtener una conexión del pool
         try(Connection conn = ConexionBaseDatosDS.getConnection()){
             if(conn.getAutoCommit()){
                 conn.setAutoCommit(false);
@@ -30,6 +32,7 @@ public class ConexionFilter implements Filter {
                 ((HttpServletResponse) response).sendError(HttpServletResponse.SC_INTERNAL_SERVER_ERROR, e.getMessage());
                 e.printStackTrace();
             }
+          // 2. Se añade NamingException al catch
         } catch (SQLException | NamingException throwables) {
             throwables.printStackTrace();
         }
