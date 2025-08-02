@@ -54,4 +54,4 @@ public class ActualizarCarroServlet extends HttpServlet {
             }
         }
     }
-}
+}                      // <-- Modificado: Usa directamente el bean Carro.
