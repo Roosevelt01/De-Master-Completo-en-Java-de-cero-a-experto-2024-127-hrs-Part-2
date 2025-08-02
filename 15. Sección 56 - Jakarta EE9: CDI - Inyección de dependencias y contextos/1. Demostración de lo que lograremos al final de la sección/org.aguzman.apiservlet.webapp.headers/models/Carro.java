@@ -9,11 +9,11 @@ import java.util.List;
 import java.util.Optional;
 
 
-
-@SessionScoped //Paso 1
-@Named //Paso 2
-
-//Paso 3 - Serializable
+// 1. Le da un nombre al bean para usarlo en vistas (JSP)
+@SessionScoped
+// 2. Define su ciclo de vida: una instancia por sesión de usuario
+@Named
+// 3. Requisito para scopes de sesión/conversación
 public class Carro implements Serializable {
     private List<ItemCarro> items;
 
