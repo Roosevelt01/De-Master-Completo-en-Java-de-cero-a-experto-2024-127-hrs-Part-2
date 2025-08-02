@@ -8,7 +8,6 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
-
 // 1. Le da un nombre al bean para usarlo en vistas (JSP)
 @SessionScoped
 // 2. Define su ciclo de vida: una instancia por sesión de usuario
