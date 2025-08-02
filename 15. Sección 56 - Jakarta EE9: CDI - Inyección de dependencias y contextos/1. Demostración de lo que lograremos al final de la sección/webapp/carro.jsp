@@ -7,9 +7,8 @@
 
 <c:choose>
 
-<%-- Paso 1: Gemini explicame porque se elimina sessionScope --%>
 <c:when test="${carro.items.isEmpty()}">
-<div class="alert alert-warning">Lo sentimos no hay productos en el carro de compras!</div>
+    <div class="alert alert-warning">Lo sentimos no hay productos en el carro de compras!</div>
 </c:when>
 <c:otherwise>
 <form name="formcarro" action="${pageContext.request.contextPath}/carro/actualizar" method="post">
