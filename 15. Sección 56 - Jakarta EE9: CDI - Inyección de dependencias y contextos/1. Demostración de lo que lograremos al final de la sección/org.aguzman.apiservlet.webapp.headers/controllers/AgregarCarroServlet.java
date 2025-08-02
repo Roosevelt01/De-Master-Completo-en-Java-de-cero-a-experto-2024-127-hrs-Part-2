@@ -20,25 +20,26 @@ import java.util.Optional;
 
 @WebServlet("/carro/agregar")
 public class AgregarCarroServlet extends HttpServlet {
-
-    //Paso 1
+    // Paso 1: Anotación para inyectar el bean Carro
     @Inject
     private  Carro carro;
 
     @Override
-    protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+    protected void doGet(HttpServletRequest req, HttpServletResponse resp) 
+    throws ServletException, IOException {
         Long id = Long.parseLong(req.getParameter("id"));
-        Connection conn = (Connection) req.getAttribute("conn");//Paso 1
-        ProductoService service = new ProductoServiceJdbcImpl(conn);//Paso 2
+        Connection conn = (Connection) req.getAttribute("conn");
+        ProductoService service = new ProductoServiceJdbcImpl(conn);
         Optional<Producto> producto = service.porId(id);
 
         if(producto.isPresent()){
             ItemCarro item = new ItemCarro(1, producto.get());
-
             // HttpSession session = req.getSession();
-                // Carro carro = (Carro) session.getAttribute("carro");
+            // Carro carro = (Carro) session.getAttribute("carro");
             carro.addItemCarro(item);
         }
         resp.sendRedirect(req.getContextPath() + "/carro/ver");
     }
 }
+
+
