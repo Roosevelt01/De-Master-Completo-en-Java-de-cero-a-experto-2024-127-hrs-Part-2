@@ -42,7 +42,7 @@ public class AplicacionListener implements ServletContextListener,
     public void sessionCreated(HttpSessionEvent se) {
         servletContext.log("inicializando la session http!");
 
-        // Gemini explicame porque se comentar esta línea de código
+        // Código comentado/eliminado:
         // Carro carro = new Carro();
         // HttpSession session = se.getSession();
         // session.setAttribute("carro",carro);
