@@ -11,13 +11,15 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.List;
 
-//Paso 1
+// 1. Convertimos esta clase en un bean Singleton para toda la aplicación.
 @ApplicationScoped
 public class UsuarioRepositoryImpl implements UsuarioRepository{
-    //Paso 2
-    @Inject
-    @Named
+    @Inject// 2. Pedimos a CDI que inyecte la conexión a la BD aquí.
+    @Named // 3. Le decimos a CDI: "inyecta la conexión que se llama 'conn'".
     private Connection conn;
+
+    // 4. El constructor que recibía la conexión se elimina. CDI ahora gestiona la 'conn'.
+    // public UsuarioRepositoryImpl(Connection conn) { this.conn = conn; }
 
     @Override
     public Usuario porUsername(String username) throws SQLException {
