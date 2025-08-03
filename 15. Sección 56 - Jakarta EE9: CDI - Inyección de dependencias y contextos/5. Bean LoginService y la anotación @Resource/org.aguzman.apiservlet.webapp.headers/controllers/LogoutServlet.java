@@ -13,13 +13,16 @@ import java.util.Optional;
 @WebServlet("/logout")
 public class LogoutServlet extends HttpServlet {
 
-    //Paso 1
+    // 1. Pedimos a CDI que nos inyecte la implementación activa de LoginService.
     @Inject
     private LoginService auth;
 
     @Override
-    protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+    protected void doGet(HttpServletRequest req, HttpServletResponse resp) 
+    throws ServletException, IOException {
+        // El código 'new LoginServiceSessionImpl()' se elimina.
 
+        // 2. Usamos directamente el servicio 'auth' inyectado.
         Optional<String> username = auth.getUsername(req);
         if(username.isPresent()){
             HttpSession session = req.getSession();
