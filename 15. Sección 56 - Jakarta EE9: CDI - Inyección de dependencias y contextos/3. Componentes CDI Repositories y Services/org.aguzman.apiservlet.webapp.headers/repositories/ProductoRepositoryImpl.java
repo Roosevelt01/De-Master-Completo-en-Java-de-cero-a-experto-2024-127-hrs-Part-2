@@ -12,7 +12,7 @@ import java.util.List;
 
 // 1. Marcamos el servicio como un bean Singleton para toda la aplicación.
 @ApplicationScoped
-public class ProductoRepositoryJdbcImpl implements  Repository<Producto> {
+public class ProductoRepositoryImpl implements  Repository<Producto> {
     // 2. Pedimos a CDI que inyecte la conexión a la BD aquí.
     @Inject
     @Named("conn")
