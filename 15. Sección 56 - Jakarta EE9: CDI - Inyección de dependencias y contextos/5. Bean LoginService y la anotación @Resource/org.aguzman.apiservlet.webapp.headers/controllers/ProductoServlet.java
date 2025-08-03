@@ -21,12 +21,13 @@ public class ProductoServlet extends HttpServlet {
     //    @Named("defecto")
     private ProductoService service;
 
-    //Paso 1
+    // Paso 1: Inyectar el servicio de login
     @Inject
     private LoginService auth;
 
     @Override
-    protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+    protected void doGet(HttpServletRequest req, HttpServletResponse resp) 
+    throws ServletException, IOException {
         List<Producto> productos = service.listar();
 
 
@@ -34,7 +35,9 @@ public class ProductoServlet extends HttpServlet {
 
         req.setAttribute("productos", productos);
         req.setAttribute("username", usernameOptional);
-        req.setAttribute("title", req.getAttribute("title") + ": Listado de productos");//Paso 1
+        req.setAttribute("title", req.getAttribute("title") + ": Listado de productos");
         getServletContext().getRequestDispatcher("/listar.jsp").forward(req, resp);
     }
 }
+
+
