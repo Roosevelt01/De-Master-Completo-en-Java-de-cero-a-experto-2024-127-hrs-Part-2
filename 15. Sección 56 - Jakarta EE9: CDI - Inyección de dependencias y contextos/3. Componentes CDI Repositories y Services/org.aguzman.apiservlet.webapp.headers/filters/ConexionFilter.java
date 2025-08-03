@@ -29,7 +29,7 @@ public class ConexionFilter implements Filter {
             }
 
             try{
-                //Paso 1: Gemini me explicas por que se comenta
+                //Paso 1: Finalmente, volvemos a nuestro filtro para eliminar la línea que ya no es necesaria.
                 //request.setAttribute("conn", connRequest);
                 chain.doFilter(request,response);
                 connRequest.commit();
