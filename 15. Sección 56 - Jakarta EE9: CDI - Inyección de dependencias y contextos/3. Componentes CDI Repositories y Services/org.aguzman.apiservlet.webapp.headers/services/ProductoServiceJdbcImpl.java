@@ -13,14 +13,14 @@ import java.sql.SQLException;
 import java.util.List;
 import java.util.Optional;
 
-//Paso 1
+// Paso 1: Configurar como bean de aplicación
 @ApplicationScoped
 public class ProductoServiceJdbcImpl implements ProductoService{
-    //Paso 2
+    // Paso 2: Inyectar el repositorio de productos (usando la interfaz)
     @Inject
     private Repository<Producto> repositoryJdbc;
 
-    //Paso 3
+    // Paso 3: Inyectar el repositorio de categorías
     @Inject
     private Repository<Categoria> repositoryCategoriaJdbc;
 
