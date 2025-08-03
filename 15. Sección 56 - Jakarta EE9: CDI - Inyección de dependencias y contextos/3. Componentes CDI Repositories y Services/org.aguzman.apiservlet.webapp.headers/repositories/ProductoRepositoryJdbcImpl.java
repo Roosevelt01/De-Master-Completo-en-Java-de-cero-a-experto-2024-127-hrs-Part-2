@@ -18,6 +18,9 @@ public class ProductoRepositoryJdbcImpl implements  Repository<Producto> {
     @Named("conn")
     private Connection conn;
 
+    // El constructor manual se elimina
+    // ... métodos de la clase
+
     @Override
     public List<Producto> listar() throws SQLException {
         List<Producto> productos = new ArrayList<>();
