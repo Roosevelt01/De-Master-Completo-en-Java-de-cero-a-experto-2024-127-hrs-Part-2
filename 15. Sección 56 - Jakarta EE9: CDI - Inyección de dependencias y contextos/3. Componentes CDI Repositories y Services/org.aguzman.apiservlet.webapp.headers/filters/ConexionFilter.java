@@ -21,7 +21,8 @@ public class ConexionFilter implements Filter {
     private Connection conn;
 
     @Override
-    public void doFilter(ServletRequest request, ServletResponse response, FilterChain chain) throws IOException, ServletException {
+    public void doFilter(ServletRequest request, ServletResponse response, FilterChain chain)
+     throws IOException, ServletException {
 
         try(Connection connRequest = this.conn){
             if(connRequest.getAutoCommit()){
