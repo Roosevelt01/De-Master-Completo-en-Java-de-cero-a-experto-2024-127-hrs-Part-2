@@ -14,7 +14,7 @@ import java.util.Optional;
 @WebServlet({"/login", "/login.html"})
 public class LoginServlet extends HttpServlet {
 
-    //Paso 1
+    // 1. Pedimos a CDI que nos inyecte la implementación activa de LoginServlet.
     @Inject
     private LoginService auth;
 
