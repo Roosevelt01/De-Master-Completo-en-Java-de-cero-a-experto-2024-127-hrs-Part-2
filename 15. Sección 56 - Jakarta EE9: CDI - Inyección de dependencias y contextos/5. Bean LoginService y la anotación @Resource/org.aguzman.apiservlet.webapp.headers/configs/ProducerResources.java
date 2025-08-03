@@ -1,6 +1,6 @@
 package org.aguzman.apiservlet.webapp.headers.configs;
 
-import jakarta.annotation.Resource;
+import jakarta.annotation.Resource; // 1. Importamos la anotación @Resource
 import jakarta.enterprise.context.RequestScoped;
 import jakarta.enterprise.inject.Produces;
 import jakarta.inject.Named;
@@ -15,7 +15,7 @@ import java.sql.SQLException;
 
 public class ProducerResources {
 
-    //Paso 1
+    // 2. Inyectamos el DataSource directamente desde el servidor usando su nombre JNDI.
     @Resource(name = "jdbc/mysqlDB")
     private DataSource ds;
 
@@ -23,10 +23,12 @@ public class ProducerResources {
     @RequestScoped
     @Named("conn")
     private Connection beanConnection() throws NamingException, SQLException {
-        //Paso 2: Gemini documenta por que se comenta estar líneas de código
+        // 3. Este código manual ya no es necesario
         // Context initContext = new InitialContext();
         // Context envContext  = (Context)initContext.lookup("java:/comp/env");
-        // DataSource ds = (DataSource)envContext.lookup("jdbc/mysqlDB");
+        // DataSource ds_old = (DataSource)envContext.lookup("jdbc/mysqlDB");
+        
+        // 4. Usamos el DataSource 'ds' inyectado por @Resource
         return ds.getConnection();
     }
 }
