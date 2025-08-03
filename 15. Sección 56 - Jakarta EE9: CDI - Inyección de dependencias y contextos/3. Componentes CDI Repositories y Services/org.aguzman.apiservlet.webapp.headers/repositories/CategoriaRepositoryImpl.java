@@ -9,12 +9,12 @@ import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
 
-//Paso 1
+// Paso 1: Configurar como bean de aplicación
 @ApplicationScoped
 public class CategoriaRepositoryImpl implements  Repository<Categoria>{
     private Connection conn;
 
-    //Paso 2
+    // Paso 2: Inyectar la conexión a través del constructor
     @Inject
     public CategoriaRepositoryImpl(@Named("conn") Connection conn) {
         this.conn = conn;
