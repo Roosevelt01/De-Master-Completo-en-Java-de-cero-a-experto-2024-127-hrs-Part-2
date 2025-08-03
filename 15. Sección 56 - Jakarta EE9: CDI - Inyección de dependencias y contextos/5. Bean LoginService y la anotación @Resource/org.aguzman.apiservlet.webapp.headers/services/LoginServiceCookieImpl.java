@@ -8,7 +8,7 @@ import jakarta.servlet.http.HttpServletRequest;
 import java.util.Arrays;
 import java.util.Optional;
 
-//Paso 1
+// Paso 1: Marcar como una implementación alternativa
 @Alternative
 public class LoginServiceCookieImpl implements LoginService {
     @Override
