@@ -29,6 +29,11 @@ public class ProductoFormServlet extends HttpServlet {
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+        
+        // 3. Eliminamos el código antiguo
+        // Connection conn = (Connection) req.getAttribute("conn");
+        // ProductoService service_old = new ProductoServiceJdbcImpl(conn);
+        
         long id;
 
         try{
@@ -37,6 +42,7 @@ public class ProductoFormServlet extends HttpServlet {
             id = 0L;
         }
 
+        // 4. Usamos directamente el 'service' que CDI nos proveyó.
         Producto producto = new Producto();
 
         producto.setCategoria(new Categoria());
