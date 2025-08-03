@@ -21,7 +21,7 @@ import java.util.Optional;
 
 @WebServlet("/productos/form")
 public class ProductoFormServlet extends HttpServlet {
-    //Paso 1
+    // Paso 1: Inyectar el servicio a través de su interfaz
     @Inject
     //   //Paso 2
     //   @Named("defecto")
