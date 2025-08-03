@@ -14,8 +14,9 @@ import java.util.List;
 // 1. Convertimos esta clase en un bean Singleton para toda la aplicación.
 @ApplicationScoped
 public class UsuarioRepositoryImpl implements UsuarioRepository{
-    @Inject// 2. Pedimos a CDI que inyecte la conexión a la BD aquí.
-    @Named // 3. Le decimos a CDI: "inyecta la conexión que se llama 'conn'".
+    // 2. Pedimos a CDI que inyecte la conexión a la BD aquí.
+    @Inject
+    @Named
     private Connection conn;
 
     // 4. El constructor que recibía la conexión se elimina. CDI ahora gestiona la 'conn'.

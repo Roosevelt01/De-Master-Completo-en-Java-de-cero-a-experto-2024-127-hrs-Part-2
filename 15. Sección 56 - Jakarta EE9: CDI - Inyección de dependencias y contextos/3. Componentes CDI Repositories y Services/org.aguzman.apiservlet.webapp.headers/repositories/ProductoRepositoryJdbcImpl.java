@@ -10,10 +10,10 @@ import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
 
-//Paso 1
+// 1. Marcamos el servicio como un bean Singleton para toda la aplicación.
 @ApplicationScoped
 public class ProductoRepositoryJdbcImpl implements  Repository<Producto> {
-    //Paso 2
+    // 2. Pedimos a CDI que inyecte la conexión a la BD aquí.
     @Inject
     @Named("conn")
     private Connection conn;
