@@ -14,7 +14,7 @@ import java.util.List;
 public class CategoriaRepositoryImpl implements  Repository<Categoria>{
     private Connection conn;
 
-    //Paso 1: Se agrega @MysqlConn
+    //Paso 1: Solicita la conexión etiquetada con @MysqlConn
     @Inject
     public CategoriaRepositoryImpl(@MysqlConn Connection conn) {
         this.conn = conn;
