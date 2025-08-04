@@ -14,9 +14,8 @@ import java.util.List;
 
 @ApplicationScoped
 
-//Gemini me explicas porque se comentar ApplicationScoped
-//@ApplicationScoped
-@Repositorio
+// @ApplicationScoped // 1. Se comenta porque YA ESTÁ INCLUIDO en @Repositorio.
+@Repositorio // 2. Usamos nuestro nuevo estereotipo.
 public class UsuarioRepositoryImpl implements UsuarioRepository{
 
     @Inject
