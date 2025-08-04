@@ -18,11 +18,12 @@ import java.sql.SQLException;
 public class ConexionFilter implements Filter {
 
     @Inject
-    @MysqlConn //Paso 1
+    @MysqlConn //Paso 1: La conexión ahora se inyecta directamente
     private Connection conn;
 
     @Override
-    public void doFilter(ServletRequest request, ServletResponse response, FilterChain chain) throws IOException, ServletException {
+    public void doFilter(ServletRequest request, ServletResponse response, FilterChain chain) 
+    throws IOException, ServletException {
 
         try(Connection connRequest = this.conn){
             if(connRequest.getAutoCommit()){
