@@ -10,8 +10,8 @@ import java.lang.annotation.Target;
 
 import static java.lang.annotation.RetentionPolicy.RUNTIME;
 
-@ApplicationScoped
-@Named
+@ApplicationScoped // El bean será un Singleton.
+@Named           // Le da un nombre por defecto (aunque no lo usemos activamente).
 @Stereotype
 @Retention(RUNTIME)
 @Target(ElementType.TYPE)
