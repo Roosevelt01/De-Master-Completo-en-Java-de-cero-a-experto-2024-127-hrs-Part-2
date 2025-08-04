@@ -16,7 +16,7 @@ public class ProducerResources {
 
     @Produces
     @RequestScoped
-    @MysqlConn //Paso 2:
+    @MysqlConn // Usamos nuestro calificador para etiquetar la conexión producida.
     private Connection beanConnection() throws NamingException, SQLException {
         return ds.getConnection();
     }
