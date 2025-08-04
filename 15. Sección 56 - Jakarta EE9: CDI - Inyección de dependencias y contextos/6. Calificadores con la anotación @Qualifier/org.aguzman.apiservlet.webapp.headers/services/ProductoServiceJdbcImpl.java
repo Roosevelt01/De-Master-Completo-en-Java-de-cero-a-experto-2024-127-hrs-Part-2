@@ -13,7 +13,7 @@ import java.util.List;
 import java.util.Optional;
 
 @ApplicationScoped
-//Paso 1: Gemini quisiera saber para que sirve usarlo en esa clase
+//Paso 1: Se usa en esta clase para marcarla como la implementación predeterminada.
 @ProductoServicePrincipal
 public class ProductoServiceJdbcImpl implements ProductoService{
     @Inject
