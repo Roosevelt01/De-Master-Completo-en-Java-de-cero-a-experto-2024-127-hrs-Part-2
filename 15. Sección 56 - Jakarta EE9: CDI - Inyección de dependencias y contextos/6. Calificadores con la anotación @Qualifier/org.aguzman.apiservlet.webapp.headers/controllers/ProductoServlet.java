@@ -18,14 +18,15 @@ import java.util.Optional;
 public class ProductoServlet extends HttpServlet {
 
     @Inject
-    @ProductoServicePrincipal //Paso 1
+    @ProductoServicePrincipal //Paso 1: Solicita al contenedor el bean con este calificador
     private ProductoService service;
 
     @Inject
     private LoginService auth;
 
     @Override
-    protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+    protected void doGet(HttpServletRequest req, HttpServletResponse resp) 
+    throws ServletException, IOException {
         List<Producto> productos = service.listar();
 
 
