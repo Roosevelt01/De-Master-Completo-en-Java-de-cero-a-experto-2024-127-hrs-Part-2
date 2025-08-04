@@ -8,7 +8,8 @@ import java.util.List;
 import java.util.Optional;
 
 
-@CarroCompra//Paso 1
+//Paso 1: Reemplazamos @SessionScoped y @Named por nuestro estereotipo
+@CarroCompra
 public class Carro implements Serializable {
     private List<ItemCarro> items;
 
@@ -59,3 +60,7 @@ public class Carro implements Serializable {
                 .findAny();
     }
 }
+
+
+
+
