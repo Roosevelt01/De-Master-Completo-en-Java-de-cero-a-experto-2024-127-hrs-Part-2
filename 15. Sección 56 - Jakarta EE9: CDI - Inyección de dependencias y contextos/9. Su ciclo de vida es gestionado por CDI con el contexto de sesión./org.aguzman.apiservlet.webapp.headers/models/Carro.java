@@ -12,18 +12,18 @@ import java.util.Optional;
 import java.util.logging.Logger;
 
 
-@CarroCompra//Paso 3
+@CarroCompra
 public class Carro implements Serializable {
     private List<ItemCarro> items;
 
-    // Paso 4: primarez que veo transient, necesito que profundices eso y su usabilidad
+    // Lo explicaremos más adelante
     @Inject
     private transient Logger log;
 
     public Carro() {
     }
 
-    //Paso 1
+    // 1. Este método se ejecutará después de crear el Carro y de inyectar el Logger.
     @PostConstruct
     public void inicializar() {
         this.items = new ArrayList<>();
@@ -32,7 +32,7 @@ public class Carro implements Serializable {
         log.info("Inicializando el carro de compra");
     }
 
-    //Paso 2
+    //Este método se ejecutará justo antes de que la sesión se invalide.
     @PreDestroy
     public void destruir(){
         //System.out.println("¡Destruyendo el carro de compra!");
