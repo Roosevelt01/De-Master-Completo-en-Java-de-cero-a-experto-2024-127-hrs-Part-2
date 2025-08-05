@@ -25,8 +25,9 @@ public class ProducerResources {
         return ds.getConnection();
     }
 
-    //Paso 2
-    public void close(@Disposes @MysqlConn Connection connection) throws SQLException {
+    //Paso 2: El MÉTODO DISPOSER limpia la conexión producida.
+    public void close(@Disposes @MysqlConn Connection connection)
+     throws SQLException {
         connection.close();
         System.out.println("Cerrando la conexión a la bbdd mysql");
     }
