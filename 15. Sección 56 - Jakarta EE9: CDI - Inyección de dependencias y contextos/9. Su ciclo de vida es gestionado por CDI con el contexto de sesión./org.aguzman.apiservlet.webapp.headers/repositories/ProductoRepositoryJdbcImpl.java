@@ -130,3 +130,23 @@ public class ProductoRepositoryJdbcImpl implements CrudRepository<Producto> {
         return p;
     }
 }
+
+
+@Repository
+public class ProductoRepositoryJdbcImpl implements CrudRepository<Producto> {
+    
+    // ... otros atributos
+
+    @PostConstruct
+    public void inicializar(){
+        System.out.println("Inicializando el beans " + this.getClass().getName());
+    }
+
+    @PreDestroy
+    public void destruir(){
+        System.out.println("Destruyendo el beans " + getClass().getName());
+    }
+
+    // ... otros métodos
+}
+
