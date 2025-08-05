@@ -1,3 +1,3 @@
 # Despliegue y Verificación:
 
-![chrome_ieV8wtRKGu](https://github.com/user-attachments/assets/43e931ad-33a9-4215-afad-e8895f27596e)
+![WindowsTerminal_6WDp6d3m6h](https://github.com/user-attachments/assets/fe212916-df87-4ebd-ba3b-e3590f85c0f2)
