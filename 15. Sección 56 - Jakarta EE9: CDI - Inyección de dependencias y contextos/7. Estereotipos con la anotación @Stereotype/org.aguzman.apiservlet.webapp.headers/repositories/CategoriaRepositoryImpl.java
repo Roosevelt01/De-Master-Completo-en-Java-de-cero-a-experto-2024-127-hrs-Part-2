@@ -67,4 +67,3 @@ public class CategoriaRepositoryImpl implements  Repository<Categoria>{
         return categoria;
     }
 }
-
