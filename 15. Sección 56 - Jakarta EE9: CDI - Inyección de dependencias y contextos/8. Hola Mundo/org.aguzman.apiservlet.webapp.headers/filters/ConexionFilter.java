@@ -22,17 +22,17 @@ public class ConexionFilter implements Filter {
     private Connection conn;
 
     @Override
-    public void doFilter(ServletRequest request, ServletResponse response, FilterChain chain) throws IOException, ServletException {
+    public void doFilter(ServletRequest request, ServletResponse response, FilterChain chain)
+     throws IOException, ServletException {
 
+        // El try-with-resources se convierte en un try-catch normal.
         try{
-            Connection connRequest = this.conn;//Me explicar porque ya no se usar dentro del paréntisis del try
+            Connection connRequest = this.conn;// Ya no está en el paréntesis del try.
             if(connRequest.getAutoCommit()){
                 connRequest.setAutoCommit(false);
             }
 
             try{
-                //Paso 1: Gemini me explicas por que se comenta
-                //request.setAttribute("conn", connRequest);
                 chain.doFilter(request,response);
                 connRequest.commit();
             }catch (SQLException | ServiceJdbcException e){
