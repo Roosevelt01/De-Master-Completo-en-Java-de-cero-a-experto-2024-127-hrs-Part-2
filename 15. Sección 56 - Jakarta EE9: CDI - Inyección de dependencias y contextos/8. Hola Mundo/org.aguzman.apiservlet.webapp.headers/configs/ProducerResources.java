@@ -11,7 +11,8 @@ import javax.sql.DataSource;
 import java.sql.Connection;
 import java.sql.SQLException;
 
-@ApplicationScoped//Paso 1
+// 1. Añadimos un scope para que CDI la reconozca en modo "annotated".
+@ApplicationScoped
 public class ProducerResources {
 
     @Resource(name = "jdbc/mysqlDB")
