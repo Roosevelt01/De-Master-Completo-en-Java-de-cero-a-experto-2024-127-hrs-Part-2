@@ -10,11 +10,13 @@
 
 3. Cierra la sesión haciendo clic en "Logout", luego vuelve a ingresar, después le da "mostrar productos html} y por último le das clic el botón "Agregar al carro".
 
- 
-
 ![WindowsTerminal_QxNlQK17FG](https://github.com/user-attachments/assets/267621f4-dc72-4521-afdd-2849f511b588)
 
-4. Vuelve a la página de productos.
+4. Le das clic Logout.
+
+![WindowsTerminal_CUmtffw8hA](https://github.com/user-attachments/assets/a19fd0d5-2ed8-4fd0-8099-64a2db1cdeac)
+
+
 
 
 
