@@ -10,10 +10,14 @@ import java.lang.annotation.Target;
 
 import static java.lang.annotation.RetentionPolicy.RUNTIME;
 
-@RequestScoped
+// Cambiamos el scope de ApplicationScoped a RequestScoped para el experimento
+@RequestScoped 
 @Named
 @Stereotype
 @Retention(RUNTIME)
 @Target(ElementType.TYPE)
-public @interface Repository {
-}
+public @interface Repository {}
+
+
+
+
