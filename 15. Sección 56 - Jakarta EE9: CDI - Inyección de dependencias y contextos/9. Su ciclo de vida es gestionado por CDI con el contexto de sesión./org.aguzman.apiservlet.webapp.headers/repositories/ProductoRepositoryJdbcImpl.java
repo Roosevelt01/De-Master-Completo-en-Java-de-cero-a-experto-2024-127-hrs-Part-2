@@ -150,3 +150,29 @@ public class ProductoRepositoryJdbcImpl implements CrudRepository<Producto> {
     // ... otros métodos
 }
 
+// Archivo: Carro.java
+
+public class Carro implements Serializable {
+    private List<ItemCarro> items;
+    // ... otros atributos
+
+    public Carro() {
+        // Constructor ahora vacío
+    }
+
+    @PostConstruct
+    public void inicializar() {
+        this.items = new ArrayList<>();
+        System.out.println("¡Inicializando el carro de compra!");
+    }
+
+    @PreDestroy
+    public void destruir(){
+        System.out.println("¡Destruyendo el carro de compra!");
+    }
+    
+    // ... otros métodos
+}
+
+
+
