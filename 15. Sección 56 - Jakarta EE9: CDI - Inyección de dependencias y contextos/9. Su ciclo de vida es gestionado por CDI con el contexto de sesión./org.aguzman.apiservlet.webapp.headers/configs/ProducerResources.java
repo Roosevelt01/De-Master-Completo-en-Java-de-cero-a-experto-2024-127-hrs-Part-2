@@ -17,7 +17,6 @@ import java.util.logging.Logger;
 @ApplicationScoped//Paso 1
 public class ProducerResources {
 
-    //Paso 2
     @Inject
     private Logger log;
 

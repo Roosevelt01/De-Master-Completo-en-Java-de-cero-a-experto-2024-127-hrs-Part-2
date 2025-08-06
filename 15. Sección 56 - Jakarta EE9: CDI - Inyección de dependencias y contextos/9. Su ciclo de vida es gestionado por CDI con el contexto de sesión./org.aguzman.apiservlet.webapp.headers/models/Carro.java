@@ -16,7 +16,7 @@ import java.util.logging.Logger;
 public class Carro implements Serializable {
     private List<ItemCarro> items;
 
-    // Lo explicaremos más adelante
+    //Paso 1
     @Inject
     private transient Logger log;
 
@@ -28,15 +28,13 @@ public class Carro implements Serializable {
     public void inicializar() {
         this.items = new ArrayList<>();
         //System.out.println("¡Inicializando el carro de comprar!");
-        //Paso 5:
         log.info("Inicializando el carro de compra");
     }
 
-    //Este método se ejecutará justo antes de que la sesión se invalide.
+    //2. Este método se ejecutará justo antes de que la sesión se invalide.
     @PreDestroy
     public void destruir(){
         //System.out.println("¡Destruyendo el carro de compra!");
-        //Paso 6:
         log.info("Inicializando el carro de compra");
     }
 
