@@ -82,25 +82,3 @@ public class Carro implements Serializable {
                 .findAny();
     }
 }
-
-public class Carro implements Serializable {
-    // ... otros atributos
-
-    @Inject
-    private transient Logger log;
-
-    @PostConstruct
-    public void inicializar() {
-        this.items = new ArrayList<>();
-        //System.out.println("¡Inicializando el carro de compra!"); // Se comenta
-        log.info("Inicializando el carro de compra"); // Se usa el Logger
-    }
-
-    @PreDestroy
-    public void destruir(){
-        //System.out.println("¡Destruyendo el carro de compra!"); // Se comenta
-        log.info("Destruyendo el carro de compra"); // Se usa el Logger
-    }
-
-    // ... otros métodos
-}
