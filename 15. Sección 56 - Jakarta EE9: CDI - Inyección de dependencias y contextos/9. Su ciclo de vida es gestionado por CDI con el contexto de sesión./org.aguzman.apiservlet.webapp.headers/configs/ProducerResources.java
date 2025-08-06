@@ -14,9 +14,15 @@ import java.sql.Connection;
 import java.sql.SQLException;
 import java.util.logging.Logger;
 
-@ApplicationScoped//Paso 1
+// Paso 1: Define esta clase como un bean de alcance de aplicación (un Singleton).
+// Esto asegura que CDI la reconozca y procese sus métodos productores/disposers,
+// especialmente cuando se usa bean-discovery-mode="annotated" en beans.xml.
+@ApplicationScoped
 public class ProducerResources {
 
+    // Paso 1: Define esta clase como un bean de alcance de aplicación (un Singleton).
+    // Esto asegura que CDI la reconozca y procese sus métodos productores/disposers,
+    // especialmente cuando se usa bean-discovery-mode="annotated" en beans.xml.
     @Inject
     private Logger log;
 
@@ -31,7 +37,7 @@ public class ProducerResources {
         return ds.getConnection();
     }
 
-    //Paso 1: Gemini, ese tema del logger es nuevo para mí, necesito concepto, cual es la funcionalidad y casos de usos
+    // Paso 3: Este es un método productor "inteligente" para crear Loggers.
     @Produces
     private Logger beanLogger(InjectionPoint injectionPoint){
         return  Logger.getLogger(injectionPoint.getMember().getDeclaringClass().getName());
@@ -41,7 +47,9 @@ public class ProducerResources {
     public void close(@Disposes @MysqlConn Connection connection) throws SQLException {
         connection.close();
         //System.out.println("Cerrando la conexión a la bbdd mysql");
-        log.info("Cerrando la conexión a la bbdd mysql");//Paso 3
-
+        // Paso 4: Utiliza el Logger inyectado para registrar el evento de cierre.
+        // A diferencia de System.out.println, esto crea un registro estructurado con
+        // fecha, nivel (INFO) y el nombre de la clase de origen, lo cual es una mejor práctica.
+        log.info("Cerrando la conexión a la bbdd mysql");
     }
 }
