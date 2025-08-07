@@ -11,12 +11,13 @@ import java.lang.annotation.Retention;
 import java.lang.annotation.RetentionPolicy;
 import java.lang.annotation.Target;
 
-@TransactionalJdbc//Paso 1
+@TransactionalJdbc// <-- Línea añadida
 @Logging
 @ApplicationScoped
 @Stereotype
 @Named
 @Target(ElementType.TYPE)
 @Retention(RetentionPolicy.RUNTIME)
-public @interface Service {
-}
+public @interface Service {}
+
+
