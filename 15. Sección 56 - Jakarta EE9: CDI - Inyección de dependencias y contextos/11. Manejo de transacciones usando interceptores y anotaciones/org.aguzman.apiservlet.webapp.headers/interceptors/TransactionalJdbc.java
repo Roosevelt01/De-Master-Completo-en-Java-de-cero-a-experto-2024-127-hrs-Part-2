@@ -8,7 +8,7 @@ import java.lang.annotation.RetentionPolicy;
 import java.lang.annotation.Target;
 
 /*Anotación de enlace que activa el TransactionalInterceptor.
-Marca un metodo o clase para que se ejecute dentro de una transacción JDBC.*/
+Marca un método o clase para que se ejecute dentro de una transacción JDBC.*/
 
 @InterceptorBinding
 @Retention(RetentionPolicy.RUNTIME) 
