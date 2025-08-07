@@ -1,13 +1,22 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <persistence xmlns="https://jakarta.ee/xml/ns/persistence" version="3.0">
+    <!-- 1. Define una "unidad de persistencia" con un nombre único -->
     <persistence-unit name="ejemploJPA">
+        <!-- 2. Especifica que Hibernate es nuestro proveedor de JPA -->
         <provider>org.hibernate.jpa.HibernatePersistenceProvider</provider>
+
+        <!-- 3. Lista las clases de entidad que JPA debe gestionar -->
         <class>org.aguzman.hibernateapp.entity</class>
+
+        <!-- 4. Propiedades de conexión y configuración -->
         <properties>
+            <!-- Propiedades de la conexión a la base de datos (JDBC) -->
             <property name="jakarta.persistence.jdbc.url" value="jdbc:mysql://localhost:3306/java_curso?serverTimezone=America/Caracas"/>
             <property name="jakarta.persistence.jdbc.user" value="root"/>
             <property name="jakarta.persistence.jdbc.password" value="root"/>
             <property name="jakarta.persistence.jdbc.driver" value="com.msql.cj.jdbc.Driver"/>
+            
+            <!-- Propiedades Específicas de Hibernate -->
             <property name="hibernate.dialect" value="org.hibernate.dialect.MySQL8Dialect"/>
             <property name="hibernate.show_sql" value="true"/>
         </properties>
