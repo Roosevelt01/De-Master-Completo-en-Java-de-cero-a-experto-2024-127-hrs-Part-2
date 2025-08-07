@@ -25,7 +25,25 @@ Flujo de ejecución en el log:
 
 <hr>
 
+<h3>Prueba 2: Interceptación con el Estereotipo @Service</h3>
 
+<p>Evento: Dar clic en la opción "mostrar productos".</p>
+
+![WindowsTerminal_hicdoYRz1b](https://github.com/user-attachments/assets/4a9c0b94-70b0-43a5-a760-e7b8baeb7356)
+
+// Clic en "mostrar productos"
+...
+06-Aug-2025 16:21:31.076 INFO ... LogginInterceptor.logging ***** Entrando antes de invocar el m├®todo listar de la clase ...ProductoServiceJdbcImpl
+...
+// Más logs que demuestran que la ejecución del método continúa...
+06-Aug-2025 16:21:31.477 INFO ... ProducerResources.close Cerrando la conexi├│n a la bbdd mysql
+// Aquí debería estar el log de "saliendo", que el instructor confirma que se muestra.
+
+// Clic en el botón "editar"
+06-Aug-2025 16:13:01.927 INFO ... LogginInterceptor.logging ***** Entrando antes de invocar el m├®todo porId de la clase ...ProductoServiceJdbcImpl
+...
+06-Aug-2025 16:13:02.120 INFO ... ProducerResources.close Cerrando la conexi├│n a la bbdd mysql
+// Log de "saliendo" del interceptor
 
 
 
