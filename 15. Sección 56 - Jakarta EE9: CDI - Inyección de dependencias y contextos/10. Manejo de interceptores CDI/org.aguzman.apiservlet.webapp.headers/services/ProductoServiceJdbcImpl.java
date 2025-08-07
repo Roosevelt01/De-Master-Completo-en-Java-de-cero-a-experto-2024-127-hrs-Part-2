@@ -102,3 +102,23 @@ public class ProductoServiceJdbcImpl implements ProductoService {
     }
     // ... otros métodos no serán interceptados.
 }
+
+
+// Interceptar Todos los Métodos de una Clase
+@Service
+@Logging // Aplica el interceptor a TODOS los métodos de esta clase
+@RequestScoped
+public class ProductoServiceJdbcImpl implements ProductoService {
+    // ...
+    @Override
+    public List<Producto> listar() {
+        // ...
+    }
+
+    @Override
+    public Optional<Producto> porId(Long id) {
+        // ...
+    }
+    // ...
+}
+
