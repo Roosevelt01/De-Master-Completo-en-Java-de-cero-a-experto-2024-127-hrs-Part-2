@@ -13,10 +13,10 @@ import java.sql.SQLException;
 import java.util.List;
 import java.util.Optional;
 
-@Service//Paso 5
 
-//Paso 4 se comenta para lelvarlo al estereotipo
-//@Logging//Paso 1
+// Reemplazamos @Logging y @ApplicationScoped por nuestro nuevo estereotipo.
+@Service
+//@Logging
 //@ApplicationScoped
 @ProductoServicePrincipal
 public class ProductoServiceJdbcImpl implements ProductoService{
