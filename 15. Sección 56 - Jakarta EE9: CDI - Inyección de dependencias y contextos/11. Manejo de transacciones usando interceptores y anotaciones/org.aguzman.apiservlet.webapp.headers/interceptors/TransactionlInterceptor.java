@@ -10,19 +10,24 @@ import org.aguzman.apiservlet.webapp.headers.services.ServiceJdbcException;
 import java.sql.Connection;
 import java.util.logging.Logger;
 
-@TransactionalJdbc//Paso 1
-@Interceptor//Paso 1
+//Interceptor para gestionar transacciones de base de datos.
+//Aplica commit o rollback a la conexión JDBC según el resultado
+//de la invocación del método.
+
+@TransactionalJdbc
+@Interceptor
 public class TransactionlInterceptor {
 
-    @Inject //Paso 1
-    @MysqlConn//Paso 2
-    private Connection conn;//Paso 3
+    @Inject 
+    @MysqlConn
+    private Connection conn;
 
-    @Inject//Paso 4
-    private Logger log;//Paso 5
+    @Inject
+    private Logger log;
 
-    @AroundInvoke//Paso 6
+    @AroundInvoke
     public Object transactional(InvocationContext invocation) throws Exception {
+        // La transacción solo se maneja si el autocommit está habilitado
         if(conn.getAutoCommit()){
             conn.setAutoCommit(false);
         }
@@ -30,13 +35,19 @@ public class TransactionlInterceptor {
         try{
             log.info("------> Iniciando trancción "+ invocation.getMethod().getName() +
                     " de la clase " + invocation.getMethod().getDeclaringClass());
+            // 1. Invoca el método original del servicio
             Object resultado = invocation.proceed();
+
+            // 2. Si el método se ejecutó sin errores, hace commit
             conn.commit();
+            
             log.info("------> Iniciando commit trancción "+ invocation.getMethod().getName() +
                     " de la clase " + invocation.getMethod().getDeclaringClass());
 
+            // 3. Devuelve el resultado del método original
            return resultado;
         }catch(ServiceJdbcException e){
+            // 4. Si hay un error, hace rollback y relanza la excepción
             conn.rollback();
             throw e;
         }
