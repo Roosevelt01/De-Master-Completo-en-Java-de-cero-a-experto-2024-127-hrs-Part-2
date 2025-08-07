@@ -83,3 +83,22 @@ public class ProductoServiceJdbcImpl implements ProductoService{
         }
     }
 }
+
+// Opción 1: Interceptar un Método Específico
+@ApplicationScoped
+@ProductoServicePrincipal
+public class ProductoServiceJdbcImpl implements ProductoService {
+
+    @Logging // Aplicamos el interceptor solo a este método.
+    @Override
+    public List<Producto> listar() {
+        // ...
+    }
+
+    @Logging // Y a este otro.
+    @Override
+    public Optional<Producto> porId(Long id) {
+        // ...
+    }
+    // ... otros métodos no serán interceptados.
+}
