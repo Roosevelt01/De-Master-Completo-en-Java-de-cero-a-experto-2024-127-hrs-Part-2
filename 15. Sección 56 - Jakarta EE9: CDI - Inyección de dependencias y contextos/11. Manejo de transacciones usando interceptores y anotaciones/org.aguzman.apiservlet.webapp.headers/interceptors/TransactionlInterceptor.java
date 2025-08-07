@@ -51,9 +51,5 @@ public class TransactionlInterceptor {
             conn.rollback();
             throw e;
         }
-
     }
-
-
-
 }
