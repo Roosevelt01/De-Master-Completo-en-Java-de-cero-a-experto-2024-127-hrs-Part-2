@@ -23,7 +23,7 @@ Flujo de ejecución en el log:
 
 <hr>
 
-<h3>Prueba 1: Interceptación del Método listar()</h3>
+<h3>Prueba 2: Interceptación del Método listar()</h3>
 
 <p>Evento: Dar clic en la opción "mostrar productos".</p>
 
@@ -41,6 +41,7 @@ Flujo de ejecución en el log:
 - En el método listar(): El log muestra la entrada del interceptor para el método listar() del servicio ProductoServiceJdbcImpl, lo que confirma que el estereotipo @Service ha funcionado correctamente.
 
 - En el método porId(): Al hacer clic en "editar", que invoca el método porId(), el log muestra una nueva entrada del interceptor. Esto demuestra que la funcionalidad de logging se aplicó automáticamente a todos los métodos de la clase ProductoServiceJdbcImpl al usar el estereotipo.
+
 
 
 
