@@ -122,3 +122,8 @@ public class ProductoServiceJdbcImpl implements ProductoService {
     // ...
 }
 
+
+06-Aug-2025 16:10:18.425 INFO ... LogginInterceptor.logging ***** Entrando antes de invocar el m├®todo listar de la clase ...ProductoServiceJdbcImpl
+06-Aug-2025 16:10:18.426 INFO ... ProductoRepositoryJdbcImpl.inicializar Inicializando el beans ...ProductoRepositoryJdbcImpl
+06-Aug-2025 16:10:18.626 INFO ... ProductoRepositoryJdbcImpl.destruir Destruyendo el beans ...ProductoRepositoryJdbcImpl
+06-Aug-2025 16:10:18.629 INFO ... ProducerResources.close Cerrando la conexi├│n a la bbdd mysql
