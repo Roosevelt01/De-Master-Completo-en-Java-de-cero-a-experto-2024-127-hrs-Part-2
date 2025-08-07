@@ -23,6 +23,9 @@ Flujo de ejecución en el log:
 
 - El mensaje de "saliendo" del interceptor no está en este log, lo que indica un posible error de configuración o un corte en el log. Sin embargo, la entrada inicial confirma que el interceptor está activo y funcionando.
 
+<hr>
+
+
 
 
 
