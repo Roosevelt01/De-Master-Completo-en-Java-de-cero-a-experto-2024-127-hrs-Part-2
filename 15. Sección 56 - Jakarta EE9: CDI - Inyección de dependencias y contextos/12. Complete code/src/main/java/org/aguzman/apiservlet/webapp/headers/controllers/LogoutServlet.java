@@ -13,7 +13,6 @@ import java.util.Optional;
 @WebServlet("/logout")
 public class LogoutServlet extends HttpServlet {
 
-    //Paso 1
     @Inject
     private LoginService auth;
 

@@ -14,7 +14,6 @@ import java.util.Optional;
 @WebServlet({"/login", "/login.html"})
 public class LoginServlet extends HttpServlet {
 
-    //Paso 1
     @Inject
     private LoginService auth;
 

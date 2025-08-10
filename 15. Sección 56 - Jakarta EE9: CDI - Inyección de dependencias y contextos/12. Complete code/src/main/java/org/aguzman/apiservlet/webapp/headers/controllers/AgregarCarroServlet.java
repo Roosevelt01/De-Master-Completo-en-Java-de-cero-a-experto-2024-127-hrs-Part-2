@@ -22,7 +22,7 @@ public class AgregarCarroServlet extends HttpServlet {
     private  Carro carro;
 
     @Inject
-    @ProductoServicePrincipal //Paso 1
+    @ProductoServicePrincipal 
     private ProductoService service;
 
     @Override

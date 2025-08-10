@@ -23,7 +23,7 @@ import java.util.Optional;
 public class ProductoFormServlet extends HttpServlet {
 
     @Inject
-    @ProductoServicePrincipal //Paso 1
+    @ProductoServicePrincipal
     private ProductoService service;
 
     @Override

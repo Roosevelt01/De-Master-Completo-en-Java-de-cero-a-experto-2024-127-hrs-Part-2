@@ -18,7 +18,7 @@ import java.util.Optional;
 public class ProductoEliminarServlet extends HttpServlet {
 
     @Inject
-    @ProductoServicePrincipal //Paso 1
+    @ProductoServicePrincipal 
     private ProductoService service;
 
     @Override

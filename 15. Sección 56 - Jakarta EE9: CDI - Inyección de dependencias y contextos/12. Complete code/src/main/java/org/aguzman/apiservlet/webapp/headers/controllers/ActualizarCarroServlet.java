@@ -16,7 +16,6 @@ import java.util.List;
 @WebServlet("/carro/actualizar")
 public class ActualizarCarroServlet extends HttpServlet {
 
-    //Paso 1
     @Inject
     private  Carro carro;
 
