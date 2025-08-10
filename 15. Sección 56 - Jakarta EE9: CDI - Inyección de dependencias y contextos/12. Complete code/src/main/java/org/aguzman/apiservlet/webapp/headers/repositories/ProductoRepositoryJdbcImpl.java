@@ -13,12 +13,9 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.logging.Logger;
 
-//Paso 3: Renombramos el nombre de Repository a Repository con control shift + f6
 @Repository
-//Paso 4: Renombramos el nombre de Repository a CrudRepository con control shift + f6
 public class ProductoRepositoryJdbcImpl implements CrudRepository<Producto> {
 
-    //Paso 5
      @Inject
      private Logger log;
 
@@ -26,25 +23,16 @@ public class ProductoRepositoryJdbcImpl implements CrudRepository<Producto> {
     @MysqlConn
     private Connection conn;
 
-    //Paso 1
     @PostConstruct
     public  void inicializar(){
-        //System.out.println("Inicializando el beans " + this.getClass().getName());
-        //Paso 6
         log.info("Inicializando el beans " + this.getClass().getName());
 
     }
 
-    //Paso 2
     @PreDestroy
     public void destruir(){
-        //System.out.println("Destruyendo el beans " + getClass().getName());
-        // Paso 7
         log.info("Destruyendo el beans " + this.getClass().getName());
     }
-
-    //Gemini después del Paso 2 se prueba la pero con el System.out.println, toma en cuenta eso para documentarlo
-    //Gemini después del paso 7  se prueba la pero con el log.info, toma en cuenta eso para documentarlo
 
     @Override
     public List<Producto> listar() throws SQLException {

@@ -14,8 +14,6 @@ import java.util.List;
 
 @ApplicationScoped
 
-//Gemini me explicas porque se comentar ApplicationScoped
-//@ApplicationScoped
 @Repository
 public class UsuarioRepositoryImpl implements UsuarioRepository{
 

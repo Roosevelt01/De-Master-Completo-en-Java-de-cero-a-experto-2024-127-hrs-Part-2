@@ -9,8 +9,6 @@ import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
 
-//Gemini me explicas porque se comentar ApplicationScoped
-//@ApplicationScoped
 @Repository
 public class CategoriaRepositoryImpl implements CrudRepository<Categoria> {
     private Connection conn;
