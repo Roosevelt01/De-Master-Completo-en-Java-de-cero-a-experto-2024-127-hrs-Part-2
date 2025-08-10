@@ -8,8 +8,6 @@ import jakarta.servlet.http.HttpServletRequest;
 import java.util.Arrays;
 import java.util.Optional;
 
-// Gemini me explicas porque se comenta Alternative
-//@Alternative
 public class LoginServiceCookieImpl implements LoginService {
     @Override
     public Optional<String> getUsername(HttpServletRequest req) {

@@ -7,8 +7,6 @@ import java.util.Arrays;
 import java.util.List;
 import java.util.Optional;
 
-//Paso 1: Me explicas porque se debe comentar Alternative
-//@Alternative
 public class ProductoServiceImpl implements ProductoService {
 
     @Override
@@ -16,7 +14,6 @@ public class ProductoServiceImpl implements ProductoService {
         return Arrays.asList(new Producto(1L, "notebook", "computación", 175000),
                 new Producto(2L, "mesa escritorio", "oficina", 100000),
                 new Producto(3L, "teclado mecánico", "computación", 40000));
-
     }
 
     @Override

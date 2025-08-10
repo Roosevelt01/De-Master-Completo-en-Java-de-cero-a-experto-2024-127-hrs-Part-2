@@ -9,7 +9,6 @@ import org.aguzman.apiservlet.webapp.headers.repositories.UsuarioRepository;
 import java.sql.SQLException;
 import java.util.Optional;
 
-//Paso 1
 @Service
 public class UsuarioServiceImpl implements UsuarioService {
     private UsuarioRepository usuarioRepository;
