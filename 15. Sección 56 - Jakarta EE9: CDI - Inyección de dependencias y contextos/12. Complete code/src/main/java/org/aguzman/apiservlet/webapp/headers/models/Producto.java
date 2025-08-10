@@ -5,10 +5,10 @@ import java.time.LocalDate;
 public class Producto {
     private Long id;
     private String nombre;
-    private Categoria categoria;//Paso 1
+    private Categoria categoria;
     private int precio;
-    private String sku;//Paso 2
-    private LocalDate fechaRegistro;//Paso 3
+    private String sku;
+    private LocalDate fechaRegistro;
 
     public Producto() {
     }
@@ -16,9 +16,9 @@ public class Producto {
     public Producto(Long id, String nombre, String tipo, int precio) {
         this.id = id;
         this.nombre = nombre;
-        Categoria categoria = new Categoria();//Paso 4
-        categoria.setNombre(tipo);//Paso 5
-        this.categoria = categoria;//Paso 6
+        Categoria categoria = new Categoria();
+        categoria.setNombre(tipo);
+        this.categoria = categoria;
         this.precio = precio;
     }
 

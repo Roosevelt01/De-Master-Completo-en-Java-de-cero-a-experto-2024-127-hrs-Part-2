@@ -12,34 +12,26 @@ import java.util.Optional;
 import java.util.logging.Logger;
 
 
-@CarroCompra//Paso 3
+@CarroCompra
 public class Carro implements Serializable {
     private List<ItemCarro> items;
 
-    // Paso 4: primarez que veo transient, necesito que profundices eso y su usabilidad
     @Inject
     private transient Logger log;
 
     public Carro() {
     }
 
-    //Paso 1
     @PostConstruct
     public void inicializar() {
         this.items = new ArrayList<>();
-        //System.out.println("¡Inicializando el carro de comprar!");
-        //Paso 5:
         log.info("Inicializando el carro de compra");
     }
 
-    //Paso 2
     @PreDestroy
     public void destruir(){
-        //System.out.println("¡Destruyendo el carro de compra!");
-        //Paso 6:
         log.info("Inicializando el carro de compra");
     }
-
 
     public void addItemCarro(ItemCarro itemCarro) {
         if (items.contains(itemCarro)) {
@@ -54,6 +46,7 @@ public class Carro implements Serializable {
             this.items.add(itemCarro);
         }
     }
+
     public List<ItemCarro> getItems() {
         return items;
     }
