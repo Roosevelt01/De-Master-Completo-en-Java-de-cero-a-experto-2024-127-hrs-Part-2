@@ -41,11 +41,6 @@ public class AplicacionListener implements ServletContextListener,
     @Override
     public void sessionCreated(HttpSessionEvent se) {
         servletContext.log("inicializando la session http!");
-
-        // Gemini explicame porque se comentar esta línea de código
-        // Carro carro = new Carro();
-        // HttpSession session = se.getSession();
-        // session.setAttribute("carro",carro);
     }
 
     @Override
