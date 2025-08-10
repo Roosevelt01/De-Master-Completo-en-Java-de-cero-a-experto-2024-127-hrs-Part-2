@@ -17,34 +17,14 @@ import java.sql.SQLException;
 @WebFilter("/*")
 public class ConexionFilter implements Filter {
 
-    //Paso 1: Gemini explicame por que se comenta
-    /*@Inject
-    @MysqlConn
-    private Connection conn;*/
-
     @Override
     public void doFilter(ServletRequest request, ServletResponse response, FilterChain chain) throws IOException, ServletException {
 
-        //Paso 2: Gemini explicame por que se comenta
-        /*try{
-            Connection connRequest = this.conn;//Me explicar porque ya no se usar dentro del paréntisis del try
-            if(connRequest.getAutoCommit()){
-                connRequest.setAutoCommit(false);
-            }*/
-
             try{
                 chain.doFilter(request,response);
-                //Paso 3: Gemini explicame por que se comenta
-                //connRequest.commit();
             }catch (ServiceJdbcException e){
-                //Paso 4: Gemini explicame por que se comenta
-                //connRequest.rollback();
                 ((HttpServletResponse) response).sendError(HttpServletResponse.SC_INTERNAL_SERVER_ERROR, e.getMessage());
                 e.printStackTrace();
             }
-        //Paso 3: Gemini explicame por que se comenta
-        /*} catch (SQLException throwables) {
-            throwables.printStackTrace();
-        }*/
     }
 }
