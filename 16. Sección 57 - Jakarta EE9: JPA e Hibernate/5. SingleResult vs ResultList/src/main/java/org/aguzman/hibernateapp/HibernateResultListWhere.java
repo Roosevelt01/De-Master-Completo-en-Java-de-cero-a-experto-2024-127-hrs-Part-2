@@ -17,6 +17,7 @@ public class HibernateResultListWhere {
         System.out.println("Ingresa una forma de pago: ");
         String pago = s.next();
         query.setParameter(1, pago);
+        // 1. Ejecuta la consulta y obtiene todos los resultados en una lista.
         List<Cliente> clientes = query.getResultList();
         System.out.println(clientes);
         em.close();
