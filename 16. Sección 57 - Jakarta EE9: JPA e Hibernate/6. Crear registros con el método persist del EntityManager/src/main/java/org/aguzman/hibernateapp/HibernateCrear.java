@@ -42,7 +42,6 @@ public class HibernateCrear {
             em.getTransaction().rollback();
             e.printStackTrace();
         }finally {
-            // Paso 9: Cerrar el EntityManager para liberar los recursos
             em.close();
         }
     }
