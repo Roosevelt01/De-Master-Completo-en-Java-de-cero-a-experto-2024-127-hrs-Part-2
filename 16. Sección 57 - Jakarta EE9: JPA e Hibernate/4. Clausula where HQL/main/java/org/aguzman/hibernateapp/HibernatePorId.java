@@ -14,10 +14,16 @@ public class HibernatePorId {
 
         System.out.println("Ingrese el id: ");
         Long id = s.nextLong();
+        // 1. Obtener el EntityManager
         EntityManager em = JpaUtil.getEntityManager();
+
+        // 2. Usar el método find() para la búsqueda por llave primaria
         Cliente cliente = em.find(Cliente.class, id);
 
+        // 3. Imprimir el resultado
         System.out.println(cliente);
+
+        // 4. Cerrar el EntityManager
         em.close();
     }
 }
