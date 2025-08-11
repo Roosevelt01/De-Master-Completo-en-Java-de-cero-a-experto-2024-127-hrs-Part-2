@@ -15,12 +15,14 @@ public class HibernatePorId {
         System.out.print("Ingrese el id: ");
         Long id = s.nextLong();
         EntityManager em = JpaUtil.getEntityManager();
-        Cliente cliente = em.find(Cliente.class, id);
-
+        
+        System.out.println("----- PRIMERA BÚSQUEDA -----");
+        Cliente cliente = em.find(Cliente.class, id);// Paso 1: Se ejecuta una consulta SQL a la BD.
         System.out.println(cliente);
 
-        Cliente cliente2 = em.find(Cliente.class, id);//Paso 1
-        System.out.println(cliente2);//Paso 2
-        em.close();//Paso 3
+        System.out.println("----- SEGUNDA BÚSQUEDA -----");
+        Cliente cliente2 = em.find(Cliente.class, id);
+        System.out.println(cliente2);//Paso 2: NO se ejecuta SQL. El objeto se recupera de la caché.
+        em.close();
     }
 }
