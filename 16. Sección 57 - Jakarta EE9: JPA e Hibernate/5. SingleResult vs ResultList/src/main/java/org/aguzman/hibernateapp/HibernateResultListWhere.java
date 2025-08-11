@@ -16,7 +16,6 @@ public class HibernateResultListWhere {
         Query query = em.createQuery("select c from Cliente c where c.formaPago=?1", Cliente.class);
         System.out.println("Ingresa una forma de pago: ");
         String pago = s.next();
-        // 1. Limitar el resultado a 1 para evitar NonUniqueResultException
         query.setParameter(1, pago);
         List<Cliente> clientes = query.getResultList();
         System.out.println(clientes);
