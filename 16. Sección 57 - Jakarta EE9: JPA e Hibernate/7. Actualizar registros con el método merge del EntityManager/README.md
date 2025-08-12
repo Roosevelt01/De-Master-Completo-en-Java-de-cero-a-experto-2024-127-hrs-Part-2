@@ -1,3 +1,3 @@
 # Resultado
 
-![idea64_LVQdjWOSRb](https://github.com/user-attachments/assets/346dcc5e-04d7-4b00-92fe-bee721d62387)
+![idea64_R1JD663ZT8](https://github.com/user-attachments/assets/37f5492b-3014-438e-b864-8171ef065a92)
