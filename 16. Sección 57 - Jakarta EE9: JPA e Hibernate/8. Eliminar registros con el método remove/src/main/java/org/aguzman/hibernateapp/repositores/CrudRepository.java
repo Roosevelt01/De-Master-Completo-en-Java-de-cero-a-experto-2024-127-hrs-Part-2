@@ -1,5 +1,4 @@
 package org.aguzman.hibernateapp.repositores;
-
 import java.util.List;
 
 // Interfaz genérica para operaciones CRUD. 'T' representa el tipo de entidad.
@@ -18,3 +17,4 @@ public interface CrudRepository<T>{
     // Elimina una entidad por su ID.
     void eliminar(Long id);
 }
+
