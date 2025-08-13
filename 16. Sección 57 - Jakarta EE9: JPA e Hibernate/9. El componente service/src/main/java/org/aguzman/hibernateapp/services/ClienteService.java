@@ -11,5 +11,3 @@ public interface ClienteService {
     void guardar(Cliente cliente);
     void eliminar(Long id);
 }
-
-
