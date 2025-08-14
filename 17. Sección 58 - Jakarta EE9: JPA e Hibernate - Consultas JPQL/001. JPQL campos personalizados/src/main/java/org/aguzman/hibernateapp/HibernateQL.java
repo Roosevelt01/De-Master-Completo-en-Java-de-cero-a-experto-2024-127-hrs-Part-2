@@ -8,7 +8,7 @@ import java.util.List;
 
 public class HibernateQL {
     public static void main(String[] args) {
-        // Paso 1: // Obtenemos una instancia de EntityManager para realizar las operaciones.
+        // Paso 1: Obtenemos una instancia de EntityManager para realizar las operaciones.
         EntityManager em = JpaUtil.getEntityManager();
 
         // ====================================================================
@@ -34,7 +34,7 @@ public class HibernateQL {
         // ====================================================================
         System.out.println("\n============ Consulta solo el nombre por el id ============");
         // La consulta selecciona solo el campo 'nombre' y devuelve un String.
-        Cliente nombreCliente = em.createQuery("select c from Cliente c where c.id=:id", Cliente.class)
+        String nombreCliente = em.createQuery("select c from Cliente c where c.id=:id", Cliente.class)
                 .setParameter("id", 2L)
                 .getSingleResult();
         System.out.println(nombreCliente);
