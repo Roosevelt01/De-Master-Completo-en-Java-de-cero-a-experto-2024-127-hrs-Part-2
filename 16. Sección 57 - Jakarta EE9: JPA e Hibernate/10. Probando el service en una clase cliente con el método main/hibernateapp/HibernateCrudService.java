@@ -78,6 +78,7 @@ public class HibernateCrudService  {
             System.out.println("Cliente eliminado con éxito!");
             service.listar().forEach(System.out::println);
         });
+        
         em.close();
     }
 }
