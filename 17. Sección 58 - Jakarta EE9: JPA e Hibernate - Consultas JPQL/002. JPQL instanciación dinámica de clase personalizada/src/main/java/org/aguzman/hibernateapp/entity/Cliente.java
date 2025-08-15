@@ -6,7 +6,7 @@ import javax.persistence.*;
 @Table(name="clientes")
 public class Cliente {
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)//PAso 4
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
     private String nombre;
@@ -18,7 +18,6 @@ public class Cliente {
     public Cliente() {
     }
 
-    //Paso 1
     public Cliente(String nombre, String apellido) {
         this.nombre = nombre;
         this.apellido = apellido;
