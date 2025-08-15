@@ -2,17 +2,17 @@ package org.aguzman.hibernateapp.entity;
 
 import javax.persistence.*;
 
-@Entity//Paso 1
-@Table(name="clientes")//Paso 2
+@Entity
+@Table(name="clientes")
 public class Cliente {
-    @Id//PAso 3
+    @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)//PAso 4
     private Long id;
 
     private String nombre;
     private String apellido;
 
-    @Column(name = "forma_pago")//PAso 5
+    @Column(name = "forma_pago")
     private String formaPago;
 
     public Cliente() {
