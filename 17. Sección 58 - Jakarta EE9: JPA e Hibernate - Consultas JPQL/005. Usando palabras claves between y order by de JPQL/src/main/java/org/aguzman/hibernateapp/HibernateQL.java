@@ -88,6 +88,24 @@ public class HibernateQL {
         id=6, nombre='Luna', apellido='Garcia', formaPago='debito'
         id=4, nombre='Pepa', apellido='Doe', formaPago='crédito'
 
+2.2. Ordenamiento por Múltiples Atributos
+
+        // Ejecuta una consulta con un criterio de ordenamiento secundario.
+        clientes = em.createQuery("select c from Cliente c order by c.nombre asc, c.apellido desc", Cliente.class)
+                .getResultList();
+        clientes.forEach(System.out::println);
+
+        Resultado en Consola:
+
+        Hibernate: select ... from clientes cliente0_ order by cliente0_.nombre asc, cliente0_.apellido desc
+        id=1, nombre='Andres', apellido='Guzman', formaPago='debito'
+        id=8, nombre='John', apellido='Roe', formaPago='paypal'  // <-- 'Roe' va primero
+        id=2, nombre='John', apellido='Doe', formaPago='credito'  // <-- 'Doe' va después
+        id=6, nombre='Luna', apellido='Garcia', formaPago='debito'
+        id=4, nombre='Pepa', apellido='Doe', formaPago='crédito'
+
+
+
 
 
 
