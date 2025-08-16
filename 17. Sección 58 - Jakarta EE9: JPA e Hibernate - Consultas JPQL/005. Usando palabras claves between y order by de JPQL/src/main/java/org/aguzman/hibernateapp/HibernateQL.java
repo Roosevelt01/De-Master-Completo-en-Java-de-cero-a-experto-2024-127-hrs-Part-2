@@ -67,9 +67,26 @@ public class HibernateQL {
                 id=6, nombre='Luna', apellido='Garcia', formaPago='debito'
                 id=8, nombre='John', apellido='Roe', formaPago='PayPal'
 
+2.1. Ordenamiento por un Solo Atributo (ASC y DESC)
 
+        // Imprime un encabezado para la sección de ordenamiento.
+        System.out.println("\n============ Consulta con orden ============");
+        // Ejecuta una consulta para obtener todos los clientes.
+        // La cláusula ORDER BY al final define cómo se ordenarán los resultados.
+        clientes = em.createQuery("select c from Cliente c order by c.nombre asc", Cliente.class)
+                // Obtiene la lista de resultados ya ordenados desde la base de datos.
+                .getResultList();
+        // Imprime la lista ordenada.
+        clientes.forEach(System.out::println);
 
+        Resultado en Consola (asc):
 
+        Hibernate: select ... from clientes cliente0_ order by cliente0_.nombre asc
+        id=1, nombre='Andres', apellido='Guzman', formaPago='debito'
+        id=2, nombre='John', apellido='Doe', formaPago='credito'
+        id=8, nombre='John', apellido='Roe', formaPago='paypal'
+        id=6, nombre='Luna', apellido='Garcia', formaPago='debito'
+        id=4, nombre='Pepa', apellido='Doe', formaPago='crédito'
 
 
 
