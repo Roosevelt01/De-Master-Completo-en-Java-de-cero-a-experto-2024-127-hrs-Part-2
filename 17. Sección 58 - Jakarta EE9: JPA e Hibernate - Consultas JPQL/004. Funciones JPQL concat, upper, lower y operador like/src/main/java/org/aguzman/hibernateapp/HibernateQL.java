@@ -48,3 +48,16 @@ public class HibernateQL {
 
     }
 }
+
+.
+└── src
+    └── main
+        ├── java
+        │   └── org
+        │       └── aguzman
+        │           └── hibernateapp
+        │               └── ... (paquetes existentes)
+        │               └── HibernateQL.java      // Modificado
+        └── resources
+            └── META-INF
+                └── persistence.xml
