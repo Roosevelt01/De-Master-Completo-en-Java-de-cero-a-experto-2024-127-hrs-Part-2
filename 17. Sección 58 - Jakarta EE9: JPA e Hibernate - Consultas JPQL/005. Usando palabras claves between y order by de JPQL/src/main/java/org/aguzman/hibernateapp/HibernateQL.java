@@ -32,23 +32,40 @@ public class HibernateQL {
 
 1.1. BETWEEN con Tipos Numéricos
 
-// Imprime un encabezado para esta sección en la consola.
-System.out.println("\n============ Consulta por rangos numéricos ============");
-// Reasigna a la variable 'clientes' el resultado de una nueva consulta JPQL.
-clientes = em.createQuery("select c from Cliente c where c.id between 2 and 5", Cliente.class)
-        // Ejecuta la consulta y devuelve una lista con los resultados.
-        .getResultList();
-// Itera sobre la lista de clientes encontrados y los imprime en la consola.
-clientes.forEach(System.out::println);
+        // Imprime un encabezado para esta sección en la consola.
+        System.out.println("\n============ Consulta por rangos numéricos ============");
+        // Reasigna a la variable 'clientes' el resultado de una nueva consulta JPQL.
+        clientes = em.createQuery("select c from Cliente c where c.id between 2 and 5", Cliente.class)
+                // Ejecuta la consulta y devuelve una lista con los resultados.
+                .getResultList();
+        // Itera sobre la lista de clientes encontrados y los imprime en la consola.
+        clientes.forEach(System.out::println);
 
-Resultado en Consola:
+        Resultado en Consola:
 
-Hibernate: select ... from clientes cliente0_ where cliente0_.id between 2 and 5
-id=2, nombre='John', apellido='Doe', formaPago='credito
-id=4, nombre='Pepa', apellido='Doe', formaPago='crédito
-id=5, nombre='Luna', apellido='Garcia', formaPago='debito
+        Hibernate: select ... from clientes cliente0_ where cliente0_.id between 2 and 5
+        id=2, nombre='John', apellido='Doe', formaPago='credito
+        id=4, nombre='Pepa', apellido='Doe', formaPago='crédito
+        id=5, nombre='Luna', apellido='Garcia', formaPago='debito'
 
+1.2. BETWEEN con Cadenas de Texto (Strings)
 
+        // Imprime un encabezado para esta sección en la consola.
+        System.out.println("\n============ Consulta por rangos de texto ============");
+        // Ejecuta una nueva consulta filtrando por el atributo 'nombre'.
+        clientes = em.createQuery("select c from Cliente c where c.nombre between 'J' and 'Q'", Cliente.class)
+                // Obtiene la lista de resultados.
+                .getResultList();
+        // Imprime los clientes cuyo nombre cae dentro del rango alfabético especificado.
+        clientes.forEach(System.out::println);
+
+        Resultado en la Consola
+
+                Hibernate: select ... from clientes cliente0_ where cliente0_.nombre between 'J' and 'Q'
+                id=2, nombre='John', apellido='Doe', formaPago='credito'
+                id=4, nombre='Pepa', apellido='Doe', formaPago='credito'
+                id=6, nombre='Luna', apellido='Garcia', formaPago='debito'
+                id=8, nombre='John', apellido='Roe', formaPago='PayPal'
 
 
 
