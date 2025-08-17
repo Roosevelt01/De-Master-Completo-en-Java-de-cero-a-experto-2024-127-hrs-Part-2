@@ -30,7 +30,7 @@ public class HibernateQL {
 
         // Paso 2: Obtener el cliente con el nombre más largo y su longitud
         System.out.println("\n============ Consulta con el nombre más largo y su largo ============");
-       // Se utiliza la misma lógica que en el paso anterior, pero con la función `max()` en la subconsulta.
+        // Se utiliza la misma lógica que en el paso anterior, pero con la función `max()` en la subconsulta.
         registros = em.createQuery("select c.nombre, length(c.nombre) from Cliente c where " +
                         "length(c.nombre) = (select max(length(c.nombre)) from Cliente c)", Object[].class)
                 .getResultList();
@@ -60,21 +60,3 @@ public class HibernateQL {
         em.close();
     }
 }
-
-.
-└── src
-    └── main
-        ├── java
-        │   └── org
-        │       └── aguzman
-        │           └── hibernateapp
-        │               └── ... (paquetes existentes)
-        │               └── HibernateQL.java      // Modificado
-        └── resources
-            └── META-INF
-                └── persistence.xml
-
-
-
-
-
