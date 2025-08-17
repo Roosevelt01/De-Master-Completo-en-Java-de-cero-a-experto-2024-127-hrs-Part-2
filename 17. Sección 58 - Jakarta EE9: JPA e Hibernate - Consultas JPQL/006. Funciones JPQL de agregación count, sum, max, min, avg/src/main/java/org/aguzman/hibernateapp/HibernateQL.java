@@ -29,8 +29,11 @@ public class HibernateQL {
         // Paso 4: Consulta que devuelve el nombre de cada cliente y la longitud de su nombre
         System.out.println("\n============ Consulta con nombre y su largo ============");
         registros = em.createQuery("select c.nombre, length(c.nombre) from Cliente c", Object[].class).getResultList();
+        // Itera sobre cada registro de la lista.
         registros.forEach(reg -> {
+            // Extrae el nombre del primer elemento del arreglo (índice 0).
             String name = (String) reg[0];
+            // Extrae el largo del segundo elemento del arreglo (índice 1).
             Integer largo = (Integer) reg[1];
             System.out.println("Nombre = " + name + " | largo = " +largo);
         });
