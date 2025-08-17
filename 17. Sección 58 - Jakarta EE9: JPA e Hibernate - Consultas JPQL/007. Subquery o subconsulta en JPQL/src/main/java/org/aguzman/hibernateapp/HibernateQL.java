@@ -18,9 +18,12 @@ public class HibernateQL {
         // La consulta principal luego filtra y devuelve los clientes que coinciden con esa longitud.
         registros = em.createQuery("select c.nombre, length(c.nombre) from Cliente c where " +
                         "length(c.nombre) = (select min(length(c.nombre)) from Cliente c)", Object[].class)
-                        .getResultList();
+                        .getResultList();       
+        // Itera sobre los resultados para imprimirlos.
         registros.forEach(reg -> {
+            // Extrae el nombre del primer elemento del arreglo.
             String nom = (String) reg[0];
+            // Extrae el largo del segundo elemento del arreglo.
             Integer largo = (Integer) reg[1];
             System.out.println("Nombre = " + nom + "| Largo = " + largo);
         });
@@ -57,6 +60,19 @@ public class HibernateQL {
         em.close();
     }
 }
+
+.
+└── src
+    └── main
+        ├── java
+        │   └── org
+        │       └── aguzman
+        │           └── hibernateapp
+        │               └── ... (paquetes existentes)
+        │               └── HibernateQL.java      // Modificado
+        └── resources
+            └── META-INF
+                └── persistence.xml
 
 
 
