@@ -52,6 +52,7 @@ public class HibernateQL {
         System.out.println("\n============ Consulta resumen funciones agregaciones count, min, max, avg y sum ============");
         Object[] estadisticas = em.createQuery("select min(c.id), max(c.id), sum(c.id), count(c.id), avg(length(c.nombre)) from Cliente c", Object[].class)
                         .getSingleResult();
+        // Extrae y castea cada valor del arreglo a su tipo de dato correcto.
         Long min = (Long) estadisticas[0];
         Long max = (Long) estadisticas[1];
         Long sum = (Long) estadisticas[2];
