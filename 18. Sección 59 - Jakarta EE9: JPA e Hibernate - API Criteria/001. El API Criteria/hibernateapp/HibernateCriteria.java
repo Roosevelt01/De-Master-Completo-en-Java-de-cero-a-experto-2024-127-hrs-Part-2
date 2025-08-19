@@ -12,37 +12,55 @@ import java.util.List;
 
 public class HibernateCriteria {
     public static void main(String[] args) {
-        EntityManager em = JpaUtil.getEntityManager();//Paso 1
+        // Paso 1: Obtiene el EntityManager, nuestro punto de entrada para las operaciones de persistencia.
+        EntityManager em = JpaUtil.getEntityManager();
 
-        CriteriaBuilder criteria = em.getCriteriaBuilder();//Paso 2
+        // Paso 2: Obtiene el CriteriaBuilder, la fábrica para construir objetos de consulta.
+        CriteriaBuilder criteria = em.getCriteriaBuilder();
 
-        CriteriaQuery<Cliente> query = criteria.createQuery(Cliente.class);//Paso 3
+        // Paso 3: Crea un objeto CriteriaQuery que definirá la estructura de nuestra consulta.
+        // Se especifica que el tipo de resultado será Cliente.
+        CriteriaQuery<Cliente> query = criteria.createQuery(Cliente.class);
 
+        // Paso 4: Define la entidad raíz de la consulta (equivalente a "FROM Cliente").    
         Root<Cliente> from = query.from(Cliente.class);//Paso 5
 
+        // Paso 5: Especifica qué se va a seleccionar (equivalente a "SELECT c FROM...").
+        // En este caso, seleccionamos la entidad raíz completa.
         query.select(from);//Paso 6
 
+        // Paso 6: Ejecuta la consulta Criteria que hemos construido y obtiene una lista de resultados.
         List<Cliente> clientes = em.createQuery(query).getResultList();//Paso 7
 
-        clientes.forEach(System.out::println);//Paso 8
+        // Paso 7: Imprimir la lista de clientes.
+        clientes.forEach(System.out::println);
 
-        System.out.println("\n========== Listar Where equals ==========");
-//        query = criteria.createQuery(Cliente.class);//Paso 9
-//        from = query.from(Cliente.class);//Paso 10
-//        query.select(from).where(criteria.equal(from.get("nombre"), "Andres"));//Paso 11
-//        clientes = em.createQuery(query).getResultList();//Paso 12
-//        clientes.forEach(System.out::println);//Paso 13
-
-        //Alternativa
+        // Paso 8: Construir una consulta con una cláusula WHERE para filtrar por nombre.
+        System.out.println("\n========== Listar con WHERE equals (sin parámetros) ==========");
+        // Se crea una nueva consulta para evitar modificar la anterior.
         query = criteria.createQuery(Cliente.class);
         from = query.from(Cliente.class);
-        ParameterExpression<String> nombreParam = criteria.parameter(String.class, "nombre");
-        query.select(from).where(criteria.equal(from.get("nombre"), nombreParam));
+        // Se construye la cláusula WHERE. `criteria.equal()` crea un predicado que compara
+        // el valor del campo "nombre" con el valor literal "Andres".
+        query.select(from).where(criteria.equal(from.get("nombre"), "Andres"));
 
-        clientes = em.createQuery(query).setParameter("nombre","Andres").getResultList();
+        clientes = em.createQuery(query).getResultList();
         clientes.forEach(System.out::println);
 
 
-        em.close();//Paso 14
+        // Paso 9: Construir una consulta con un parámetro dinámico.
+        System.out.println("\n========== Listar con WHERE equals (con parámetros) ==========");
+        query = criteria.createQuery(Cliente.class);
+        from = query.from(Cliente.class);
+        // Se crea un objeto ParameterExpression para representar el parámetro.
+        ParameterExpression<String> nombreParam = criteria.parameter(String.class, "nombre");
+        // Se usa el parámetro en la cláusula WHERE.
+        query.select(from).where(criteria.equal(from.get("nombre"), nombreParam));
+
+        clientes = em.createQuery(query).setParameter("nombre","John").getResultList();
+        clientes.forEach(System.out::println);
+
+
+        em.close();//Paso 10
     }
 }
