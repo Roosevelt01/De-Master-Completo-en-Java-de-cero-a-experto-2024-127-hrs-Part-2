@@ -60,18 +60,30 @@ public class HibernateCriteria {
 
         // --- Alternativa con Parámetros (Recomendado) --
 
-        // Paso 9: Construir una consulta con un parámetro dinámico.
         System.out.println("\n========== Listar con WHERE equals (con parámetros) ==========");
+        // Paso 13: Se reinicia el objeto query para una nueva consulta limpia.
         query = criteria.createQuery(Cliente.class);
+
+        // Paso 14: Se define de nuevo el FROM.
         from = query.from(Cliente.class);
-        // Se crea un objeto ParameterExpression para representar el parámetro.
+        
+        // Paso 15: Se crea un objeto ParameterExpression que representa un parámetro nombrado (:nombre).
+        // Se define su tipo (String) y su nombre ("nombre").
         ParameterExpression<String> nombreParam = criteria.parameter(String.class, "nombre");
-        // Se usa el parámetro en la cláusula WHERE.
+        
+        // Paso 16: Se construye la consulta, usando el parámetro en la cláusula WHERE.
+        // La condición es "nombre = :nombre".
         query.select(from).where(criteria.equal(from.get("nombre"), nombreParam));
 
+        // Paso 17: Se ejecuta la consulta, y en este punto se asigna el valor real ("Andres")
+        // al parámetro "nombre".
         clientes = em.createQuery(query).setParameter("nombre","John").getResultList();
+
+        // Paso 18: Se imprime el resultado (en este caso, solo el cliente "Andres").
         clientes.forEach(System.out::println);
 
+        // Paso 20: Cierra el EntityManager para liberar la conexión a la base de datos y otros recursos.
+        // Este es un paso crucial para evitar fugas de recursos.
         em.close();
     }
 }
