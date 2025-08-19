@@ -40,16 +40,22 @@ public class HibernateCriteria {
 
         // ======================= EJEMPLO 2: FILTRAR CON WHERE =======================
 
-        // Paso 8: Construir una consulta con una cláusula WHERE para filtrar por nombre.
         System.out.println("\n========== Listar con WHERE equals (sin parámetros) ==========");
-        // Se crea una nueva consulta para evitar modificar la anterior.
+        
+        // Paso 8: Se reinicia el objeto query para una nueva consulta.
         query = criteria.createQuery(Cliente.class);
+        
+        // Paso 9: Se define de nuevo el punto de partida (FROM).
         from = query.from(Cliente.class);
-        // Se construye la cláusula WHERE. `criteria.equal()` crea un predicado que compara
-        // el valor del campo "nombre" con el valor literal "Andres".
+        
+        // Paso 10: Se construye la consulta con un SELECT y un WHERE.
+        // criteria.equal crea una condición de igualdad (nombre = "Andres").
         query.select(from).where(criteria.equal(from.get("nombre"), "Andres"));
 
+        // Paso 11: Se ejecuta la consulta filtrada.
         clientes = em.createQuery(query).getResultList();
+
+        // Paso 12: Se imprimen los resultados filtrados.
         clientes.forEach(System.out::println);
 
         // --- Alternativa con Parámetros (Recomendado) --
@@ -69,13 +75,3 @@ public class HibernateCriteria {
         em.close();
     }
 }
-
-Hibernate: select cliente0_.id as id1_0_, cliente0_.apellido as apellido2_0_, 
-cliente0_.forma_pago as forma_pa3_0_, cliente0_.nombre as nombre4_0_ 
-from clientes cliente0_
-id=1, nombre='Andres', apellido='Guzman', formaPago='debito
-id=2, nombre='John', apellido='Doe', formaPago='credito
-id=4, nombre='Pepa', apellido='Doe', formaPago='credito
-id=6, nombre='Luna', apellido='Garcia', formaPago='debito
-id=8, nombre='John', apellido='Roe', formaPago='paypal
-id=9, nombre='Lou', apellido='Loe', formaPago='paypal
