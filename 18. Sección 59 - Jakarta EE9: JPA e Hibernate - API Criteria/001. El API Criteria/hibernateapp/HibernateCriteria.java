@@ -12,6 +12,9 @@ import java.util.List;
 
 public class HibernateCriteria {
     public static void main(String[] args) {
+
+        // ======================= EJEMPLO 1: LISTAR TODOS LOS CLIENTES =======================
+
         // Paso 1: Obtiene el EntityManager, nuestro punto de entrada para las operaciones de persistencia.
         EntityManager em = JpaUtil.getEntityManager();
 
@@ -35,6 +38,8 @@ public class HibernateCriteria {
         // Paso 7: Imprimir la lista de clientes.
         clientes.forEach(System.out::println);
 
+        // ======================= EJEMPLO 2: FILTRAR CON WHERE =======================
+
         // Paso 8: Construir una consulta con una cláusula WHERE para filtrar por nombre.
         System.out.println("\n========== Listar con WHERE equals (sin parámetros) ==========");
         // Se crea una nueva consulta para evitar modificar la anterior.
@@ -47,6 +52,7 @@ public class HibernateCriteria {
         clientes = em.createQuery(query).getResultList();
         clientes.forEach(System.out::println);
 
+        // --- Alternativa con Parámetros (Recomendado) --
 
         // Paso 9: Construir una consulta con un parámetro dinámico.
         System.out.println("\n========== Listar con WHERE equals (con parámetros) ==========");
