@@ -43,11 +43,18 @@ public class HibernateCriteria {
 
         // --- Ejemplo 2: Usando WHERE BETWEEN ---
         System.out.println("\n========== Usando usando where between para rangos ==========");
+        
+        // Paso 6: Se reinician los objetos 'query' y 'from' para una nueva consulta.
         query = criteria.createQuery(Cliente.class);
         from = query.from(Cliente.class);
-        // Paso 6: El método `criteria.between()` filtra los IDs que se encuentran en el rango [2, 6], ambos inclusive.
+        
+        // Paso 7: El método `criteria.between()` filtra los IDs que se encuentran en el rango [2, 6], ambos inclusive.
         query.select(from).where(criteria.between(from.get("id"), 2L, 6L));
+        
+        // Paso 8: Se ejecuta la consulta y se obtiene la lista de resultados.
         clientes = em.createQuery(query).getResultList();
+        
+        // Paso 9: Se imprimen los clientes que cayeron dentro del rango.
         clientes.forEach(System.out::println);
 
         em.close();
