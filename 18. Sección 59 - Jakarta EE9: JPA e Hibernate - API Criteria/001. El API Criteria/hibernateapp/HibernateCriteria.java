@@ -69,3 +69,11 @@ public class HibernateCriteria {
         em.close();
     }
 }
+
+Hibernate: select cliente0_.id as id1_0_, cliente0_.apellido as apellido2_0_, cliente0_.forma_pago as forma_pa3_0_, cliente0_.nombre as nombre4_0_ from clientes cliente0_
+id=1, nombre='Andres', apellido='Guzman', formaPago='debito
+id=2, nombre='John', apellido='Doe', formaPago='credito
+id=4, nombre='Pepa', apellido='Doe', formaPago='credito
+id=6, nombre='Luna', apellido='Garcia', formaPago='debito
+id=8, nombre='John', apellido='Roe', formaPago='paypal
+id=9, nombre='Lou', apellido='Loe', formaPago='paypal
