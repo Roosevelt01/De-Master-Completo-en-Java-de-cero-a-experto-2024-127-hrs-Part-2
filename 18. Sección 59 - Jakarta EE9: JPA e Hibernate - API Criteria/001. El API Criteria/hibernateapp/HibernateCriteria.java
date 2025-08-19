@@ -26,14 +26,14 @@ public class HibernateCriteria {
         CriteriaQuery<Cliente> query = criteria.createQuery(Cliente.class);
 
         // Paso 4: Define la entidad raíz de la consulta (equivalente a "FROM Cliente").    
-        Root<Cliente> from = query.from(Cliente.class);//Paso 5
+        Root<Cliente> from = query.from(Cliente.class);
 
         // Paso 5: Especifica qué se va a seleccionar (equivalente a "SELECT c FROM...").
         // En este caso, seleccionamos la entidad raíz completa.
-        query.select(from);//Paso 6
+        query.select(from);
 
         // Paso 6: Ejecuta la consulta Criteria que hemos construido y obtiene una lista de resultados.
-        List<Cliente> clientes = em.createQuery(query).getResultList();//Paso 7
+        List<Cliente> clientes = em.createQuery(query).getResultList();
 
         // Paso 7: Imprimir la lista de clientes.
         clientes.forEach(System.out::println);
@@ -66,7 +66,6 @@ public class HibernateCriteria {
         clientes = em.createQuery(query).setParameter("nombre","John").getResultList();
         clientes.forEach(System.out::println);
 
-
-        em.close();//Paso 10
+        em.close();
     }
 }
