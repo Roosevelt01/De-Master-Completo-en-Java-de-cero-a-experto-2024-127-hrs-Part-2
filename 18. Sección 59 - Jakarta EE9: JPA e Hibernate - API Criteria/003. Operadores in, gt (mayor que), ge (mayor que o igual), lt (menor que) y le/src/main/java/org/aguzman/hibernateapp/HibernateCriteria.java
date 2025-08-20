@@ -70,7 +70,7 @@ public class HibernateCriteria {
         clientes.forEach(System.out::println);
 
         // --- Ejemplo 3: Operador `GT` (Mayor Que) con `length` ---
-        System.out.println("\n========== Filtrar gt ==========");
+        System.out.println("\n========== Filtrar usando gt (>) con una función anidada ==========");
         // Paso 1: Se reinician los objetos de consulta.
         query = criteria.createQuery(Cliente.class);
         from = query.from(Cliente.class);
@@ -87,19 +87,27 @@ public class HibernateCriteria {
         clientes = em.createQuery(query).getResultList();        
         clientes.forEach(System.out::println);
 
-        //Ejemplo 2
-        System.out.println("\n========== Filtrar con le ==========");
+        // --- Ejemplo 4: Operador `LE` (Menor o Igual Que) ---
+        System.out.println("\n========== Filtrar usando le (<=) ==========");
+        // Paso 1: Se reinician los objetos de consulta.        
         query = criteria.createQuery(Cliente.class);
         from = query.from(Cliente.class);
-        query.select(from).where(criteria.le(from.get("id"), 2L ));
-        clientes = em.createQuery(query).getResultList();
+        
+        // Paso 2: criteria.le() crea el predicado "menor o igual que".
+        query.select(from).where(criteria.le(from.get("id"), 2L ));        
+        
+        clientes = em.createQuery(query).getResultList();        
         clientes.forEach(System.out::println);
 
-        //Ejemplo 2
+        // --- Ejemplo 5: Operador `LT` (Menor Que) ---
         System.out.println("\n========== Filtrar con lt ==========");
+        // Paso 1: Se reinician los objetos de consulta.
         query = criteria.createQuery(Cliente.class);
         from = query.from(Cliente.class);
+
+        //Paso 2: criteria.lt() crea el predicado "menor que".
         query.select(from).where(criteria.lt(from.get("id"), 2L ));
+        
         clientes = em.createQuery(query).getResultList();
         clientes.forEach(System.out::println);
 
