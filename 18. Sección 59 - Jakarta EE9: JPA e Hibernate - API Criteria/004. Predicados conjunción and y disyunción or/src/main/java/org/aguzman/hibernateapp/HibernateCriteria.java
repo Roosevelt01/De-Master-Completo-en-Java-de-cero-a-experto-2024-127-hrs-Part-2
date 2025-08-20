@@ -23,7 +23,8 @@ public class HibernateCriteria {
         // Paso 3: Se crea el segundo predicado para la condición formaPago = 'debito'.
         Predicate porFormaPago = criteria.equal(from.get("formaPago"), "debito");
         
-        // Paso 4: Se construye la consulta. La cláusula WHERE combina los dos predicados usando criteria.and().
+        // Paso 4: Se construye la consulta. La cláusula WHERE combina los dos
+        // predicados usando criteria.and().
         query.select(from).where(criteria.and(porNombre, porFormaPago));
         
         // Paso 5: Se ejecuta la consulta y se imprimen los resultados.
