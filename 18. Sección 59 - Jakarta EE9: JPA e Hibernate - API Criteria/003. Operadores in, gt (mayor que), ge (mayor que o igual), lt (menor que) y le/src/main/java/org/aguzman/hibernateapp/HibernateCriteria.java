@@ -69,12 +69,22 @@ public class HibernateCriteria {
         // Paso 8: Se imprimen los resultados.
         clientes.forEach(System.out::println);
 
-        //Ejemplo 3
+        // --- Ejemplo 3: Operador `GT` (Mayor Que) con `length` ---
         System.out.println("\n========== Filtrar gt ==========");
+        // Paso 1: Se reinician los objetos de consulta.
         query = criteria.createQuery(Cliente.class);
         from = query.from(Cliente.class);
-        query.select(from).where(criteria.gt(criteria.length(from.get("nombre")), 5L ));
-        clientes = em.createQuery(query).getResultList();
+
+        // Paso 2: Se construye la consulta con la cláusula WHERE.
+        // criteria.gt() crea el predicado "mayor que".
+        query.select(from).where(
+            // El primer argumento es una expresión: el largo del atributo 'nombre'.
+            criteria.gt(criteria.length(from.get("nombre")),
+            // El segundo argumento es el valor a comparar: 5.
+            5L ));
+
+        // Paso 3: Se ejecuta la consulta y se imprimen los resultados.
+        clientes = em.createQuery(query).getResultList();        
         clientes.forEach(System.out::println);
 
         //Ejemplo 2
