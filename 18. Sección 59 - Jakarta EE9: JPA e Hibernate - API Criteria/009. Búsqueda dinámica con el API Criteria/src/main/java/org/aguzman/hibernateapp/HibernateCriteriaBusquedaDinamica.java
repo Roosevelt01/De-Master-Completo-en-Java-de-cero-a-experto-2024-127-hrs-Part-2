@@ -94,8 +94,5 @@ public class HibernateCriteriaBusquedaDinamica {
         // Paso 1: Se cierra el EntityManager para liberar la conexión y otros recursos.
         em.close();
 
-
-
-
     }
 }
