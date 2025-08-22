@@ -12,74 +12,57 @@ public class HibernateCriteria {
     public static void main(String[] args) {
         //Resto del código
 
-        // --- Ejemplo 1: MultiSelect para obtener campos específicos ---
-        System.out.println("\n========== Consulta de campos personalizados del entity cliente ==========");
-        // Paso 1: Se crea una CriteriaQuery cuyo tipo de resultado es un arreglo de objetos (Object[]).
-        CriteriaQuery<Object[]> queryObject = criteria.createQuery(Object[].class);
 
-        // Paso 2: Se establece el FROM en la entidad Cliente.
-        from = queryObject.from(Cliente.class);
+        //Ejemplo 1
+        System.out.println("\n========== Consulta registros de la consulta con count ==========");
+        CriteriaQuery<Long> queryLong = criteria.createQuery(Long.class);
+        from = queryLong.from(Cliente.class);
+        queryLong.select(criteria.count(from.get("id")));
+        Long count = em.createQuery(queryLong).getSingleResult();
+        System.out.println(count);
 
-        // Paso 3: Se usa multiselect() para especificar los atributos a proyectar: id, nombre y apellido.        
-        queryObject.multiselect(from.get("id"), from.get("nombre"), from.get("apellido"));
-        
-        // Paso 4: Se ejecuta la consulta, que devolverá una lista de arreglos de objetos.
-        List<Object[]> registros = em.createQuery(queryObject).getResultList();
+        //Ejemplo 2
+        System.out.println("\n========== Sumar datos con algún campo de la table ==========");
+        queryLong = criteria.createQuery(Long.class);
+        from = queryLong.from(Cliente.class);
+        queryLong.select(criteria.sum(from.get("id")));
+        Long sum = em.createQuery(queryLong).getSingleResult();
+        System.out.println(sum);
 
-        // Paso 5: Se itera sobre cada registro (cada arreglo de objetos) en la lista.
-        registros.forEach(reg -> {
-            // Se extrae el 'id' del índice 0 y se castea a Long.
-            Long id = (Long) reg[0];
+        //Ejemplo 3
+        System.out.println("\n========== Consulta con el máximo id ==========");
+        queryLong = criteria.createQuery(Long.class);
+        from = queryLong.from(Cliente.class);
+        queryLong.select(criteria.max(from.get("id")));
+        Long max = em.createQuery(queryLong).getSingleResult();
+        System.out.println(max);
 
-            // Se extrae el 'nombre' del índice 1 y se castea a String.            
-            String nombre = (String ) reg[1];
+        //Ejemplo 4
+        System.out.println("\n========== Consulta con el mínimo id ==========");
+        queryLong = criteria.createQuery(Long.class);
+        from = queryLong.from(Cliente.class);
+        queryLong.select(criteria.min(from.get("id")));
+        Long min = em.createQuery(queryLong).getSingleResult();
+        System.out.println(min);
 
-            // Se extrae el 'apellido' del índice 2 y se castea a String.
-            String  apellido = (String ) reg[2];
-
-            // Se imprimen los datos extraídos.
-            System.out.println("id = "+ id +" | nombre: " +nombre+ " | apellido: "+apellido);
-        });
-
-        // --- Ejemplo 2: MultiSelect combinado con la cláusula WHERE ---
-        
-        System.out.println("\n========== Consulta de campos personalizados del entity cliente con where ==========");
-        // Paso 1: Se reinician los objetos de consulta.
+        //Ejemplo 5
+        System.out.println("\n========== Ejemplo resultados de funciones de agregación en una sola constante ==========");
         queryObject = criteria.createQuery(Object[].class);
         from = queryObject.from(Cliente.class);
-        
-        // Paso 2: Se construye la consulta, encadenando el WHERE después del multiselect.
-        queryObject.multiselect(from.get("id"), from.get("nombre"), from.get("apellido"))
-                .where(criteria.like(from.get("nombre"), "%lu%"));
-        
-        // Paso 3: Se ejecuta la consulta y se procesan los resultados como en el ejemplo anterior.
-        registros = em.createQuery(queryObject).getResultList();
-        registros.forEach(reg -> {
-            Long id = (Long) reg[0];
-            String nombre = (String ) reg[1];
-            String  apellido = (String ) reg[2];
-            System.out.println("id = "+ id +" | nombre: " +nombre+ " | apellido: "+apellido);
-        });
+        queryObject.multiselect(criteria.count(from.get("id"))
+                , criteria.sum(from.get("id"))
+                , criteria.max(from.get("id"))
+                , criteria.min(from.get("id")));
 
-        // --- Ejemplo 3: MultiSelect y getSingleResult para un solo registro ---
-        System.out.println("\n========== Consulta de campos personalizados del entity cliente con where id ==========");
-        // Paso 1: Se reinician los objetos de consulta.
-        queryObject = criteria.createQuery(Object[].class);
-        from = queryObject.from(Cliente.class);
-        
-        // Paso 2: Se construye la consulta para buscar por un ID específico.
-        queryObject.multiselect(from.get("id"), from.get("nombre"), from.get("apellido"))
-                .where(criteria.equal(from.get("id"), 2L));
-        
-        // Paso 3: Se ejecuta la consulta, pero esta vez se espera un único arreglo de objetos.
-        Object[] registro = em.createQuery(queryObject).getSingleResult();
+        registro = em.createQuery(queryObject).getSingleResult();
 
-        // Paso 4: El proceso de extracción de datos es el mismo, pero sobre un solo arreglo.
-        Long id = (Long) registro[0];
-        String nombre = (String ) registro[1];
-        String  apellido = (String ) registro[2];
-        System.out.println("id = "+ id +" | nombre: " +nombre+ " | apellido: "+apellido);
+        count = (Long) registro[0];
+        sum = (Long) registro[1];
+        max = (Long) registro[2];
+        min = (Long) registro[3];
 
+        System.out.println("count = " + count + " | sum = " +sum+ " | max = " +max+ " | min = " + min);
+        
         em.close();
     }
 }
