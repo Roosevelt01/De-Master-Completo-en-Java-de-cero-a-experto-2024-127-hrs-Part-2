@@ -12,8 +12,10 @@
 
 # Editar un Cliente Existente
 
+![idea64_RMCx6G8Wcd](https://github.com/user-attachments/assets/73635565-923e-4b81-ab9e-585761fc7331)
+
 <h4>Resultado en Consola:</h4>
 
-![idea64_RMCx6G8Wcd](https://github.com/user-attachments/assets/73635565-923e-4b81-ab9e-585761fc7331)
+<img width="1601" height="140" alt="NQRUxBswA1" src="https://github.com/user-attachments/assets/a13c4aa8-661f-43af-9e9d-5917ce9ac93e" />
 
 <img width="834" height="271" alt="GrWAhTvzgb" src="https://github.com/user-attachments/assets/23cda26c-904d-495d-b0b5-053f3028fa1b" />
