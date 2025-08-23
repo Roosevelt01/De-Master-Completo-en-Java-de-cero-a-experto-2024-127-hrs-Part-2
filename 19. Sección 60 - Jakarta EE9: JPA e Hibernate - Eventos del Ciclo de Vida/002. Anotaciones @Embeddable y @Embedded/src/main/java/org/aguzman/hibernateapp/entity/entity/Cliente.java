@@ -71,6 +71,8 @@ public class Cliente {
         this.formaPago = formaPago;
     }
 
+    // El método toString() se actualiza para acceder a las fechas de auditoría
+    // a través del objeto 'audit'.
     @Override
     public String toString() {
         return  "id=" + id +
