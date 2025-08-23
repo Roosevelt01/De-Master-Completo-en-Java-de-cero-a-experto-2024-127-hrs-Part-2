@@ -1,25 +1,19 @@
-# Creación Base de Datos y Entidad
+# Crear un Nuevo Cliente
 
-![MySQLWorkbench_MTWUGJeb7F](https://github.com/user-attachments/assets/324b2909-afcb-4904-9c01-bf34e303f2fb)
+![idea64_PgomAOCmmy](https://github.com/user-attachments/assets/c6fb5ef2-9ac2-4a84-a15c-c44c2d1b0ad5)
 
-<hr>
+<h4>Resultado en Consola:</h4>
 
-# Al Crear un Nuevo Cliente
+<img width="1385" height="163" alt="image" src="https://github.com/user-attachments/assets/0edb3dae-3cc6-4e0c-ad35-658748609334" />
 
-![idea64_NVrteANW9S](https://github.com/user-attachments/assets/ebdf3d29-4a12-4d45-a6a5-f518b5522238)
-
-<h4>Resultado</h4>
-<img width="735" height="296" alt="4n0iJdPHCS" src="https://github.com/user-attachments/assets/e3041aaa-705f-4ddd-aced-4f8b09efb953" />
+<img width="878" height="306" alt="image" src="https://github.com/user-attachments/assets/01458141-7cfb-43e3-be9c-0588eaac1e1a" />
 
 <hr>
 
 # Editar un Cliente Existente
 
-<h4>Resultado en Consola</h4>
+<h4>Resultado en Consola:</h4>
 
-<img width="1582" height="293" alt="DQnzM47GCn" src="https://github.com/user-attachments/assets/69d99666-c088-401f-b2d3-b189fc363c7a" />
+![idea64_RMCx6G8Wcd](https://github.com/user-attachments/assets/73635565-923e-4b81-ab9e-585761fc7331)
 
-<h4>Resultado</h4>
-
-<img width="853" height="282" alt="mVpDleB2x4" src="https://github.com/user-attachments/assets/21e0208e-bbd0-4e91-8251-a33caedc58bc" />
-
+<img width="834" height="271" alt="GrWAhTvzgb" src="https://github.com/user-attachments/assets/23cda26c-904d-495d-b0b5-053f3028fa1b" />
