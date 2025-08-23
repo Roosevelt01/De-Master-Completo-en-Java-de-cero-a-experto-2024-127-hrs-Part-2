@@ -16,7 +16,12 @@ public class Cliente {
     @Column(name = "forma_pago")
     private String formaPago;
 
-    @Embedded
+    // La anotación @Embedded le dice a JPA que los campos de la clase Auditoria
+    // deben ser tratados como si estuvieran declarados directamente aquí,
+    // mapeándolos a las columnas de la tabla 'clientes'.
+    @Embedded    
+    // Se declara e inicializa el objeto embebido. La inicialización es crucial
+    // para evitar NullPointerExceptions al momento de la persistencia.
     private Auditoria audit = new Auditoria();
 
     public Cliente() {
