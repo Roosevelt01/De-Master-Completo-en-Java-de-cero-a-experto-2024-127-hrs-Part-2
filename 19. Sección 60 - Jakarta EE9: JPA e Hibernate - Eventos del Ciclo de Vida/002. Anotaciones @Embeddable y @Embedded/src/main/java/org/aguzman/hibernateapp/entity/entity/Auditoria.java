@@ -6,6 +6,9 @@ import javax.persistence.PrePersist;
 import javax.persistence.PreUpdate;
 import java.time.LocalDateTime;
 
+//Paso 1: La anotación @Embeddable marca esta clase como un componente que puede ser
+// incrustado en otras entidades. No es una entidad por sí misma (no tiene @Id).
+@Embeddable
 @Embeddable
 public class Auditoria {
     @Column(name = "creado_en")
