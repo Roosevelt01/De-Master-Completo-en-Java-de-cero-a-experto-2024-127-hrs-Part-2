@@ -9,7 +9,6 @@ import java.time.LocalDateTime;
 //Paso 1: La anotación @Embeddable marca esta clase como un componente que puede ser
 // incrustado en otras entidades. No es una entidad por sí misma (no tiene @Id).
 @Embeddable
-@Embeddable
 public class Auditoria {
     @Column(name = "creado_en")
     private LocalDateTime creadoEn;
@@ -29,19 +28,11 @@ public class Auditoria {
         this.editadoEn = LocalDateTime.now();
     }
 
-    public LocalDateTime getCreadoEn() {
-        return creadoEn;
-    }
+    public LocalDateTime getCreadoEn() {return creadoEn;}
 
-    public void setCreadoEn(LocalDateTime creadoEn) {
-        this.creadoEn = creadoEn;
-    }
+    public void setCreadoEn(LocalDateTime creadoEn) {this.creadoEn = creadoEn;}
 
-    public LocalDateTime getEditadoEn() {
-        return editadoEn;
-    }
+    public LocalDateTime getEditadoEn() {return editadoEn;}
 
-    public void setEditadoEn(LocalDateTime editadoEn) {
-        this.editadoEn = editadoEn;
-    }
+    public void setEditadoEn(LocalDateTime editadoEn) {this.editadoEn = editadoEn;}
 }
