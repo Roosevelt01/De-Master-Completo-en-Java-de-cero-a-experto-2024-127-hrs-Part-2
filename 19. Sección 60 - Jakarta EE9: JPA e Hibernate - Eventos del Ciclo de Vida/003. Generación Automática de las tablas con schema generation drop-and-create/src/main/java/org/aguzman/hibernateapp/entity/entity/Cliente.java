@@ -70,9 +70,12 @@ public class Cliente {
     //Codigo modificado
     @Override
     public String toString() {
+        // Paso 1 Usa un operador ternario para obtener la fecha solo si el objeto audit no es nulo.
+        // Si es nulo, la variable local 'creado' será nula.
         LocalDateTime creado = this.audit != null? audit.getCreadoEn():null;
         LocalDateTime editado = this.audit != null? audit.getCreadoEn():null;
 
+        // Paso 2:  El toString ahora usa las variables locales seguras.
         return  "id=" + id +
                 ", nombre='" + nombre + '\'' +
                 ", apellido='" + apellido + '\'' +
