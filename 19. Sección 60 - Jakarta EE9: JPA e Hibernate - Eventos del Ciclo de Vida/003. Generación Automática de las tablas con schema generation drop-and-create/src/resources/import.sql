@@ -1,1 +1,10 @@
-INSERT INTO clientes (id, nombre, apellido, forma_pago, creado_en, editado_en) VALUES (1,'Andres','Guzman','debito',NULL,NULL),(2,'John','Doe','credito',NULL,NULL),(4,'Pepa','Doe','credito',NULL,NULL),(6,'Luna','Garcia','debito',NULL,NULL),(8,'John','Roe','paypal',NULL,NULL),(9,'Lou','Loe','paypal',NULL,NULL),(10,'Lalo','Mena','webpay','2025-08-22 18:06:08','2025-08-22 18:16:37'),(11,'Pia','Perez','paypal plus','2025-08-22 20:07:02','2025-08-22 20:14:24');
+-- Es una buena práctica especificar las columnas explícitamente para evitar errores si el orden cambia.
+INSERT INTO clientes (id, nombre, apellido, forma_pago, creado_en, editado_en) VALUES 
+(1,'Andres','Guzman','debito',NULL,NULL),
+(2,'John','Doe','credito',NULL,NULL),
+(4,'Pepa','Doe','credito',NULL,NULL),
+(6,'Luna','Garcia','debito',NULL,NULL),
+(8,'John','Roe','paypal',NULL,NULL),
+(9,'Lou','Loe','paypal',NULL,NULL),
+(10,'Lalo','Mena','webpay','2025-08-22 18:06:08','2025-08-22 18:16:37'),
+(11,'Pia','Perez','paypal plus','2025-08-22 20:07:02','2025-08-22 20:14:24');
