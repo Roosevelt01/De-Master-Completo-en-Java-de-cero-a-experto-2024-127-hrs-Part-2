@@ -13,6 +13,8 @@ public class Factura {
     private  Long total;
 
     @ManyToOne
+    // @JoinColumn personaliza la columna de la llave foránea en la tabla 'facturas'.
+    // 'name' especifica que la columna se llamará 'id_cliente'.
     @JoinColumn(name="id_cliente")
     private Cliente cliente;
 
@@ -56,7 +58,7 @@ public class Factura {
         this.cliente = cliente;
     }
 
-    //Creación del toString
+    // Se añade un método toString() para visualizar fácilmente el objeto y su cliente asociado.
     @Override
     public String toString() {
         return  "id=" + id +
