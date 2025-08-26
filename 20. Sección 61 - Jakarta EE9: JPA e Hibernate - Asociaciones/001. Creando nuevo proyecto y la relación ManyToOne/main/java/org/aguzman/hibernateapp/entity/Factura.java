@@ -2,56 +2,53 @@ package org.aguzman.hibernateapp.entity;
 
 import javax.persistence.*;
 
+// Marca la clase como una entidad JPA.
 @Entity
-@Table(name="facturar")
+// Mapea esta entidad a una tabla llamada 'facturas' en la base de datos.
+@Table(name="facturas")
 public class Factura {
+
+    // Define la llave primaria de la tabla.
     @Id
+    // Configura la estrategia de generación de la llave primaria (autoincremental).
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private  Long id;
+    private Long id;
 
-    private  String descripción;
-    private  Long total;
+    private String descripcion;
+    private Long total;
 
+    // --- Definición de la Relación ---
+    // La anotación @ManyToOne define una relación de "muchos a uno".
+    // 'Many' (Muchos) se refiere a la clase actual (Factura).
+    // 'One' (Uno) se refiere a la clase del atributo (Cliente).
     @ManyToOne
+    // Este atributo representa la relación con la entidad Cliente.
+    // JPA lo traducirá a una columna de llave foránea en la tabla 'facturas'.
     private Cliente cliente;
 
-    public Factura() {
-    }
+    // Constructor vacío, requerido por JPA.
+    public Factura() {}
 
-    public Factura(String descripción, Long total) {
-        this.descripción = descripción;
+    // Constructor útil para crear nuevas facturas con datos iniciales.
+    public Factura(String descripcion, Long total) {
+        this.descripcion = descripcion;
         this.total = total;
     }
 
-    public Long getId() {
-        return id;
-    }
-
-    public void setId(Long id) {
-        this.id = id;
-    }
-
-    public String getDescripción() {
-        return descripción;
-    }
-
-    public void setDescripción(String descripción) {
-        this.descripción = descripción;
-    }
-
-    public Long getTotal() {
-        return total;
-    }
-
-    public void setTotal(Long total) {
-        this.total = total;
-    }
-
-    public Cliente getCliente() {
-        return cliente;
-    }
-
-    public void setCliente(Cliente cliente) {
-        this.cliente = cliente;
-    }
+    // --- Getters y Setters para todos los atributos ---
+    public Long getId() {return id;}
+    
+    public void setId(Long id) {this.id = id;}
+    
+    public String getDescripcion() {return descripcion;}
+    
+    public void setDescripcion(String descripcion) {this.descripcion = descripcion;}
+    
+    public Long getTotal() {return total;}
+    
+    public void setTotal(Long total) {this.total = total;}
+    
+    public Cliente getCliente() {return cliente;}
+    
+    public void setCliente(Cliente cliente) {this.cliente = cliente;}
 }
