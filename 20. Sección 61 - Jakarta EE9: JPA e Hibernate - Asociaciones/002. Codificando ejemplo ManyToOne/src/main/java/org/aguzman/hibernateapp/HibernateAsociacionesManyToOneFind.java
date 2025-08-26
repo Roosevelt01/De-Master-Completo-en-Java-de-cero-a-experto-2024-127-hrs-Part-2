@@ -11,13 +11,20 @@ public class HibernateAsociacionesManyToOneFind {
         EntityManager em = JpaUtil.getEntityManager();
 
         try{
-            em.getTransaction().begin();
+           // Paso 1. Obtener un cliente existente por su ID
             Cliente cliente = em.find(Cliente.class, 1L);
 
+            // Paso 2. Crear una nueva factura y asociarla al cliente encontrado
             Factura factura = new Factura("compras de oficina", 1000L);
             factura.setCliente(cliente);
             em.persist(factura);
-            System.out.println("\n"+factura.getCliente());
+
+            em.getTransaction().commit();
+            
+            // Paso 3. Imprimir el resultado
+            System.out.println("\n" + factura.getCliente());
+
+            // Paso 4: Confirma la transacción.
             em.getTransaction().commit();
         }catch(Exception e){
             em.getTransaction().rollback();
