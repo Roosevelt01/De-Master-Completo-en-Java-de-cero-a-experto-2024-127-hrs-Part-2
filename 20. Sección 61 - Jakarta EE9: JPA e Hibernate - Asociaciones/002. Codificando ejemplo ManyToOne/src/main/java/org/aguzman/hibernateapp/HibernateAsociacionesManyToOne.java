@@ -38,26 +38,3 @@ public class HibernateAsociacionesManyToOne {
         }
     }
 }
-
-// ... (logs de inicio de Hibernate) ...
-// ADVERTENCIA INOFENSIVA: Hibernate intenta borrar una llave foránea que no existe la primera vez.
-WARN: GenerationTarget encountered exception ... Caused by: java.sql.SQLSyntaxErrorException: Table '...' doesn't exist
-
-// --- CREACIÓN DEL ESQUEMA ---
-Hibernate: drop table if exists clientes
-Hibernate: drop table if exists facturar
-Hibernate: create table clientes (...)
-// Se crea la tabla facturar con la columna personalizada 'id_cliente'.
-Hibernate: create table facturar (id bigint ..., id_cliente bigint, ...)
-// Se añade la restricción de llave foránea.
-Hibernate: alter table facturar add constraint ... foreign key (id_cliente) references clientes (id)
-
-// --- EJECUCIÓN DEL CÓDIGO ---
-// Callback del @PrePersist del nuevo cliente.
-Inicializar algo justo antesl del persist
-// Se ejecuta el INSERT para el nuevo cliente.
-Hibernate: insert into clientes (apellido, creado_en, editado_en, forma_pago, nombre) values (?, ?, ?, ?, ?)
-// Se ejecuta el INSERT para la nueva factura, incluyendo la llave foránea (id_cliente).
-Hibernate: insert into facturar (id_cliente, descripción, total) values (?, ?, ?)
-// Salida del System.out.println(factura).
-id=1, descripcion='compras de supermercado', total=2000, cliente=id=1, nombre='Cata', ...
