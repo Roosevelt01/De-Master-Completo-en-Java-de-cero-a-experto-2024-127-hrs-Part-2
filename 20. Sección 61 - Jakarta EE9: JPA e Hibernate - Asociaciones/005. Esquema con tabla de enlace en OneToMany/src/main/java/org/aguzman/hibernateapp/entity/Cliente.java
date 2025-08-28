@@ -26,9 +26,23 @@ public class Cliente {
 
     @OneToMany(cascade =  CascadeType.ALL, orphanRemoval = true )
     //@JoinColumn(name="id_cliente")
-    @JoinTable(name = "tbl_clientes_direcciones", joinColumns = @JoinColumn(name="id_cliente")
-    , inverseJoinColumns = @JoinColumn(name = "id_direccion")
-    , uniqueConstraints = @UniqueConstraint(columnNames = {"id_direccion"}))
+    // La anotación @JoinTable especifica que la relación se gestionará a través de una tabla de unión.
+    @JoinTable(
+        // name: Define el nombre personalizado de la tabla de unión que se creará en la base de datos.
+        name = "tbl_clientes_direcciones",
+    
+        // joinColumns: Define la columna de la llave foránea en la tabla de unión
+        // que hace referencia a la entidad propietaria de la relación (la clase actual: Cliente).
+        joinColumns = @JoinColumn(name="id_cliente"),
+        
+        // inverseJoinColumns: Define la columna de la llave foránea en la tabla de unión
+        // que hace referencia a la entidad del otro lado de la relación (la clase en la colección: Direccion).
+        inverseJoinColumns = @JoinColumn(name = "id_direccion"),
+
+        // uniqueConstraints: Aplica restricciones de unicidad a la tabla de unión. Es un punto crucial
+        // para reforzar la lógica de "OneToMany": cada 'Direccion' solo puede pertenecer a un 'Cliente',
+        // por lo tanto, la columna 'id_direccion' debe ser única en esta tabla.
+        uniqueConstraints = @UniqueConstraint(columnNames = {"id_direccion"}))
     private List<Direccion> direcciones;
 
     public Cliente() {
