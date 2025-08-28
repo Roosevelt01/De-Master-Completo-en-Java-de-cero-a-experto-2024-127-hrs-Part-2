@@ -2,7 +2,7 @@
 
 El log de la consola es fundamental para entender el impacto de @JoinTable.
 
-<h1>1. Generación del Esquema (DDL) con Tabla de Unión</h1>h1>
+<h1>1. Generación del Esquema (DDL) con Tabla de Unión</h1>
 
 Hibernate: drop table if exists clientes
 Hibernate: drop table if exists direcciones
@@ -20,6 +20,7 @@ Hibernate: alter table tbl_clientes_direcciones add constraint FK... foreign key
 - Hibernate crea una tercera tabla, tbl_clientes_direcciones, con los nombres personalizados que especificamos.
 - Se añade una restricción UNIQUE a la columna id_direccion, garantizando a nivel de base de datos que una dirección no pueda ser asignada a más de un cliente.
 - Se establecen las dos llaves foráneas que conectan la tabla de unión con clientes y direcciones.
+
 
 
 
