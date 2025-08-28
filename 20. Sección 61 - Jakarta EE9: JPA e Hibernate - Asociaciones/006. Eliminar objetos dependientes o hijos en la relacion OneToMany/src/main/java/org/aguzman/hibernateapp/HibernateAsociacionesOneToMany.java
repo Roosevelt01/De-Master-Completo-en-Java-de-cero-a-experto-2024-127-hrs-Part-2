@@ -25,17 +25,19 @@ public class HibernateAsociacionesOneToMany {
 
             em.getTransaction().commit();
 
-            //Modificación
+            // --- Primera Transacción: Eliminación de la dirección 'd1' ---
             System.out.println("\n"+cliente);
-
             em.getTransaction().begin();
             cliente = em.find(Cliente.class, cliente.getId());
             cliente.getDirecciones().remove(d1);
             em.getTransaction().commit();
 
-            System.out.println("\n"+cliente);
+            System.out.println("\n"+cliente);// Imprime el cliente con la dirección eliminada
 
+            // --- Segunda Transacción: Intento de eliminar 'd1' desde el estado 'detached' ---
             em.getTransaction().begin();
+            // d1 es un objeto 'detached', ya que proviene de una transacción anterior.
+            // Intentar eliminarlo directamente podría no funcionar como se espera.
             d1 = em.find(Direccion.class, 1L);
             cliente.getDirecciones().remove(d1);
             em.getTransaction().commit();
