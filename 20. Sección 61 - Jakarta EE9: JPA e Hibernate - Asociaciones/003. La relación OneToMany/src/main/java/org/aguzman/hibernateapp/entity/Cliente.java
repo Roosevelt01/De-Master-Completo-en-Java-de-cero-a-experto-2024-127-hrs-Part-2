@@ -30,22 +30,20 @@ public class Cliente {
 
     // --- MODIFICACIÓN EN CONSTRUCTORES ---
     public Cliente() {
-        // PAso 2: Se inicializa la lista en el constructor vacío para evitar NullPointerExceptions
+        // Paso 2: Se inicializa la lista en el constructor vacío para evitar NullPointerExceptions
         // al intentar añadir direcciones a un cliente nuevo.
         direcciones = new ArrayList<>();
     }
 
     public Cliente(String nombre, String apellido) {
-        // Paso 3: Se llama al constructor vacío (this()) para asegurar que la lista 'direcciones'
-        // sea siempre inicializada, manteniendo la consistencia.
+        // Paso 3: Llama a otro constructor de la misma clase, en este caso, al constructor vacío Cliente().
         this();
         this.nombre = nombre;
         this.apellido = apellido;
     }
 
     public Cliente(Long id, String nombre, String apellido, String formaPago) {
-        // Se llama al constructor vacío (this()) para asegurar que la lista 'direcciones'
-        // sea siempre inicializada, manteniendo la consistencia.
+        // Llama a otro constructor de la misma clase, en este caso, al constructor vacío Cliente().
         this();
         this.id = id;
         this.nombre = nombre;
@@ -86,7 +84,7 @@ public class Cliente {
     }
 
     // --- GETTERS Y SETTERS AÑADIDOS ---
-    // Paso 3: Getter para acceder a la lista de direcciones del cliente.
+    // Paso 4: Getter para acceder a la lista de direcciones del cliente.
     public List<Direccion> getDirecciones() {
         return direcciones;
     }
@@ -107,7 +105,7 @@ public class Cliente {
                 " | formaPago='" + formaPago + '\'' +
                 " | creadoEn='" + creado + '\'' +
                 " | editadoEn='" + editado + '\'' +
-                // Paso 4: Se añade la lista de direcciones a la representación en String del objeto Cliente.
+                // Paso 5: Se añade la lista de direcciones a la representación en String del objeto Cliente.
                 " | direcciones='" + direcciones + '\'';
     }
 }
