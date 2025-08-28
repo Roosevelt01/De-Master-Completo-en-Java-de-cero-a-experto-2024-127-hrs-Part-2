@@ -3,7 +3,7 @@ package org.aguzman.hibernateapp.entity;
 import javax.persistence.*;
 
 @Entity
-@Table(name = "direcciones")
+@Table(name = "direcciones")// Mapea a la tabla 'direcciones'
 public class Direccion {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
