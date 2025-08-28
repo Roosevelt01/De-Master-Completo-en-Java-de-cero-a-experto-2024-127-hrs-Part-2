@@ -1,7 +1,6 @@
 package org.aguzman.hibernateapp.entity;
 
 import javax.persistence.*;
-import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
@@ -22,28 +21,21 @@ public class Cliente {
     @Embedded
     private Auditoria audit = new Auditoria();
 
-    // Paso 1: La anotación @OneToMany establece una relación donde una instancia de Cliente puede
-    // estar asociada con muchas instancias de Direccion.
-    @OneToMany(cascade = CascadeType.ALL, orphanRemoval = true)
-    // Se declara un atributo de tipo List para contener la colección de objetos Direccion.
+    @OneToMany(cascade =  CascadeType.ALL, orphanRemoval = true )
+    @JoinColumn(name="id_cliente")//Paso 1: Después de eso se volver a ejecutar nuevamente el archivo HibernanteAsociacionesOneToMany.java
     private List<Direccion> direcciones;
 
-    // --- MODIFICACIÓN EN CONSTRUCTORES ---
     public Cliente() {
-        // Paso 2: Se inicializa la lista en el constructor vacío para evitar NullPointerExceptions
-        // al intentar añadir direcciones a un cliente nuevo.
         direcciones = new ArrayList<>();
     }
 
     public Cliente(String nombre, String apellido) {
-        // Paso 3: Llama a otro constructor de la misma clase, en este caso, al constructor vacío Cliente().
         this();
         this.nombre = nombre;
         this.apellido = apellido;
     }
 
     public Cliente(Long id, String nombre, String apellido, String formaPago) {
-        // Llama a otro constructor de la misma clase, en este caso, al constructor vacío Cliente().
         this();
         this.id = id;
         this.nombre = nombre;
@@ -83,8 +75,6 @@ public class Cliente {
         this.formaPago = formaPago;
     }
 
-    // --- GETTERS Y SETTERS AÑADIDOS ---
-    // Paso 4: Getter para acceder a la lista de direcciones del cliente.
     public List<Direccion> getDirecciones() {
         return direcciones;
     }
@@ -93,7 +83,6 @@ public class Cliente {
         this.direcciones = direcciones;
     }
 
-    // --- MODIFICACIÓN EN toString() ---
     @Override
     public String toString() {
         LocalDateTime creado = this.audit != null? audit.getCreadoEn():null;
@@ -105,7 +94,6 @@ public class Cliente {
                 " | formaPago='" + formaPago + '\'' +
                 " | creadoEn='" + creado + '\'' +
                 " | editadoEn='" + editado + '\'' +
-                // Paso 5: Se añade la lista de direcciones a la representación en String del objeto Cliente.
                 " | direcciones='" + direcciones + '\'';
     }
 }
