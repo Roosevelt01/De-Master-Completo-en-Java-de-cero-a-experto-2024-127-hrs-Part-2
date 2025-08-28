@@ -21,6 +21,25 @@ Hibernate: alter table tbl_clientes_direcciones add constraint FK... foreign key
 - Se añade una restricción UNIQUE a la columna id_direccion, garantizando a nivel de base de datos que una dirección no pueda ser asignada a más de un cliente.
 - Se establecen las dos llaves foráneas que conectan la tabla de unión con clientes y direcciones.
 
+<h1>2. Carga de Datos y Ejecución de la Lógica (DML)</h1>
+
+// ... (Logs de carga del import.sql) ...
+Inicializar algo justo antesl del persist
+Hibernate: insert into clientes (apellido, creado_en, editado_en, forma_pago, nombre) values (?, ?, ?, ?, ?)
+Hibernate: insert into direcciones (calle, numero) values (?, ?)
+Hibernate: insert into direcciones (calle, numero) values (?, ?)
+Hibernate: insert into tbl_clientes_direcciones (id_cliente, id_direccion) values (?, ?)
+Hibernate: insert into tbl_clientes_direcciones (id_cliente, id_direccion) values (?, ?)
+
+<h3>Análisis de la Persistencia:</h3>
+
+- Cuando se llama a em.persist(cliente), CascadeType.ALL provoca la siguiente secuencia de inserciones:
+
+    1. Un INSERT en la tabla clientes para el nuevo cliente "Cata Edu".
+
+    2. Dos INSERT en la tabla direcciones para las dos nuevas direcciones.
+
+    3. Dos INSERT en la tabla de unión tbl_clientes_direcciones para registrar la asociación entre el nuevo cliente y sus dos nuevas direcciones. A diferencia del mapeo con @JoinColumn, aquí no se necesitan sentencias UPDATE.
 
 
 
