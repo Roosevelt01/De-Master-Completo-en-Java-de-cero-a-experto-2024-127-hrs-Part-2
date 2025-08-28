@@ -41,5 +41,12 @@ Hibernate: insert into tbl_clientes_direcciones (id_cliente, id_direccion) value
 
     3. Dos INSERT en la tabla de unión tbl_clientes_direcciones para registrar la asociación entre el nuevo cliente y sus dos nuevas direcciones. A diferencia del mapeo con @JoinColumn, aquí no se necesitan sentencias UPDATE.
 
+<h1>3. Resultado en consola</h1>
+
+-->  id=12 | nombre='Cata' | apellido='Edu' | ... | direcciones='[ | id=1 | calle='el vergel' | numero=123,  | id=2 | calle='vasco de gama' | numero=456]'
+
+- Análisis: La salida del System.out.println(cliente) es la misma que antes. Esto demuestra que, aunque hemos cambiado drásticamente cómo se almacena la relación en la base de datos, la lógica de nuestra aplicación en Java permanece intacta, validando el poder de la capa de abstracción de JPA.
+
+
 
 
