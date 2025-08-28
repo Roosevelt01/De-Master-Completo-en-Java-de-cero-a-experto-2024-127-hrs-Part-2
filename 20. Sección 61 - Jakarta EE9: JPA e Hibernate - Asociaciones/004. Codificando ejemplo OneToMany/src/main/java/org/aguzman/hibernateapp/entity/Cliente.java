@@ -22,7 +22,10 @@ public class Cliente {
     private Auditoria audit = new Auditoria();
 
     @OneToMany(cascade =  CascadeType.ALL, orphanRemoval = true )
-    @JoinColumn(name="id_cliente")//Paso 1: Después de eso se volver a ejecutar nuevamente el archivo HibernanteAsociacionesOneToMany.java
+    // La anotación @JoinColumn le dice a Hibernate: "No crees una tabla de unión".
+    // En su lugar, crea una columna en la tabla 'direcciones' llamada 'id_cliente'
+    // que actuará como llave foránea hacia la tabla 'clientes'.
+    @JoinColumn(name="id_cliente")
     private List<Direccion> direcciones;
 
     public Cliente() {
