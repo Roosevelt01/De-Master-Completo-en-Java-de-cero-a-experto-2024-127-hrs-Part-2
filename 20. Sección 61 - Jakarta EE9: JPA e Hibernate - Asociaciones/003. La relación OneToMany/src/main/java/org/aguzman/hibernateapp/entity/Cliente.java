@@ -22,13 +22,10 @@ public class Cliente {
     @Embedded
     private Auditoria audit = new Auditoria();
 
-    // Paso 1: La anotación @OneToMany establece una relación de uno (Cliente) a muchos (Direccion).
-    // cascade = CascadeType.ALL: Propaga las operaciones (persist, merge, remove, etc.)
-    // del Cliente a sus Direcciones asociadas. Si guardas un cliente, sus direcciones también se guardan.
-    // orphanRemoval = true: Si una Dirección es eliminada de esta lista, también será eliminada
-    // de la base de datos, evitando registros "huérfanos".
+    // Paso 1: La anotación @OneToMany establece una relación donde una instancia de Cliente puede
+    // estar asociada con muchas instancias de Direccion.
     @OneToMany(cascade = CascadeType.ALL, orphanRemoval = true)
-    // Se declara una Lista para contener las múltiples direcciones asociadas a este cliente.
+    // Se declara un atributo de tipo List para contener la colección de objetos Direccion.
     private List<Direccion> direcciones;
 
     // --- MODIFICACIÓN EN CONSTRUCTORES ---

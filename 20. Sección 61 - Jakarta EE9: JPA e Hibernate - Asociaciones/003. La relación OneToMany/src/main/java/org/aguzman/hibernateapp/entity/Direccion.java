@@ -19,29 +19,19 @@ public class Direccion {
         this.numero = numero;
     }
 
-    public Long getId() {
-        return id;
-    }
+    //Resto del código
 
-    public void setId(Long id) {
-        this.id = id;
-    }
+    public Long getId() {return id;}
 
-    public String getCalle() {
-        return calle;
-    }
+    public void setId(Long id) {this.id = id;}
 
-    public void setCalle(String calle) {
-        this.calle = calle;
-    }
+    public String getCalle() { return calle; }
 
-    public Integer getNumero() {
-        return numero;
-    }
+    public void setCalle(String calle) { this.calle = calle; }
 
-    public void setNumero(Integer numero) {
-        this.numero = numero;
-    }
+    public Integer getNumero() { return numero; }
+
+    public void setNumero(Integer numero) {this.numero = numero; }
 
     @Override
     public String toString() {
