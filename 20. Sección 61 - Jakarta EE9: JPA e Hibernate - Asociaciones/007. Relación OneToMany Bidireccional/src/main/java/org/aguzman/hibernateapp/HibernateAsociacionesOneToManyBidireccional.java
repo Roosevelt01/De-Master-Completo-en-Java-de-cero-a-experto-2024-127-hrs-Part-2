@@ -14,9 +14,11 @@ public class HibernateAsociacionesOneToManyBidireccional {
         try{
             em.getTransaction().begin();
 
+            // Crea un nuevo Cliente.
             Cliente cliente = new Cliente("Cata", "Edu");
             cliente.setFormaPago("paypal");
 
+            // Crea dos nuevas Facturas.
             Factura f1 = new Factura("compras de supermercado", 5000L);
             Factura f2 = new Factura("compras de tecnología", 7000L);
             /* cliente.getFacturas().add(f1);
@@ -26,9 +28,13 @@ public class HibernateAsociacionesOneToManyBidireccional {
             f2.setCliente(cliente);*/
 
             //Alternativa
+
+            // Usa el método ayudante para añadir las facturas.
+            // Esto sincroniza ambos lados de la relación de forma segura.
             cliente.addFactura(f1)
                    .addFactura(f2);
 
+            // Persiste únicamente el cliente. La cascada se encarga de las facturas.
             em.persist(cliente);
             em.getTransaction().commit();
             System.out.println(cliente);
