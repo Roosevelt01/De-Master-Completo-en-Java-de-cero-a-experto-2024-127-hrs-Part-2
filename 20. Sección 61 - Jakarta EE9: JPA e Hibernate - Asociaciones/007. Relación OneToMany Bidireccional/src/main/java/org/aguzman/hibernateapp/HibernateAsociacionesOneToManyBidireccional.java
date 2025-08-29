@@ -9,9 +9,11 @@ import javax.persistence.EntityManager;
 
 public class HibernateAsociacionesOneToManyBidireccional {
     public static void main(String[] args) {
+        // Obtiene el EntityManager, nuestra interfaz para interactuar con el contexto de persistencia.
         EntityManager em = JpaUtil.getEntityManager();
 
         try{
+            // Inicia una nueva transacción. Todas las operaciones de escritura deben estar dentro de una.
             em.getTransaction().begin();
 
             // Crea un nuevo Cliente.
@@ -21,6 +23,8 @@ public class HibernateAsociacionesOneToManyBidireccional {
             // Crea dos nuevas Facturas.
             Factura f1 = new Factura("compras de supermercado", 5000L);
             Factura f2 = new Factura("compras de tecnología", 7000L);
+            
+            
             /* cliente.getFacturas().add(f1);
             cliente.getFacturas().add(f2);
 
@@ -36,13 +40,18 @@ public class HibernateAsociacionesOneToManyBidireccional {
 
             // Persiste únicamente el cliente. La cascada se encarga de las facturas.
             em.persist(cliente);
+
+            // Confirma la transacción, escribiendo los cambios (los 3 INSERTs) en la base de datos.
             em.getTransaction().commit();
+            // Imprime el estado final del objeto cliente y sus facturas asociadas.
             System.out.println(cliente);
         }catch (Exception e){
+            // Si ocurre un error, revierte la transacción.
             em.getTransaction().rollback();
             e.printStackTrace();
         }finally {
-            em.close();
+            // Cierra el EntityManager para liberar la conexión y los recursos.
+            em.close(); 
         }
     }
 }
