@@ -8,9 +8,10 @@ import javax.persistence.EntityManager;
 
 public class HibernateAsociacionesOneToManyBidireccionalFind {
     public static void main(String[] args) {
+        // Obtiene el EntityManager, nuestra puerta de enlace para las operaciones con la base de datos.
         EntityManager em = JpaUtil.getEntityManager();
-
-        try{
+        try {
+            // Inicia una nueva transacción, necesaria para cualquier operación de lectura y escritura.
             em.getTransaction().begin();
 
             Cliente cliente = em.find(Cliente.class, 1L);
