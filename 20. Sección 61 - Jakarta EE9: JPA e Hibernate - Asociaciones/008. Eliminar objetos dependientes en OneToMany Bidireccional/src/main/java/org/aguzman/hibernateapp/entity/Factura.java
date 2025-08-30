@@ -1,6 +1,7 @@
 package org.aguzman.hibernateapp.entity;
 
 import javax.persistence.*;
+import java.util.Objects;
 
 @Entity
 @Table(name="facturar")
@@ -9,7 +10,7 @@ public class Factura {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private  Long id;
 
-    private  String descripción;
+    private  String descripcion;
     private  Long total;
 
     @ManyToOne
@@ -19,8 +20,8 @@ public class Factura {
     public Factura() {
     }
 
-    public Factura(String descripción, Long total) {
-        this.descripción = descripción;
+    public Factura(String descripcion, Long total) {
+        this.descripcion = descripcion;
         this.total = total;
     }
 
@@ -32,12 +33,12 @@ public class Factura {
         this.id = id;
     }
 
-    public String getDescripción() {
-        return descripción;
+    public String getDescripcion() {
+        return descripcion;
     }
 
-    public void setDescripción(String descripción) {
-        this.descripción = descripción;
+    public void setDescripcion(String descripcion) {
+        this.descripcion = descripcion;
     }
 
     public Long getTotal() {
@@ -56,13 +57,23 @@ public class Factura {
         this.cliente = cliente;
     }
 
-    //Creación del toString
     @Override
     public String toString() {
-        // Se elimina la referencia a 'cliente' para evitar bucles infinitos.
         return  "id=" + id +
-                " | descripción='" + descripción + '\'' +
+                " | descripción='" + descripcion + '\'' +
                 " | total=" + total;
+    }
 
+    //Nueva modificación
+    @Override
+    public boolean equals(Object object) {
+        if (object == null || getClass() != object.getClass()) return false;
+        Factura factura = (Factura) object;
+        return Objects.equals(id, factura.id) && Objects.equals(descripcion, factura.descripcion) && Objects.equals(total, factura.total);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(id, descripcion, total);
     }
 }

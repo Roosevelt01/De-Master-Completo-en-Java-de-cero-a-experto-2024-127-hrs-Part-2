@@ -31,19 +31,10 @@ public class Cliente {
     , uniqueConstraints = @UniqueConstraint(columnNames = {"id_direccion"}))
     private List<Direccion> direcciones;
 
-    // Paso 1: Definición de la relación inversa
-    // La anotación @OneToMany define la colección.
-    // cascade = CascadeType.ALL y orphanRemoval = true funcionan igual que antes.
-    // mappedBy = "cliente": ¡Este es el atributo CLAVE! Le dice a JPA:
-    // "No intentes crear una llave foránea o tabla de unión para esta relación.
-    // La gestión de esta relación está 'mapeada por' el atributo llamado 'cliente'
-    // en la clase Factura". Esto designa a Cliente como el lado inverso.
     @OneToMany(cascade =  CascadeType.ALL, orphanRemoval = true, mappedBy = "cliente")
     private List<Factura> facturas;
 
     public Cliente() {
-        // Paso 2: Inicialización de la nueva colección
-        // Se inicializa la lista de facturas en el constructor para evitar NullPointerExceptions.
         facturas = new ArrayList<>();
         direcciones = new ArrayList<>();
     }
@@ -102,7 +93,6 @@ public class Cliente {
         this.direcciones = direcciones;
     }
 
-    // Paso 3: Getter y Setter para la nueva colección
     public Auditoria getAudit() {
         return audit;
     }
@@ -119,16 +109,9 @@ public class Cliente {
         this.facturas = facturas;
     }
 
-    // Paso 4: Método Ayudante (Helper Method) para Sincronización
-    // Este método es una buena práctica para gestionar relaciones bidireccionales.
     public Cliente addFactura(Factura factura){
-        // Añade la factura a la colección del cliente (lado inverso).
         this.facturas.add(factura);
-
-        // Establece el cliente en la factura (lado propietario), manteniendo ambos lados sincronizados.
         factura.setCliente(this);
-        
-        // Devuelve la instancia actual para permitir llamadas encadenadas.
         return this;
     }
 
@@ -144,6 +127,11 @@ public class Cliente {
                 " | creadoEn='" + creado + '\'' +
                 " | editadoEn='" + editado + '\'' +
                 " | direcciones='" + direcciones + '\'' +
-                " | factura='" + facturas + '\'';// Paso 5: Se añade la colección de facturas a la representación en String.
+                " | factura='" + facturas + '\'';
+    }
+
+    public void removeFactura(Factura factura) {
+        this.facturas.remove(factura);
+        factura.setCliente(null);
     }
 }
