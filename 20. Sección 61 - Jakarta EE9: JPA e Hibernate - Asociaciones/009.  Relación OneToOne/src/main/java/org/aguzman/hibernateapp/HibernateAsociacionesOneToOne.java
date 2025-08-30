@@ -8,6 +8,7 @@ import javax.persistence.EntityManager;
 
 public class HibernateAsociacionesOneToOne {
     public static void main(String[] args) {
+
         EntityManager em = JpaUtil.getEntityManager();
 
         try{
