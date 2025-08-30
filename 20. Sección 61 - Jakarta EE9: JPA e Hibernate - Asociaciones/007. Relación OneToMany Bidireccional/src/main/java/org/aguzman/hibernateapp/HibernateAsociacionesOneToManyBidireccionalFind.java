@@ -45,15 +45,3 @@ public class HibernateAsociacionesOneToManyBidireccionalFind {
         }
     }
 }
-
-// 1. Resultado de em.find(Cliente.class, 1L)
-Hibernate: select cliente0_.id as id1_0_0_, ... from clientes cliente0_ where cliente0_.id=?
-// 2. Resultado de em.persist(cliente) con las nuevas facturas (del commit)
-Hibernate: insert into facturar (id_cliente, descripción, total) values (?, ?, ?)
-Hibernate: insert into facturar (id_cliente, descripción, total) values (?, ?, ?)
-// 3. Resultado de la modificación cliente.setFormaPago("paypal")
-Hibernate: update clientes set apellido=?, ..., forma_pago=?, nombre=? where id=?
-// 4. Resultado de la llamada a System.out.println(cliente), que accede a las colecciones
-Hibernate: select direccione0_... from tbl_clientes_direcciones direccione0_ ... where direccione0_.id_cliente=?
-Hibernate: select facturas0_... from facturar facturas0_ where facturas0_.id_cliente=?
-
