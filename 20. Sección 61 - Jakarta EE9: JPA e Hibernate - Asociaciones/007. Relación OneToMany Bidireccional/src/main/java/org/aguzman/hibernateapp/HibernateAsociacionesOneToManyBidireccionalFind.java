@@ -14,22 +14,33 @@ public class HibernateAsociacionesOneToManyBidireccionalFind {
             // Inicia una nueva transacción, necesaria para cualquier operación de lectura y escritura.
             em.getTransaction().begin();
 
+            // Utiliza em.find() para buscar y recuperar el Cliente con ID=1 de la base de datos.
             Cliente cliente = em.find(Cliente.class, 1L);
+            // Modifica un atributo simple del cliente encontrado.
             cliente.setFormaPago("paypal");
 
+            // Crea dos nuevas instancias de Factura en memoria.
             Factura f1 = new Factura("compras de supermercado", 5000L);
             Factura f2 = new Factura("compras de tecnología", 7000L);
 
+            // Utiliza el método ayudante 'addFactura' para añadir las nuevas facturas al cliente.
+            // El método encadenado (.addFactura(...).addFactura(...)) es posible porque devuelve 'this'.
             cliente.addFactura(f1)
                    .addFactura(f2);
 
+            // Se llama a em.persist(cliente) en la transcripción, aunque em.merge(cliente) también sería válido.
             em.persist(cliente);
+            
+            // Confirma la transacción. En este punto, JPA ejecuta el SQL necesario.
             em.getTransaction().commit();
+            // Imprime el estado final del cliente para verificar los cambios.
             System.out.println(cliente);
         }catch (Exception e){
+            // Si hay un error, revierte todos los cambios de la transacción.
             em.getTransaction().rollback();
             e.printStackTrace();
         }finally {
+            // Este bloque se ejecuta siempre, asegurando que el EntityManager se cierre.
             em.close();
         }
     }
