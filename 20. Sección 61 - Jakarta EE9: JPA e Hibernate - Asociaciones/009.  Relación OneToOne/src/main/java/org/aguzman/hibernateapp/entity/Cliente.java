@@ -24,7 +24,7 @@ public class Cliente {
     @Embedded
     private Auditoria audit = new Auditoria();
 
-    //Paso 1
+    // --- Inicio: Código Agregado para la Relación OneToOne ---
     @OneToOne
     @JoinColumn(name = "cliente_detalle_id")
     private ClienteDetalle detalle;
@@ -114,7 +114,7 @@ public class Cliente {
         this.facturas = facturas;
     }
 
-    //Getter and Setter de Detalle
+    // --- Inicio: Getters y Setters para 'detalle' ---
     public ClienteDetalle getDetalle() {
         return detalle;
     }
@@ -122,6 +122,7 @@ public class Cliente {
     public void setDetalle(ClienteDetalle detalle) {
         this.detalle = detalle;
     }
+     // --- Fin: Getters y Setters ---
 
     public Cliente addFactura(Factura factura){
         this.facturas.add(factura);
@@ -147,7 +148,7 @@ public class Cliente {
                 " | editadoEn='" + editado + '\'' +
                 " | direcciones='" + direcciones + '\'' +
                 " | factura='" + facturas + '\''+
-                " | detalle='" + detalle + '\'';//Paso 2
+                " | detalle='" + detalle + '\'';// Se añade 'detalle' al toString
     }
 
 }
