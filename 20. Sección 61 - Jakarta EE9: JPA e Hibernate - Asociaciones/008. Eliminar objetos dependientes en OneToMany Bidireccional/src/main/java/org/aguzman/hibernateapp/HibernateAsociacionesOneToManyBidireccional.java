@@ -32,14 +32,25 @@ public class HibernateAsociacionesOneToManyBidireccional {
             em.persist(cliente);
             em.getTransaction().commit();
 
-            //Nueva modificación
+            // Inicia una SEGUNDA transacción para la operación de eliminación.
             em.getTransaction().begin();
 
+            // --- Estrategia de Eliminación con Objeto Detached ---
+            // 1. Se crea una nueva instancia de Factura en memoria (objeto detached).
             Factura f3 = new Factura("compras de supermercado", 5000L);
-            f3.setId(1L);
+            
+            // 2. Se le asigna el ID de la factura que queremos eliminar de la base de datos.
+            f3.setId(1L); // El ID de la primera factura creada.
+
+            // 3. Se llama al método ayudante para eliminar la factura.
+            //    Esto funciona porque la clase Factura ahora tiene un método equals() bien definido.
+            //    La lista buscará y encontrará el objeto gestionado que es "igual" a f3 y lo removerá.
             cliente.removeFactura(f3);
+            
+            // 4. Confirma la transacción.
             em.getTransaction().commit();
-            System.out.println(cliente);
+
+            // Imprime el estado final del cliente, ahora con una sola factura.
             System.out.println(cliente);
         }catch (Exception e){
             em.getTransaction().rollback();
