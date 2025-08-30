@@ -13,13 +13,19 @@ public class HibernateAsociacionesOneToOne {
         try{
             em.getTransaction().begin();
 
+            // 1. Crear y persistir la entidad principal
             Cliente cliente = new Cliente("Cata", "Edu");
             cliente.setFormaPago("paypal");
             em.persist(cliente);
 
+            // 2. Crear y persistir la entidad de detalle
             ClienteDetalle detalle = new ClienteDetalle(true, 5000L);
             em.persist(detalle);
+
+            // 3. Establecer la relación en el objeto dueño
             cliente.setDetalle(detalle);
+            
+            // 4. Confirmar la transacción
             em.getTransaction().commit();
 
             System.out.println("\n"+cliente);
