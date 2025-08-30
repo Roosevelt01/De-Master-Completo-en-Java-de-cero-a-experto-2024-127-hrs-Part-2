@@ -67,13 +67,26 @@ public class Factura {
     //Nueva modificación
     @Override
     public boolean equals(Object object) {
-        if (object == null || getClass() != object.getClass()) return false;
-        Factura factura = (Factura) object;
-        return Objects.equals(id, factura.id) && Objects.equals(descripcion, factura.descripcion) && Objects.equals(total, factura.total);
+    // Comprobación estándar: si son la misma instancia, son iguales.
+    if (this == o) return true;
+    
+    // Si el objeto es nulo o de una clase diferente, no son iguales.
+    if (o == null || getClass() != o.getClass()) return false;
+    
+    // Hacemos un cast del objeto para poder acceder a sus campos.
+    Factura factura = (Factura) o;
+    
+    // Compara los atributos clave (id, descripcion, total) para determinar la igualdad.
+    // Dos objetos Factura son "iguales" si estos tres campos coinciden.
+    return Objects.equals(id, factura.id) && 
+           Objects.equals(descripcion, factura.descripcion) && 
+           Objects.equals(total, factura.total);
     }
 
     @Override
     public int hashCode() {
+        // Genera un código hash basado en los mismos atributos usados en equals().
+        // Es un requisito que objetos iguales tengan el mismo hashCode.
         return Objects.hash(id, descripcion, total);
     }
 }

@@ -130,8 +130,12 @@ public class Cliente {
                 " | factura='" + facturas + '\'';
     }
 
+    // Este método ayudante gestiona la eliminación de una factura de la colección.
     public void removeFactura(Factura factura) {
+        // Paso 1: Remueve la factura de la lista 'facturas' del cliente.
         this.facturas.remove(factura);
+        
+        // Paso 2: Rompe el vínculo desde el otro lado, estableciendo el cliente de la factura a null.
         factura.setCliente(null);
     }
 }
