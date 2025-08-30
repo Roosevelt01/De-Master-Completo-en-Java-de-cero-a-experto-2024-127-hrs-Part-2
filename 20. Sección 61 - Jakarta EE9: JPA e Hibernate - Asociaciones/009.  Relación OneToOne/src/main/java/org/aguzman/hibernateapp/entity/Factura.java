@@ -1,0 +1,92 @@
+package org.aguzman.hibernateapp.entity;
+
+import javax.persistence.*;
+import java.util.Objects;
+
+@Entity
+@Table(name="facturar")
+public class Factura {
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private  Long id;
+
+    private  String descripcion;
+    private  Long total;
+
+    @ManyToOne
+    @JoinColumn(name="id_cliente")
+    private Cliente cliente;
+
+    public Factura() {
+    }
+
+    public Factura(String descripcion, Long total) {
+        this.descripcion = descripcion;
+        this.total = total;
+    }
+
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
+
+    public String getDescripcion() {
+        return descripcion;
+    }
+
+    public void setDescripcion(String descripcion) {
+        this.descripcion = descripcion;
+    }
+
+    public Long getTotal() {
+        return total;
+    }
+
+    public void setTotal(Long total) {
+        this.total = total;
+    }
+
+    public Cliente getCliente() {
+        return cliente;
+    }
+
+    public void setCliente(Cliente cliente) {
+        this.cliente = cliente;
+    }
+
+    @Override
+    public String toString() {
+        return  "id=" + id +
+                " | descripción='" + descripcion + '\'' +
+                " | total=" + total;
+    }
+
+    //Nueva modificación
+    @Override
+    public boolean equals(Object object) {
+    // Comprobación estándar: si son la misma instancia, son iguales.
+    if (this == o) return true;
+    
+    // Si el objeto es nulo o de una clase diferente, no son iguales.
+    if (o == null || getClass() != o.getClass()) return false;
+    
+    // Hacemos un cast del objeto para poder acceder a sus campos.
+    Factura factura = (Factura) o;
+    
+    // Compara los atributos clave (id, descripcion, total) para determinar la igualdad.
+    // Dos objetos Factura son "iguales" si estos tres campos coinciden.
+    return Objects.equals(id, factura.id) && 
+           Objects.equals(descripcion, factura.descripcion) && 
+           Objects.equals(total, factura.total);
+    }
+
+    @Override
+    public int hashCode() {
+        // Genera un código hash basado en los mismos atributos usados en equals().
+        // Es un requisito que objetos iguales tengan el mismo hashCode.
+        return Objects.hash(id, descripcion, total);
+    }
+}
