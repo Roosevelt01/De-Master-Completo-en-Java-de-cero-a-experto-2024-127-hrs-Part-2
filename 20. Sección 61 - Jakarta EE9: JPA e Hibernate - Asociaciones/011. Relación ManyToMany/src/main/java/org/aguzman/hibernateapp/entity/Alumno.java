@@ -20,9 +20,9 @@ public class Alumno {
     @ManyToMany(cascade = {CascadeType.PERSIST, CascadeType.MERGE})
     private List<Curso> cursos;
 
-    public Alumno() {
-        this.cursos = new ArrayList<>();
-    }
+    //El resto del código
+
+    public Alumno() {this.cursos = new ArrayList<>(); }
 
     public Alumno(String nombre, String apellido) {
         this();
@@ -30,37 +30,19 @@ public class Alumno {
         this.apellido = apellido;
     }
 
-    public Long getId() {
-        return id;
-    }
+    //Getter and Setter
 
-    public void setId(Long id) {
-        this.id = id;
-    }
+    public Long getId() { return id; }
+    public void setId(Long id) {this.id = id; }
 
-    public String getNombre() {
-        return nombre;
-    }
+    public String getNombre() {return nombre; }
+    public void setNombre(String nombre) { this.nombre = nombre; }
 
-    public void setNombre(String nombre) {
-        this.nombre = nombre;
-    }
+    public String getApellido() { return apellido; }
+    public void setApellido(String apellido) { this.apellido = apellido; }
 
-    public String getApellido() {
-        return apellido;
-    }
-
-    public void setApellido(String apellido) {
-        this.apellido = apellido;
-    }
-
-    public List<Curso> getCursos() {
-        return cursos;
-    }
-
-    public void setCursos(List<Curso> cursos) {
-        this.cursos = cursos;
-    }
+    public List<Curso> getCursos() { return cursos; }
+    public void setCursos(List<Curso> cursos) {this.cursos = cursos; }
 
     @Override
     public String toString() {
