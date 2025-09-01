@@ -5,7 +5,9 @@
         <class>org.aguzman.hibernateapp.entity.Cliente</class>
         <class>org.aguzman.hibernateapp.entity.Factura</class>
         <class>org.aguzman.hibernateapp.entity.Direccion</class>
-        <class>org.aguzman.hibernateapp.entity.ClienteDetalle</class><!--Paso 1-->
+        <class>org.aguzman.hibernateapp.entity.ClienteDetalle</class>
+        <class>org.aguzman.hibernateapp.entity.Curso</class><!--Paso 1-->
+        <class>org.aguzman.hibernateapp.entity.Alumno</class>        <!--Paso -->
         <exclude-unlisted-classes>true</exclude-unlisted-classes>
         <properties>
             <property name="jakarta.persistence.jdbc.url" value="jdbc:mysql://localhost:3306/java_hibernate_curso?serverTimezone=America/Caracas"/>
