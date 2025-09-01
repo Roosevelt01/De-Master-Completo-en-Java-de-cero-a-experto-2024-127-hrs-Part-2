@@ -8,6 +8,7 @@ import javax.persistence.EntityManager;
 
 public class HibernateAsociacionesOneToOneBidireccional {
     public static void main(String[] args) {
+
         EntityManager em = JpaUtil.getEntityManager();
 
         try{
@@ -18,8 +19,7 @@ public class HibernateAsociacionesOneToOneBidireccional {
 
             ClienteDetalle detalle = new ClienteDetalle(true, 8000L);
 
-            cliente.setDetalle(detalle);
-            detalle.setCliente(cliente);
+            cliente.addDetalle(detalle);
 
             em.persist(cliente);
             em.getTransaction().commit();
