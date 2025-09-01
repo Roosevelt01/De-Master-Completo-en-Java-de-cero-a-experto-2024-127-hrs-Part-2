@@ -24,8 +24,12 @@ public class Cliente {
     @Embedded
     private Auditoria audit = new Auditoria();
 
-    @OneToOne(cascade = CascadeType.ALL, orphanRemoval = true, mappedBy = "cliente") //PAso 1
+
+    // --- Inicio: Anotación @OneToOne Modificada ---
+    //Paso 1: Se configura la relación inversa en la entidad Cliente
+    @OneToOne(cascade = CascadeType.ALL, orphanRemoval = true, mappedBy = "cliente") 
     private ClienteDetalle detalle;
+    // --- Fin: Anotación Modificada ---
 
     @OneToMany(cascade =  CascadeType.ALL, orphanRemoval = true )
     //@JoinColumn(name="id_cliente")
@@ -120,17 +124,21 @@ public class Cliente {
         this.detalle = detalle;
     }
 
-    //Paso 2
+    // --- Inicio: Métodos de ayuda para sincronización ---
+
+    //Paso 2: Se agrega un método de conveniencia para asignar el detalle
     public void addDetalle(ClienteDetalle detalle) {
         this.detalle = detalle;
         detalle.setCliente(this);
     }
 
-    //Paso 3
+    //Paso 3: Se agrega un método para eliminar la relación
     public void removeDetalle(ClienteDetalle detalle) {
         detalle.setCliente(null);
         this.detalle = null;
     }
+
+    // --- Fin: Métodos de ayuda ---
 
     public Cliente addFactura(Factura factura){
         this.facturas.add(factura);

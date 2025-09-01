@@ -14,9 +14,11 @@ public class ClienteDetalle {
     @Column(name="puntos_acumulados")
     private Long puntosAcumulados;
 
-    //Paso 1
+    // --- Inicio: Código Agregado para la relación bidireccional ---
+
+    //Paso 1: Se agrega la relación en la entidad ClienteDetalle
     @OneToOne
-    @JoinColumn(name = "cliente_detalle_id")
+    @JoinColumn(name = "cliente_detalle_id")// Cambiamos el nombre para mayor claridad
     private Cliente cliente;
 
     public ClienteDetalle(boolean prime, Long puntosAcumulados) {
@@ -51,7 +53,7 @@ public class ClienteDetalle {
         this.puntosAcumulados = puntosAcumulados;
     }
 
-    //Get y set de Cliente
+    // Paso 2: Getters y Setters para 'cliente' ---
     public Cliente getCliente() {
         return cliente;
     }
@@ -59,6 +61,7 @@ public class ClienteDetalle {
     public void setCliente(Cliente cliente) {
         this.cliente = cliente;
     }
+    // --- Fin: Getters y Setters ---
 
     @Override
     public String toString() {
