@@ -17,10 +17,6 @@ public class Alumno {
 
     // Se declara la relación Many-to-Many
     @ManyToMany(cascade = {CascadeType.PERSIST, CascadeType.MERGE})
-    // Se personaliza la tabla de unión y sus claves
-    @JoinTable(name = "tbl_alumnos_cursos", joinColumns = @JoinColumn(name="alumno_id"),
-            inverseJoinColumns = @JoinColumn(name = "curso_id"),
-            uniqueConstraints = @UniqueConstraint(columnNames = {"alumno_id", "curso_id"}))
     private List<Curso> cursos;
 
     public Alumno() {
