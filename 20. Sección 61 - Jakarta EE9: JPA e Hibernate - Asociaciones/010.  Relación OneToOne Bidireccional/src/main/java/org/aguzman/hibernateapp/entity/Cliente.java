@@ -24,7 +24,6 @@ public class Cliente {
     @Embedded
     private Auditoria audit = new Auditoria();
 
-
     // --- Inicio: Anotación @OneToOne Modificada ---
     //Paso 1: Se configura la relación inversa en la entidad Cliente
     @OneToOne(cascade = CascadeType.ALL, orphanRemoval = true, mappedBy = "cliente") 
