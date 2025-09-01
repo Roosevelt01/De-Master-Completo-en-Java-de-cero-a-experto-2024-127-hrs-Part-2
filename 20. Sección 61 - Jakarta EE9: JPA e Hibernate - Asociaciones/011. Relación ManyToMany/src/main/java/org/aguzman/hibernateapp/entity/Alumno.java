@@ -9,6 +9,7 @@ import java.util.List;
 public class Alumno {
 
     @Id
+    // Se declara la relación Many-to-Many
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
