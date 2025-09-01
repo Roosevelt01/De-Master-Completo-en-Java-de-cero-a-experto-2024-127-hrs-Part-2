@@ -27,7 +27,7 @@ public class HibernateAsociacionesManyToMany {
             // Persistir solo los alumnos
             em.persist(alumno1);
             em.persist(alumno2);
-            
+
             em.getTransaction().commit();
 
             System.out.println(alumno1);
