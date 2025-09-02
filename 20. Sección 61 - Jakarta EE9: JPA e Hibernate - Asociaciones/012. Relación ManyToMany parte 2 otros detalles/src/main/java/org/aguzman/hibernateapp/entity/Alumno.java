@@ -14,11 +14,12 @@ public class Alumno {
     private String nombre;
     private String apellido;
 
-    //Modicacion de la variable cursos
+    // Modificación de la variable cursos para personalizar la tabla de unión
     @ManyToMany(cascade = {CascadeType.PERSIST, CascadeType.MERGE})
-    @JoinTable(name = "tbl_alumnos_cursos", joinColumns = @JoinColumn(name="alumno_id"),
+    @JoinTable(name = "tbl_alumnos_cursos", 
+            joinColumns = @JoinColumn(name="alumno_id"),
             inverseJoinColumns = @JoinColumn(name = "curso_id"),
-            uniqueConstraints = @UniqueConstraint(columnNames = {"alumno_id", "curso_id"}))
+            uniqueConstraints = @UniqueConstraint(columnNames = {"alumno_id", "curso_id"})) // Restricción de unicidad para el par de claves
     private List<Curso> cursos;
 
     public Alumno() {
