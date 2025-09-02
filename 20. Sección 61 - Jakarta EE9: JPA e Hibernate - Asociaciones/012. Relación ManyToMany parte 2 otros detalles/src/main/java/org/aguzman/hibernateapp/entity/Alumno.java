@@ -19,7 +19,8 @@ public class Alumno {
     @JoinTable(name = "tbl_alumnos_cursos", 
             joinColumns = @JoinColumn(name="alumno_id"),
             inverseJoinColumns = @JoinColumn(name = "curso_id"),
-            uniqueConstraints = @UniqueConstraint(columnNames = {"alumno_id", "curso_id"})) // Restricción de unicidad para el par de claves
+            // Restricción de unicidad para el par de claves
+            uniqueConstraints = @UniqueConstraint(columnNames = {"alumno_id", "curso_id"})) 
     private List<Curso> cursos;
 
     public Alumno() {
