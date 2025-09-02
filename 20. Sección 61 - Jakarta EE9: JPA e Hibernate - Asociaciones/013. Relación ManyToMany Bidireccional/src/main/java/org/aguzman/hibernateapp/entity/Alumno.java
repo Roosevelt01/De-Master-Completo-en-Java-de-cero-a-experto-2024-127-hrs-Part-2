@@ -3,6 +3,7 @@ package org.aguzman.hibernateapp.entity;
 import javax.persistence.*;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 
 @Entity
 @Table(name = "alumnos")
@@ -14,13 +15,10 @@ public class Alumno {
     private String nombre;
     private String apellido;
 
-    // Modificación de la variable cursos para personalizar la tabla de unión
     @ManyToMany(cascade = {CascadeType.PERSIST, CascadeType.MERGE})
-    @JoinTable(name = "tbl_alumnos_cursos", 
-            joinColumns = @JoinColumn(name="alumno_id"),
+    @JoinTable(name = "tbl_alumnos_cursos", joinColumns = @JoinColumn(name="alumno_id"),
             inverseJoinColumns = @JoinColumn(name = "curso_id"),
-            // Restricción de unicidad para el par de claves
-            uniqueConstraints = @UniqueConstraint(columnNames = {"alumno_id", "curso_id"})) 
+            uniqueConstraints = @UniqueConstraint(columnNames = {"alumno_id", "curso_id"}))
     private List<Curso> cursos;
 
     public Alumno() {
@@ -63,6 +61,32 @@ public class Alumno {
 
     public void setCursos(List<Curso> cursos) {
         this.cursos = cursos;
+    }
+
+    //Paso 1
+    public void addCurso(Curso curso){
+        this.cursos.add(curso);
+        curso.getAlumnos().add(this);
+    }
+
+    //Paso 2
+    public void removeCurso(Curso curso){
+        this.cursos.remove(curso);
+        curso.getAlumnos().remove(this);
+    }
+
+    //Paso 3
+    @Override
+    public boolean equals(Object object) {
+        if (object == null || getClass() != object.getClass()) return false;
+        Alumno alumno = (Alumno) object;
+        return Objects.equals(id, alumno.id);
+    }
+
+    //Paso 4
+    @Override
+    public int hashCode() {
+        return Objects.hashCode(id);
     }
 
     @Override
