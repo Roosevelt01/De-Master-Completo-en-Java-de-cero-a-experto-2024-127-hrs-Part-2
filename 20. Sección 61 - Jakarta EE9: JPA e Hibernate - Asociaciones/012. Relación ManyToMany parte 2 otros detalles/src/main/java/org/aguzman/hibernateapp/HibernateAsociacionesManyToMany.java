@@ -31,12 +31,24 @@ public class HibernateAsociacionesManyToMany {
             System.out.println(alumno1);
             System.out.println(alumno2);
 
-            //Se agrega nuevos códigos
+            // --- Inicio: Nuevo bloque para eliminar una asociación ---
+            System.out.println("\n================ ELIMINANDO ASOCIACION ================");
+            // 1. Iniciar una nueva transacción
             em.getTransaction().begin(); //Paso 1
-            Curso c2 = em.find(Curso.class, 3L); //Paso 2
-            alumno1.getCursos().remove(c2); //Paso 3
-            em.getTransaction().commit(); //Paso 4
-            System.out.println(alumno1); //Paso 5
+            
+            // Suponiendo que el curso "Curso Java" tiene id=3
+            // 2. Buscar el curso a desvincular
+            Curso c2 = em.find(Curso.class, 3L); 
+            
+            // 3. Quitar el curso de la lista
+            alumno1.getCursos().remove(c2); 
+            
+            // 4. Confirmar para ejecutar el DELETE
+            em.getTransaction().commit(); 
+            
+             // 5. Mostrar resultado
+            System.out.println("Alumno 1 actualizado: " + alumno1);
+            // --- Fin: Nuevo bloque ---
         }catch (Exception e){
             em.getTransaction().rollback();
             e.printStackTrace();
