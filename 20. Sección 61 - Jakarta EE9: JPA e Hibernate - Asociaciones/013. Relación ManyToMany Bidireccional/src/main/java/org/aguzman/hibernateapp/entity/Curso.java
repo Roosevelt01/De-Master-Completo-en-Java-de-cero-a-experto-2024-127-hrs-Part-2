@@ -14,8 +14,13 @@ public class Curso {
     private String titulo;
     private String profesor;
 
-    @ManyToMany(mappedBy = "cursos")//Paso 1
-    private List<Alumno> alumnos;//Paso 2
+    // Paso 1: Mapea esta relación de muchos a muchos a la propiedad "cursos" en la clase Alumno.
+    // Esto establece a 'Curso' como el lado "inverso" o "mapeado",
+    //  indicando que la relación es gestionada por la clase Alumno.
+    @ManyToMany(mappedBy = "cursos")
+    // Paso 2: Se añade una lista de Alumnos para permitir la navegación
+    // bidireccional, es decir, un Curso ahora sabe qué Alumnos están inscritos en él.
+    private List<Alumno> alumnos;
 
     public Curso(String titulo, String profesor) {
         this();
@@ -24,7 +29,8 @@ public class Curso {
     }
 
     public Curso() {
-        this.alumnos = new ArrayList<>(); //Paso 3
+        // Paso 3: Se inicializa la lista de alumnos en el constructor para evitar NullPointerExceptions.
+        this.alumnos = new ArrayList<>(); 
     }
 
     public Long getId() {
@@ -51,7 +57,7 @@ public class Curso {
         this.profesor = profesor;
     }
 
-    //Paso 4 Getter and setter de alumnos
+    // Paso 4: Getter and setter de alumnos
     public List<Alumno> getAlumnos() {
         return alumnos;
     }
@@ -60,7 +66,8 @@ public class Curso {
         this.alumnos = alumnos;
     }
 
-    //Paso 5
+    // Paso 5: Sobrescribe el método equals() para comparar objetos Curso.
+    // La comparación se basa únicamente en el 'id' para que la búsqueda y eliminación de objetos en colecciones sea precisa.
     @Override
     public boolean equals(Object object) {
         if (object == null || getClass() != object.getClass()) return false;
@@ -68,7 +75,8 @@ public class Curso {
         return Objects.equals(id, curso.id);
     }
 
-    //Paso 6
+    // Paso 6: Sobrescribe el método hashCode() para asegurar que el comportamiento de equals() sea consistente.
+    // Se basa en el 'id' para generar un código hash único para cada objeto.
     @Override
     public int hashCode() {
         return Objects.hashCode(id);
