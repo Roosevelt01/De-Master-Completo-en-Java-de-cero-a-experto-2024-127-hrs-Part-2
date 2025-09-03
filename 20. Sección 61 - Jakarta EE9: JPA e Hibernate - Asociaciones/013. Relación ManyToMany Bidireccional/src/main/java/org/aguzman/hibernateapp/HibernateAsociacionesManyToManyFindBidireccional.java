@@ -30,6 +30,7 @@ public class HibernateAsociacionesManyToManyFindBidireccional {
             System.out.println(alumno1);
             System.out.println(alumno2);
 
+            // Bloque de código para la eliminación
             em.getTransaction().begin();
             Curso c2 = new Curso("Curso Java EE 9", "Andres");
             c2.setId(2L);

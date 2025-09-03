@@ -63,19 +63,23 @@ public class Alumno {
         this.cursos = cursos;
     }
 
-    //Paso 1
+    // Paso 1: Método de conveniencia para añadir un Curso a la lista del Alumno.
+    // Sincroniza la relación bidireccional, añadiendo también el Alumno a la lista de Alumnos del Curso.
     public void addCurso(Curso curso){
         this.cursos.add(curso);
         curso.getAlumnos().add(this);
     }
 
-    //Paso 2
+    // Paso 2: Método de conveniencia para remover un Curso de la lista del Alumno.
+    // Sincroniza la eliminación en ambas direcciones, removiendo también el Alumno de la lista de Alumnos del Curso.
     public void removeCurso(Curso curso){
         this.cursos.remove(curso);
         curso.getAlumnos().remove(this);
     }
 
-    //Paso 3
+    // Paso 3: Sobrescribe el método equals() para comparar objetos Alumno.
+    // La comparación se basa únicamente en el 'id' para que la búsqueda y
+    // eliminación de objetos en colecciones sea precisa.
     @Override
     public boolean equals(Object object) {
         if (object == null || getClass() != object.getClass()) return false;
@@ -83,7 +87,8 @@ public class Alumno {
         return Objects.equals(id, alumno.id);
     }
 
-    //Paso 4
+    // Paso 4: Sobrescribe el método hashCode() para asegurar que el comportamiento de equals() sea consistente.
+    // Se basa en el 'id' para generar un código hash único.
     @Override
     public int hashCode() {
         return Objects.hashCode(id);
