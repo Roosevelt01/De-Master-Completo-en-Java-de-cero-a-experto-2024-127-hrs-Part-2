@@ -24,7 +24,8 @@ public class Cliente {
     @OneToOne(cascade = CascadeType.ALL, orphanRemoval = true, mappedBy = "cliente")
     private ClienteDetalle detalle;
 
-    //Paso 1 se agrega fetch
+    //Paso 1: Código modificado en la clase Cliente.java
+    // El valor inicial de la clase Cliente es EAGER
     @OneToMany(fetch = FetchType.EAGER,cascade =  CascadeType.ALL, orphanRemoval = true )
     //@JoinColumn(name="id_cliente")
     @JoinTable(name = "tbl_clientes_direcciones", joinColumns = @JoinColumn(name="id_cliente")
