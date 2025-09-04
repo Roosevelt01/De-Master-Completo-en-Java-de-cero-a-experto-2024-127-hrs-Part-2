@@ -28,9 +28,9 @@ public class Cliente {
     // El valor inicial de la clase Cliente es EAGER
     @OneToMany(fetch = FetchType.EAGER,cascade =  CascadeType.ALL, orphanRemoval = true )
     //@JoinColumn(name="id_cliente")
-    @JoinTable(name = "tbl_clientes_direcciones", joinColumns = @JoinColumn(name="id_cliente")
-    , inverseJoinColumns = @JoinColumn(name = "id_direccion")
-    , uniqueConstraints = @UniqueConstraint(columnNames = {"id_direccion"}))
+    @JoinTable(name = "tbl_clientes_direcciones", joinColumns = @JoinColumn(name="id_cliente"),
+     inverseJoinColumns = @JoinColumn(name = "id_direccion"),
+     uniqueConstraints = @UniqueConstraint(columnNames = {"id_direccion"}))
     private List<Direccion> direcciones;
 
 
