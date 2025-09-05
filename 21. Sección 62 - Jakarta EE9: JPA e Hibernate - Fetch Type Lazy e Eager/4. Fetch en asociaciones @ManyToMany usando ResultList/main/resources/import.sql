@@ -8,6 +8,7 @@ insert into direcciones(calle, numero) values('colon', 456);
 insert into tbl_clientes_direcciones(id_cliente, id_direccion) values(1, 1);
 insert into tbl_clientes_direcciones(id_cliente, id_direccion) values(1, 2);
 insert into clientes_detalles(prime, puntos_acumulados, cliente_detalle_id) values(1, 8000, 1);
+<!--Asociar cursos a un alumno-->
 insert into tbl_alumnos_cursos (alumno_id, curso_id) values(1, 1);
 insert into tbl_alumnos_cursos (alumno_id, curso_id) values(1, 2);
 
