@@ -21,6 +21,3 @@ public class HibernateFetchManyToMany {
         em.close();
     }
 }
-
-insert into tbl_alumnos_cursos (alumno_id, curso_id) values(1, 1);
-insert into tbl_alumnos_cursos (alumno_id, curso_id) values(1, 2);
