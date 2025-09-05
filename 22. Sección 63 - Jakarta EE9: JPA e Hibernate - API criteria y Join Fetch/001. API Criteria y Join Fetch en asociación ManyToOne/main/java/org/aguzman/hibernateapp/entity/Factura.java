@@ -13,7 +13,7 @@ public class Factura {
     private  String descripcion;
     private  Long total;
 
-    //Paso 1
+    //Paso 1: Definición de la relación @ManyToOne LAZY
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name="id_cliente")
     private Cliente cliente;
