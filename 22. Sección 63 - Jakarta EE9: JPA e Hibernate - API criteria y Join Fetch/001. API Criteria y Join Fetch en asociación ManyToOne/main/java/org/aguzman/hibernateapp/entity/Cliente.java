@@ -154,5 +154,4 @@ public class Cliente {
                 " | factura='" + facturas + '\''+
                 " | detalle='" + detalle + '\'';
     }
-
 }
