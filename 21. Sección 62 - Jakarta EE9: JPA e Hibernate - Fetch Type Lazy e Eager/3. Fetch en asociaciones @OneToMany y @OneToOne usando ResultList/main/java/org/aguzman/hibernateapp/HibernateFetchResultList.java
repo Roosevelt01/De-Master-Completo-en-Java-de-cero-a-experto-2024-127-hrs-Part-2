@@ -14,8 +14,8 @@ public class HibernateFetchResultList {
         // Paso 2: Crear una consulta JPQL personalizada con JOIN FETCH.
         // "DISTINCT" previene clientes duplicados en la lista final.
         // "JOIN FETCH" carga las colecciones en la misma consulta, evitando el N+1.
-        List<Cliente> clientes = em.createQuery("select distinct c from Cliente c left outer join fetch c.direcciones left outer join fetch c.detalle", Cliente.class)
-                .getResultList();
+        List<Cliente> clientes = em.createQuery("select distinct c from Cliente c
+             left outer join fetch c.direcciones left outer join fetch c.detalle", Cliente.class).getResultList();
 
         // Paso 3: Imprimir la información del cliente y sus relaciones.
         clientes.forEach(c -> System.out.println(c.getNombre() + ", direcciones: "+ c.getDirecciones()));
