@@ -9,7 +9,7 @@ import java.util.List;
 
 public class HibernateFetchOneToManyCriteria {
     public static void main(String[] args) {
-// Paso 1: Inicializar el EntityManager y el CriteriaBuilder.
+        // Paso 1: Inicializar el EntityManager y el CriteriaBuilder.
         EntityManager em = JpaUtil.getEntityManager();
         CriteriaBuilder cb = em.getCriteriaBuilder();
         
