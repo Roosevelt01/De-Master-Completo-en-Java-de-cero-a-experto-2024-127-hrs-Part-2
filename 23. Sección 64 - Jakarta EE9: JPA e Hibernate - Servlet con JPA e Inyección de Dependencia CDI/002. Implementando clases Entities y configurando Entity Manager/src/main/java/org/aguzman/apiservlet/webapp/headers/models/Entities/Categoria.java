@@ -1,7 +1,14 @@
-package org.aguzman.apiservlet.webapp.headers.models;
+package org.aguzman.apiservlet.webapp.headers.models.Entities;
 
+import jakarta.persistence.*;
+
+@Entity//Paso 1
+@Table(name = "categorias")//Paso 2
 public class Categoria {
+    @Id//Paso 3
+    @GeneratedValue(strategy = GenerationType.IDENTITY)//Paso 4
     private Long id;
+
     private String nombre;
 
     public Long getId() {

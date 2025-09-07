@@ -7,6 +7,8 @@ import jakarta.enterprise.inject.Disposes;
 import jakarta.enterprise.inject.Produces;
 import jakarta.enterprise.inject.spi.InjectionPoint;
 import jakarta.inject.Inject;
+import jakarta.persistence.EntityManager;
+import org.aguzman.apiservlet.webapp.headers.util.JpaUtil;
 
 import javax.naming.NamingException;
 import javax.sql.DataSource;
@@ -14,10 +16,9 @@ import java.sql.Connection;
 import java.sql.SQLException;
 import java.util.logging.Logger;
 
-@ApplicationScoped//Paso 1
+@ApplicationScoped
 public class ProducerResources {
 
-    //Paso 2
     @Inject
     private Logger log;
 
@@ -32,17 +33,30 @@ public class ProducerResources {
         return ds.getConnection();
     }
 
-    //Paso 1: Gemini, ese tema del logger es nuevo para mí, necesito concepto, cual es la funcionalidad y casos de usos
     @Produces
     private Logger beanLogger(InjectionPoint injectionPoint){
         return  Logger.getLogger(injectionPoint.getMember().getDeclaringClass().getName());
     }
 
-
     public void close(@Disposes @MysqlConn Connection connection) throws SQLException {
         connection.close();
-        //System.out.println("Cerrando la conexión a la bbdd mysql");
-        log.info("Cerrando la conexión a la bbdd mysql");//Paso 3
-
+        log.info("Cerrando la conexión a la bbdd mysql");
     }
+
+    //Paso 1
+    @Produces
+    @RequestScoped
+    private EntityManager beanEntiryManager(){
+        return JpaUtil.getEntityManager();
+    }
+
+    //Paso 2
+    public void close(@Disposes EntityManager entityManager){
+        if(entityManager.isOpen()){
+            entityManager.close();
+            log.info("Cerrando la conexión del EntityManager!");
+
+        }
+    }
+
 }
