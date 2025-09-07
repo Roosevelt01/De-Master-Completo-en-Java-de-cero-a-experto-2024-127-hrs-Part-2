@@ -1,12 +1,13 @@
 package org.aguzman.apiservlet.webapp.headers.models.Entities;
 
 import jakarta.persistence.*;
-
-@Entity//Paso 1
-@Table(name = "categorias")//Paso 2
+// Paso 1: Indica que esta clase es una entidad JPA.
+@Entity 
+// Paso 2: Mapea la clase a la tabla `categorias`.
+@Table(name = "categorias")
 public class Categoria {
-    @Id//Paso 3
-    @GeneratedValue(strategy = GenerationType.IDENTITY)//Paso 4
+    @Id // Paso 3: Clave primaria de la entidad.
+    @GeneratedValue(strategy = GenerationType.IDENTITY) // Paso 4: Generación automática del ID.
     private Long id;
 
     private String nombre;

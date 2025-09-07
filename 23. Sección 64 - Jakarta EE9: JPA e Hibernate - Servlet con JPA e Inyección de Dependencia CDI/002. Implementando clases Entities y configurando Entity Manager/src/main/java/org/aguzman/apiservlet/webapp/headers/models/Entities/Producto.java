@@ -4,15 +4,19 @@ import jakarta.persistence.*;
 
 import java.time.LocalDate;
 
-@Entity //Paso 1
-@Table(name="productos") //Paso 1
+@Entity // Paso 1: Anotación obligatoria para marcar la clase como una entidad JPA.
+@Table(name="productos") // Paso 2: Define el nombre de la tabla en la base de datos a la que se mapea esta entidad.
 public class Producto {
-    @Id //Paso 3
-    @GeneratedValue(strategy = GenerationType.IDENTITY) //Paso 4
+    @Id // Paso 3: Marca el campo como la clave primaria de la tabla.
+    // Paso 4: Configura la estrategia para la generación automática del valor de la clave primaria.
+    // `IDENTITY` usa la columna `AUTO_INCREMENT` de la base de datos.
+    @GeneratedValue(strategy = GenerationType.IDENTITY) 
     private Long id;
 
     private String nombre;
-
+    
+    // Paso 5: Define una relación de muchos a uno. Muchos productos pueden
+    // pertenecer a una sola categoría. El `fetch = LAZY` indica una carga perezosa para optimizar el rendimiento.
     @ManyToMany(fetch = FetchType.LAZY)//Paso 4
     private Categoria categoria;
 
@@ -20,7 +24,9 @@ public class Producto {
 
     private String sku;
 
-    @Column(name = "fecha_registro")//Paso 5
+    // Paso 6: Se usa cuando el nombre del campo en la clase Java es diferente al
+    // de la columna en la base de datos.
+    @Column(name = "fecha_registro")
     private LocalDate fechaRegistro;
 
     public Producto() {
