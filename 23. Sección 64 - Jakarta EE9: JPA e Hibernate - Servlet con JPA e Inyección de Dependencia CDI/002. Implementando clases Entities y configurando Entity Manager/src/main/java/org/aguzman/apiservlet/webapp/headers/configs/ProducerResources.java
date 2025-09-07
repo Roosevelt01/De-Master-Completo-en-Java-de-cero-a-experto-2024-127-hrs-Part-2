@@ -43,19 +43,18 @@ public class ProducerResources {
         log.info("Cerrando la conexión a la bbdd mysql");
     }
 
-    //Paso 1
+    // Paso 1: Método Productor para crear un EntityManager por solicitud.
     @Produces
     @RequestScoped
     private EntityManager beanEntiryManager(){
         return JpaUtil.getEntityManager();
     }
 
-    //Paso 2
+    // Paso 2: Método para cerrar el EntityManager cuando la solicitud termina.
     public void close(@Disposes EntityManager entityManager){
         if(entityManager.isOpen()){
             entityManager.close();
             log.info("Cerrando la conexión del EntityManager!");
-
         }
     }
 }
