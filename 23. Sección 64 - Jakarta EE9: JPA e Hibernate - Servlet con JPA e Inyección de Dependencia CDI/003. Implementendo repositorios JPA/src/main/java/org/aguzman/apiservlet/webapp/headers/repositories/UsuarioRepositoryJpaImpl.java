@@ -36,9 +36,9 @@ public class UsuarioRepositoryJpaImpl implements UsuarioRepository {
         em.remove(porId(id));
     }
 
-
     @Override
     public Usuario porUsername(String username) throws Exception {
+        //Consulta JPQL personalizada con parámetros.
         return em.createQuery("select u from.Usuario u where u.username = :username", Usuario.class)
                 .setParameter("username", username)
                 .getSingleResult() ;
