@@ -7,11 +7,11 @@ import org.aguzman.apiservlet.webapp.headers.models.Entities.Producto;
 
 import java.util.List;
 
-@Repository
+@Repository // Estereotipo de CDI para componentes de acceso a datos
 public class ProductoRepositoryJpaImpl implements CrudRepository<Producto>{
 
     @Inject
-    private EntityManager em;
+    private EntityManager em;// Inyecta el EntityManager producido por ProducerResources
 
     @Override
     public List<Producto> listar() throws Exception {
